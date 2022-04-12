@@ -1,0 +1,26 @@
+<carousel [isAnimated]="true">
+	<slide *ngFor="let items of projectItemSlider; let j = index" [ngClass]="{'active': j == 0}" >
+	  	<!-- <img src="assets/images/nature/1.jpg" alt="first slide" style="display: block; width: 100%;"> -->
+		<video autoplay muted loop>
+			<source [src]="items.gif.data.full_url" type="video/mp4" />
+		</video>
+		<div class="head-project" (click)="withinProject(items)">
+			<i class="fa fa-play" aria-hidden="true"></i>
+			<h2>{{items.title}}</h2>
+			<h3>{{items.subtitle}}</h3>
+			<p>{{items.credits}}</p>
+		</div>
+		<!-- <div class="carousel-caption d-none d-md-block">
+			<h3>Third slide label</h3>
+			<p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+		</div> -->
+	</slide>
+	<!-- <slide>
+	  <img src="assets/images/nature/2.jpg" alt="second slide" style="display: block; width: 100%;">
+	</slide>
+	<slide>
+	  <img src="assets/images/nature/3.jpg" alt="third slide" style="display: block; width: 100%;">
+	</slide> -->
+</carousel>
+<!-- <button (click)="project.scrollToElement(target)">Scroll</button> -->
+<app-projects-home [dataVideo]="itemVideoNull" #target></app-projects-home>

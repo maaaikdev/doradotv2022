@@ -1,0 +1,61 @@
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  <!-- <nav [ngClass]="url == '/project' || url == '/studio' ? 'dark' : '' && {'scrolled': scroll}"> -->
+<nav [ngClass]="{'scrolled': scroll}">
+	<div class="left">
+		<a routerLink="">
+			<img [src]="url == '/project' || url == '/studio' ? 'assets/images/nav/logo-DorardoTV-dark.svg' : 'assets/images/nav/logo-DorardoTV.png' " title="Logo Dorado TV" alt=" Logo Dorado TV" class="logo-dorado"/>
+			<!-- <img src="assets/images/nav/logo-DorardoTV-dark.svg" title="Logo Dorado TV" alt=" Logo Dorado TV" class="logo-dorado"/> -->
+		</a>
+	</div>
+	<div class="right">
+		<div class="menu">
+			<a href="#" class="menu-nav-toggle" data-bs-toggle="modal" data-bs-target="#menuModal">
+				<i [ngClass]="url == '/project' || url == '/studio' ? 'dark' : '' "></i>
+			</a>
+		</div>	
+		<div class="lang-menu">
+			<a class="language" [ngClass]="url == '/project' || url == '/studio' ? 'dark' : '' ">
+				ESP
+				<i class="fa fa-angle-down d-none d-md-block" aria-hidden="true" [ngClass]="url == '/project' || url == '/studio' ? 'dark' : '' "></i>
+			</a>
+		</div>		
+	</div>    
+</nav>  
+  
+  <!-- Modal -->
+<div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menulLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      	<div class="modal-content">
+			<div class="modal-body edition">
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				<div class="menu-body">
+					<a routerLink="/">
+						<img src="assets/images/nav/icon-dorado.svg" alt="DoradoTV" title="DoradoTV" class="icon-dorado"/>
+					</a>					
+					<div class="section-btn" (click)="onButtonGroupClick($event)">
+						<a class="btn-aMenu" *ngFor="let menuItem of menuArray; let j = index" (mouseover)="changeColor(menuItem.name)" (click)="project.colorCategory(menuItem.slug)" [ngClass]="{'active': menuItem.active}" >
+							{{menuItem.name}}
+						</a>						
+					</div>
+					<div class="section-about">
+						<a routerLink="/contact" data-bs-dismiss="modal" aria-label="Close">About</a>
+						<!-- <a href="#">Follow us</a>						 -->
+					</div>
+					<div class="section-social">
+						<a href="#" target="_blank">
+							<img src="assets/images/nav/social-instagram.svg" title="DoradoTV Instagram" alt="Social Media DoradoTV" class="social"/>
+						</a>
+						<a href="#" target="_blank">
+							<img src="assets/images/nav/social-mail.svg" title="DoradoTV Email" alt="Social Media DoradoTV" class="social"/>
+						</a>    
+						<a href="#" target="_blank">
+							<img src="assets/images/nav/social-vimeo.svg" title="DoradoTV Vimeo" alt="Social Media DoradoTV" class="social"/>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

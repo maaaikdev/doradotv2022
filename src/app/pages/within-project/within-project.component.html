@@ -1,0 +1,50 @@
+<!-- <section class="project-in">
+    <div class="video-embed">
+        <iframe [src]="videoVimeo?.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div class="video-description">
+        <h2>{{videoVimeo?.gif.title}}</h2>
+        <p>{{videoVimeo?.photo_text}}</p>
+    </div>
+</section>
+<section class="project-other" [ngClass]="getBg()">
+    <div class="image-proj">
+        <img 
+            [src]="nextProjectUp?.photo.data.full_url"            
+            title="{{nextProjectUp?.photo_text}}" 
+            alt="{{nextProjectUp?.name}}" />
+    </div>
+    <div class="description-proj">
+        <a class="next-project" (click)="withinProject(nextProjectUp)">
+            Next project
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <h3>{{nextProjectUp?.photo_text}}</h3>
+        <p>{{nextProjectUp?.name}}</p>
+    </div>
+</section> -->
+<section class="project-in">
+    <div class="video-embed">
+        <iframe [src]="addProject.projectAuthor?.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+    </div>
+    <div class="video-description">
+        <h2>{{addProject.projectAuthor?.title}}</h2>
+        <p>{{addProject.projectAuthor?.credits}}</p>
+    </div>
+</section>
+<section class="project-other" [ngClass]="getBg(nextProjectUp.services[0].service_id.slug)">
+    <div class="image-proj">
+        <img 
+            [src]="nextProjectUp?.photo.data.full_url"            
+            title="{{nextProjectUp?.photo_text}}" 
+            alt="{{nextProjectUp?.name}}" />
+    </div>
+    <div class="description-proj">
+        <a class="next-project" (click)="withinProject(nextProjectUp)">
+            Next project
+            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+        </a>
+        <h3>{{nextProjectUp?.photo_text}}</h3>
+        <p>{{nextProjectUp?.name}}</p>
+    </div>
+</section>

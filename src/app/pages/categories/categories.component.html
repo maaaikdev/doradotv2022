@@ -1,0 +1,65 @@
+<section class="workers" [ngClass]="getBg()">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item" role="presentation" *ngFor="let names of project.workers?.data[0].workers; let i = index">
+            <button class="nav-link" [ngClass]="{'active': i == 0}" id="worker{{i}}-tab" data-bs-toggle="tab" attr.data-bs-target="#worker{{i}}" type="button" role="tab" attr.aria-controls="worker{{i}}" aria-selected="true" (click)="tabData(names)">{{names.worker_id.name}}</button>
+        </li>
+        <!-- <li class="nav-item" role="presentation">
+            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Profile</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Contact</button>
+        </li> -->
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade" *ngFor="let names of project.workers?.data[0].workers; let i = index" [ngClass]="{'show active': i == 0}" id="worker{{i}}" role="tabpanel" attr.aria-labelledby="worker{{i}}-tab">
+            <div class="author-header">
+                <h3>{{project.workerData.service_id.name}}</h3>
+                <!-- <h2>{{workerData.worker_id.name}}</h2> -->
+                <h2 [innerHTML]="lineBreak(project.workerData.worker_id.name)"></h2>
+            </div> 
+            <div class="container-a2">
+                <div class="video-gallery">
+                    <div class="video-embed">
+                        <div class="video-box" *ngFor="let projects of project.workerData?.worker_id.projects; let i = index" [ngClass]="i == 0 || i == 3 || i == 6 || i == 9 ? 'wid-100' : 'wid-50' ">
+                            <iframe [src]="projects.project_id?.vimeo+'?controls=false' | safe: 'resourceUrl'" [ngClass]="i == 0 || i == 3 || i == 6 || i == 9 ? 'w-100-fr' : '' "></iframe>
+                            <h4>{{projects.project_id?.photo_text}}</h4>
+                            <div class="caption" (click)="videoModal(projects)" data-bs-toggle="modal" data-bs-target="#videoModal">
+                                <div class="caption-text" [ngClass]="getBg()">
+                                    <i class="fa fa-play" aria-hidden="true"></i>
+                                    <h5>{{projects.project_id?.photo_text}}</h5>
+                                    <p>{{projects.worker_id?.name}}</p>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">2 tab</div>
+        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">3 tab</div> -->
+    </div>
+</section>
+<!-- <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">1 tab</div>
+    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">2 tab</div>
+    <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">3 tab</div>
+</div> -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videolLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      	<div class="modal-content">
+			<div class="modal-body edition">
+				<button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+				<div class="video-body">
+					<img src="assets/images/modal/icon-dorado-gold.svg" alt="DoradoTV" title="DoradoTV" class="icon-dorado"/>
+					<div class="video-box" >
+						<iframe [src]="captureVideo?.project_id.vimeo | safe: 'resourceUrl'"></iframe>
+                        <h5>{{captureVideo?.project_id.photo_text}}</h5>
+                        <p>{{captureVideo?.project_id.name}}</p>
+					</div>
+				</div>
+			</div>
+		</div>
+    </div>
+</div>

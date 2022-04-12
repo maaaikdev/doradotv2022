@@ -1,0 +1,92 @@
+@import '../../../styles.scss';
+
+// footer {
+//     display: flex;
+//     flex-direction: row;
+//     padding: 24px 42px 32px;
+//     position: absolute;
+//     bottom: 14px;
+//     z-index: 20;
+//     @media(min-width:1720px) {
+//         bottom: 0;
+//     }
+//     .social {
+//         width: 24px;
+//         margin-right: 32px;
+//         &:hover {
+//             transform: scale(1.2);
+//         }
+//         @media(min-width:1720px) {
+//             width: 32px;
+//             margin-right: 32p
+//         }
+//     }
+// }
+footer {
+    background-color: $gray-dark;
+    padding: 6% 0;
+    @media(max-width:768px){
+        padding: 32px;
+    }
+    .img-logo {
+        text-align: center;
+        img {
+            width: 60%;
+            display: initial;
+            @media(max-width:768px){
+                width: 30%;
+                margin-bottom: 40px;
+            }
+            @media(min-width:1720px) {
+                width: 52%;
+            }
+        }        
+    }
+    .txt-logo {
+        @media(max-width:768px){
+           text-align: center
+        }
+        h4 {
+            font-family: $raleway;
+            font-size: 16px;
+            line-height: 28px;
+            font-weight: 400;
+            color: $gold;
+        }
+        p {
+            font-family: $raleway;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+            color: $white;
+            a {
+                text-decoration: none;
+                color: $white;
+            }
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .rr-ss {
+        @media(max-width:768px) {
+            text-align: center;
+            margin-top: 32px;
+        }
+        .social {
+            width: 24px;
+            margin-right: 32px;
+            display: initial;
+            &:hover {
+                transform: scale(1.2);
+            }
+            @media(max-width:768px) {
+                margin-right: initial;
+                margin: 0 16px;
+            }
+            @media(min-width:1720px) {
+                width: 26px;
+            }
+        }
+    }
+}

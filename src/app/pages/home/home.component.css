@@ -1,0 +1,226 @@
+@import url("https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:wght@200;300;400;500;600&display=swap");
+body {
+  background-color: #000;
+}
+
+.carousel .indicators {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: absolute;
+  bottom: 28px;
+  text-align: center;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.carousel .indicators .carousel-indicators {
+  position: initial;
+  margin-right: initial;
+  margin-left: initial;
+}
+
+.carousel .carousel-inner {
+  height: 100vh;
+}
+
+.carousel .carousel-inner .carousel-item {
+  min-height: 70vh;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-inner .carousel-item {
+    min-height: 100vh;
+  }
+}
+
+.carousel .carousel-inner .carousel-item .embed-responsive .embed-responsive-item {
+  margin: 0 auto;
+  width: 100%;
+  background-color: #000;
+  height: 70vh;
+}
+
+.carousel .carousel-inner .carousel-item video {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-inner .carousel-item video {
+    width: initial;
+    height: 100vh;
+    text-align: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    position: absolute;
+    left: -146%;
+  }
+}
+
+.carousel .carousel-inner .carousel-item .head-project {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 70%;
+  margin: -15% 0 0 -25%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-inner .carousel-item .head-project {
+    top: 36%;
+  }
+}
+
+.carousel .carousel-inner .carousel-item .head-project i {
+  font-size: 48px;
+  color: #d4ad38;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-inner .carousel-item .head-project i {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1720px) {
+  .carousel .carousel-inner .carousel-item .head-project i {
+    font-size: 60px;
+  }
+}
+
+.carousel .carousel-inner .carousel-item .head-project h2 {
+  font-size: 56px;
+  line-height: 64px;
+  font-family: "Caudex", serif;
+  color: #d4ad38;
+  margin: 24px auto;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-inner .carousel-item .head-project h2 {
+    font-size: 36px;
+    line-height: 44px;
+    color: #ffffff;
+    margin: 16px auto 8px;
+  }
+}
+
+@media (min-width: 1720px) {
+  .carousel .carousel-inner .carousel-item .head-project h2 {
+    font-size: 92px;
+    line-height: 100px;
+  }
+}
+
+.carousel .carousel-inner .carousel-item .head-project h3 {
+  font-size: 28px;
+  line-height: 36px;
+  font-family: "Raleway", sans-serif;
+  color: #ffffff;
+  margin: 24px auto;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-inner .carousel-item .head-project h3 {
+    font-size: 16px;
+    line-height: 24px;
+    margin: 24px auto 8px;
+  }
+}
+
+@media (min-width: 1720px) {
+  .carousel .carousel-inner .carousel-item .head-project h3 {
+    font-size: 42px;
+    line-height: 50px;
+  }
+}
+
+.carousel .carousel-inner .carousel-item .head-project p {
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Raleway", sans-serif;
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-inner .carousel-item .head-project p {
+    font-size: 16px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width: 1720px) {
+  .carousel .carousel-inner .carousel-item .head-project p {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+.carousel .carousel-control-prev {
+  opacity: .9;
+  width: 8%;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-control-prev {
+    width: 10%;
+  }
+}
+
+.carousel .carousel-control-prev .carousel-control-prev-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.carousel .carousel-control-prev i {
+  font-size: 80px;
+  color: #d4ad38;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-control-prev i {
+    font-size: 40px;
+  }
+}
+
+.carousel .carousel-control-next {
+  opacity: .9;
+  width: 8%;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-control-next {
+    width: 10%;
+  }
+}
+
+.carousel .carousel-control-next .carousel-control-next-icon {
+  width: 60px;
+  height: 60px;
+}
+
+.carousel .carousel-control-next i {
+  font-size: 80px;
+  color: #d4ad38;
+}
+
+@media (max-width: 768px) {
+  .carousel .carousel-control-next i {
+    font-size: 40px;
+  }
+}
+/*# sourceMappingURL=home.component.css.map */

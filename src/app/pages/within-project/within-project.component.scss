@@ -1,0 +1,176 @@
+@import '../../../styles.scss';
+
+.project-in {
+    padding: 140px 0 42px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    @media(max-width:768px) {
+        padding: 110px 0 32px;
+    }
+    .icon-dorado {
+        width: 70px;
+        margin: 24px auto;
+    }
+    .video-embed {
+        iframe {
+            width: 1280px;
+            height: 720px;
+            @media(max-width:768px) {
+                width: 100%;
+                height: auto;
+                transform: scale(1.2);
+            }
+            @media(min-width:1720px){
+                width: 1280px;
+                height: 720px;
+            }
+        }
+    }
+    &.edition {
+        background-color: $gold;
+    }
+    &.color {
+        background-color: $blue-light;
+    }
+    &.music {
+        background-color: $red;
+    }
+    &.animation {
+        background-color: $green;
+    }
+    &.online {
+        background-color: $purple;
+    }
+    .video-description {
+        margin: 32px auto 0;
+        h2 {
+            font-family: $raleway;
+            font-size: 32px;
+            line-height: 40px;
+            font-weight: 500;
+            @media(max-width:768px){
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+        p {
+            font-family: $raleway;
+            font-size: 16px;
+            line-height: 24px;
+            font-weight: 400;
+        }
+    }
+}
+
+.project-other {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    -webkit-box-shadow: 0px -4px 6px -2px rgba(0,0,0,0.29);
+    -moz-box-shadow: 0px -4px 6px -2px rgba(0,0,0,0.29);
+    box-shadow: 0px -4px 6px -2px rgba(0,0,0,0.29);
+    @media(max-width:768px){
+        flex-direction: column;
+    }
+    &.edition {
+        background-color: $gold;
+    }
+    &.color {
+        background-color: $blue-light;
+    }
+    &.music {
+        background-color: $red;
+    }
+    &.animation {
+        background-color: $green;
+    }
+    &.online {
+        background-color: $purple;
+    }
+    .image-proj {
+        flex: 1 1 25%;
+        width: 25%;
+        overflow: hidden;
+        display: flex;
+        justify-content: center;
+        background-color: $black;
+        @media(max-width:768px){
+            width: 100%;
+        }
+        img {
+            width: 190%;
+            margin: 0 auto;
+            @media(max-width:768px){
+                width: 100%;
+            }
+            @media(min-width: 1720px) {
+                width: 180%;
+            }
+        }
+    }
+    .video-embed-add {
+        flex: 1 1 30%;
+        width: 30%;
+        iframe {
+            width: 1280px;
+            height: 720px;
+            @media(max-width:768px) {
+                width: 100%;
+                height: auto;
+                transform: scale(1.2);
+            }
+            @media(min-width:1720px){
+                width: 1280px;
+                height: 720px;
+            }
+        }
+    }
+    .description-proj {
+        flex: 1 1 75%;
+        width: 75%;
+        padding: 32px 40px;
+        display: flex;
+        flex-direction: column;
+        @media(max-width:768px){
+            width: 100%;
+        }
+        .next-project {
+            font-family: $raleway;
+            font-size: 18px;
+            line-height: 24px;
+            font-weight: 500;
+            color:$white;
+            text-decoration: none;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            margin-bottom: 32px;
+            cursor: pointer;
+            &:hover {
+                opacity: .8;
+            }
+            i {
+                font-size: 18px;
+                margin-left: 16px;
+            }
+        }
+        h3 {
+            font-family: $raleway;
+            font-size: 52px;
+            line-height: 64px;
+            font-weight: 300;
+            @media(max-width:768px){
+                font-size: 24px;
+                line-height: 32px;
+            }
+        }
+        p {
+            font-family: $raleway;
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+}

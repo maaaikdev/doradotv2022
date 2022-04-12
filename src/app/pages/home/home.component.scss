@@ -1,0 +1,332 @@
+@import "../../../styles.scss";
+
+body {
+    background-color: #000;
+}
+//Carousel
+::ng-deep carousel {
+    position: relative;
+    .carousel {
+        .carousel-indicators {
+            margin-bottom: 2rem;
+            align-items: center;
+            @media(min-width:1720px) {
+                margin-bottom: 3rem;
+            }
+            button {
+                width: 7px;
+                height: 7px;
+                border-radius: 100%;
+                background-color: $gold;
+                margin: 0 16px;
+                opacity: 1;
+                position: relative;
+                &.active {
+                    background-color: $white;
+                    opacity: 1;
+                    border: 5px solid transparent;
+                    outline: 2px solid $gold;                 
+                }                
+            }
+        }
+    }
+    .carousel-inner {
+        ::ng-deep slide {
+            .item {
+                //height: 100vh;
+                @media(max-width:768px) {
+                    height: 100vh;
+                }
+                video {
+                    width: 100% !important;
+                    height: 100% !important;
+                    @media(max-width:768px) {
+                        width: initial;
+                        height: initial;
+                        object-fit: none;
+                    }
+                }
+                .head-project {
+                    position: absolute;
+                    top: 60%;
+                    left: 40%;
+                    width: 70%;
+                    margin: -15% 0 0 -25%;
+                    text-align: center;
+                    cursor: pointer;
+                    @media(max-width:768px) {
+                        top:36%
+                    }
+                    @media(min-width:1720px) {
+                        top: 50%;
+                    }
+                    i {
+                        font-size: 48px;
+                        color: $gold;
+                        @media(max-width:768px) {
+                            font-size: 32px;
+                        }
+                        @media(min-width:1720px) {
+                            font-size: 60px;
+                        }
+                    }
+                    h2 {
+                        font-size: 56px;
+                        line-height: 64px;
+                        font-family: $caudex;
+                        color: $gold;
+                        margin: 24px auto;
+                        @media(max-width:768px) {
+                            font-size: 36px;
+                            line-height:44px;
+                            color: $gold;
+                            margin: 16px auto 8px;
+                        }
+                        @media(min-width:1720px) {
+                            font-size: 92px;
+                            line-height: 100px;
+                        }
+                    }
+                    h3 {
+                        font-size: 28px;
+                        line-height: 36px;
+                        font-family: $raleway;
+                        color: $white;
+                        margin: 24px auto;
+                        @media(max-width:768px) {
+                            font-size: 16px;
+                            line-height:24px;
+                            margin: 24px auto 8px;
+                        }
+                        @media(min-width:1720px) {
+                            font-size: 42px;
+                            line-height: 50px;
+                        }
+                    }
+                    p {
+                        font-size: 18px;
+                        line-height: 24px;
+                        font-family: $raleway;
+                        color: $white;
+                        @media(max-width:768px) {
+                            font-size: 16px;
+                            line-height:24px;
+                        }
+                        @media(min-width:1720px) {
+                            font-size: 24px;
+                            line-height: 32px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .left {
+        .carousel-control-prev-icon {
+            width: 4rem;
+            height: 4rem;
+            background-image: url(../../../assets/images/carousel/arrow-left.svg);
+            @media(max-width:768px) {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+    .right {
+        .carousel-control-next-icon {
+            width: 4rem;
+            height: 4rem;
+            background-image: url(../../../assets/images/carousel/arrow-right.svg);
+            @media(max-width:768px) {
+                width: 2rem;
+                height: 2rem;
+            }
+        }
+    }
+}
+// .carousel {
+//     .indicators {
+//         display: flex;
+//         flex-direction: row;
+//         position: absolute;
+//         bottom: 28px;
+//         text-align: center;
+//         width: 100%;
+//         justify-content: center;
+//         .carousel-indicators {
+//             position: initial;
+//             margin-right: initial;
+//             margin-left: initial;
+//             // .circle {
+//             //     width: 8px;
+//             //     height: 7px;
+//             //     border-radius: 100%;
+//             //     margin-right: 16px;
+//             //     margin-left: 16px;
+//             //     background-color: $gold;
+//             //     position: relative;
+//             //     opacity: 1;            
+//             // }
+//             // &.active {
+//             //     //     //position: absolute;
+//             //     //     border: 1px solid $gold;
+//             //         width: 16px;
+//             //         height: 16px;
+//             //         background-color: transparent;
+//             //     }
+//         }
+//     }
+//     .carousel-inner {
+//         height: 100vh;
+//         .carousel-item {
+//             //width: 100%;
+//             min-height: 70vh;
+//             background-repeat: no-repeat;
+//             background-position: 50% 50%;
+//             background-size: cover;
+//             overflow: hidden;
+//             position: relative;
+//             @media(max-width:768px){
+//                 min-height: 100vh;
+//             }
+//             .embed-responsive {
+//                 .embed-responsive-item {
+//                     margin: 0 auto;
+//                     width: 100%;
+//                     //z-index: 1;
+//                     background-color: #000;
+//                     height: 70vh;
+//                     // position: absolute;
+//                     // top: 0;
+//                     // left: 0;
+//                     // width: 100%;
+//                     // height: 100%;
+                    
+//                 }
+//             }
+//             video {
+//                 width: 100%;
+//                 height: auto;
+//                 @media(max-width:768px){
+//                     width: initial;
+//                     height: 100vh;
+//                     text-align: center;
+//                     justify-content: center;
+//                     position: absolute;
+//                     left: -146%;
+//                 }
+//             }
+//             .head-project {
+//                 position: absolute;
+//                 // top: 0;
+//                 // left: 0;
+//                 // right: 0;
+//                 // bottom: 0;
+//                 // text-align: center;
+//                 // z-index: 10;
+//                 top: 50%;
+//                 left: 40%;
+//                 //height: 30%;
+//                 width: 70%;
+//                 margin: -15% 0 0 -25%;
+//                 text-align: center;
+//                 @media(max-width:768px) {
+//                     top:36%
+//                 }
+//                 i {
+//                     font-size: 48px;
+//                     color: $gold;
+//                     @media(max-width:768px) {
+//                         font-size: 32px;
+//                     }
+//                     @media(min-width:1720px) {
+//                         font-size: 60px;
+//                     }
+//                 }
+//                 h2 {
+//                     font-size: 56px;
+//                     line-height: 64px;
+//                     font-family: $caudex;
+//                     color: $gold;
+//                     margin: 24px auto;
+//                     @media(max-width:768px) {
+//                         font-size: 36px;
+//                         line-height:44px;
+//                         color: $white;
+//                         margin: 16px auto 8px;
+//                     }
+//                     @media(min-width:1720px) {
+//                         font-size: 92px;
+//                         line-height: 100px;
+//                     }
+//                 }
+//                 h3 {
+//                     font-size: 28px;
+//                     line-height: 36px;
+//                     font-family: $raleway;
+//                     color: $white;
+//                     margin: 24px auto;
+//                     @media(max-width:768px) {
+//                         font-size: 16px;
+//                         line-height:24px;
+//                         margin: 24px auto 8px;
+//                     }
+//                     @media(min-width:1720px) {
+//                         font-size: 42px;
+//                         line-height: 50px;
+//                     }
+//                 }
+//                 p {
+//                     font-size: 18px;
+//                     line-height: 24px;
+//                     font-family: $raleway;
+//                     color: $white;
+//                     @media(max-width:768px) {
+//                         font-size: 16px;
+//                         line-height:24px;
+//                     }
+//                     @media(min-width:1720px) {
+//                         font-size: 24px;
+//                         line-height: 32px;
+//                     }
+//                 }
+//             }
+//         }
+//     }
+//     .carousel-control-prev {
+//         opacity: .9;
+//         width: 8%;
+//         @media(max-width:768px) {
+//             width: 10%;
+//         }
+//         .carousel-control-prev-icon {
+//             width: 60px;
+//             height: 60px;
+//         }
+//         i {
+//             font-size: 80px;
+//             color: $gold;
+//             @media(max-width:768px) {
+//                 font-size: 40px;
+//             }
+//         }
+//     }
+//     .carousel-control-next {
+//         opacity: .9;
+//         width: 8%;
+//         @media(max-width:768px) {
+//             width: 10%;
+//         }
+//         .carousel-control-next-icon {
+//             width: 60px;
+//             height: 60px;
+//         }
+//         i {
+//             font-size: 80px;
+//             color: $gold;
+//             @media(max-width:768px) {
+//                 font-size: 40px;
+//             }
+//         }
+//     }
+// }

@@ -1,0 +1,227 @@
+@import '../../../styles.scss';
+
+.projects-home {
+    display: flex;
+    flex-flow: row wrap;
+    width: 100%;
+    margin-top: -8px;
+    //cursor: pointer;
+    .box-video {
+        display: flex;
+        background-color: #eee;
+        overflow: hidden;
+        //height: 500px;
+        position: relative;
+        @media(max-width:768px) {
+            height: initial;
+        }
+        &:hover {
+            .caption {
+                opacity: 1;
+                transform: translateY(0px);
+                -webkit-transform:translateY(0px);
+                -moz-transform:translateY(0px);
+                -ms-transform:translateY(0px);
+                -o-transform:translateY(0px);
+            }
+        }
+        &.wid-50 {
+            flex: 1 1 50%;
+            width: 50%;
+            @media(max-width:768px){
+                flex: 1 1 100%;
+                width: 100%;   
+            }
+        }
+        &.wid-100 {
+            flex: 1 1 100%;
+            width: 100%;
+            object-fit: initial;
+        }
+        video {
+            // transform: scale(1.1);
+            object-fit: none;
+            // margin: 0 auto;
+            width: 100% !important;
+            height: 100% !important;
+            @media(max-width:768px) {
+                transform: initial;
+                width: 100%;
+            }
+            &.object-fit{
+                object-fit: initial;
+            }
+        }
+        h4 {
+            font-family: $raleway;
+            font-size: 28px;
+            line-height: 36px;
+            font-weight: 400;
+            position: absolute;
+            bottom: 32px;
+            left: 36px;
+            color: $white;
+            cursor: pointer;
+            // -webkit-transition:all 0.45s ease-in-out;
+            // -moz-transition:all 0.45s ease-in-out;
+            // -o-transition:all 0.45s ease-in-out;
+            // -ms-transition:all 0.45s ease-in-out;
+            // transition:all 0.45s ease-in-out;
+            // transform: translateY(5px);
+            // -webkit-transform:translateY(5px);
+            // -moz-transform:translateY(5px);
+            // -ms-transform:translateY(5px);
+            // -o-transform:translateY(5px);
+            @media(max-width:768px) {
+                font-size: 18px;
+                line-height: 24px;
+            }
+            @media(min-width:1720px){
+                font-size: 32px;
+                line-height: 40px;
+            }
+            &:hover {
+                // transform: translateY(0px);
+                // -webkit-transform:translateY(0px);
+                // -moz-transform:translateY(0px);
+                // -ms-transform:translateY(0px);
+                // -o-transform:translateY(0px);
+                .caption {
+                    opacity: 1;
+                    transform: translateY(0px);
+                    -webkit-transform:translateY(0px);
+                    -moz-transform:translateY(0px);
+                    -ms-transform:translateY(0px);
+                    -o-transform:translateY(0px);
+                }
+            }
+        }
+        .caption{
+            cursor: pointer;
+            position: absolute;
+            opacity: 0;
+            bottom:0;
+            -webkit-transition:all 0.45s ease-in-out;
+            -moz-transition:all 0.45s ease-in-out;
+            -o-transition:all 0.45s ease-in-out;
+            -ms-transition:all 0.45s ease-in-out;
+            transition:all 0.45s ease-in-out;
+            width: 100%;
+            transform: translateY(100px);
+            -webkit-transform:translateY(100px);
+            -moz-transform:translateY(100px);
+            -ms-transform:translateY(100px);
+            -o-transform:translateY(100px);
+        }
+        .blur{
+            background-color: rgba(0,0,0,0.7);
+            height: 150px;
+            width: 100%;
+            z-index: 5;
+            position: absolute;
+            bottom: 0;        
+        }
+        .caption-text{
+            z-index: 10;
+            color: #fff;
+            width: 100%;
+            left:4%;
+            bottom: 0;        
+            display: flex;
+            flex-direction: column;
+            padding: 24px 32px;
+            background-color: #000;
+            &.edition {
+                background-color: $gold;
+            }
+            &.color {
+                background-color: $blue-light;
+            }
+            &.music {
+                background-color: $red;
+            }
+            &.animation {
+                background-color: $green;
+            }
+            &.online {
+                background-color: $purple;
+            }
+            i {
+                font-size: 32px;
+                color: $black;
+                margin-bottom: 8px;
+                @media(max-width:768px) {
+                    font-size: 24px;
+                }
+            }
+            h5 {
+                font-family: $raleway;
+                font-size: 28px;
+                line-height: 36px;
+                font-weight: 400;
+                color: $black;
+                @media(max-width:768px) {
+                    font-size: 18px;
+                    line-height: 24px;
+                }
+                @media(min-width:1720px){
+                    font-size: 32px;
+                    line-height: 40px;
+                }
+            }
+            p {
+                font-family: $raleway;
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: 300;
+                color: $black;
+                margin-bottom: 0;
+                @media(max-width:768px) {
+                    font-size: 14px;
+                    line-height: 20px;
+                }
+            }
+        }
+        .project-hover {
+            position: absolute;
+            width: 100%;
+            background-color: #d33e43;
+            display: flex;
+            flex-direction: row;
+            color: $white;
+            font-family: $raleway;
+            bottom: 0;
+            display: none;
+            //opacity: 0;
+            // &.opacity1 {
+            //     opacity: 1;
+            // } 
+            .left {
+                flex: 1 1 50%;
+                padding: 40px 24px;
+                i {
+                    font-size: 20px;
+                    margin-bottom: 24px;
+                }
+                h4 {
+                    font-size: 32px;
+                    line-height: 40px;
+                    font-weight: 300;
+                }
+            }
+            .right {
+                flex: 1 1 50%;
+                padding: 40px 24px;
+                h5 {
+                    font-size: 16px;
+                    line-height: 24px;
+                    margin-bottom: 26px;
+                }
+                p {
+                    font-size: 16px;
+                    line-height: 24px;
+                }
+            }
+        }
+    }
+}

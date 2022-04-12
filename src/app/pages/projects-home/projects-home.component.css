@@ -1,0 +1,279 @@
+@import url("https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:wght@200;300;400;500;600&display=swap");
+.projects-home {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  width: 100%;
+  cursor: pointer;
+}
+
+.projects-home .box-video {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #eee;
+  overflow: hidden;
+  height: 500px;
+  position: relative;
+}
+
+@media (max-width: 768px) {
+  .projects-home .box-video {
+    height: initial;
+  }
+}
+
+.projects-home .box-video:hover .caption {
+  opacity: 1;
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
+}
+
+.projects-home .box-video.wid-50 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .projects-home .box-video.wid-50 {
+    -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+            flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+.projects-home .box-video.wid-100 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100%;
+          flex: 1 1 100%;
+  width: 100%;
+}
+
+.projects-home .box-video video {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .projects-home .box-video video {
+    -webkit-transform: initial;
+            transform: initial;
+    width: 100%;
+  }
+}
+
+.projects-home .box-video h4 {
+  font-family: "Raleway", sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 400;
+  position: absolute;
+  bottom: 32px;
+  left: 36px;
+  color: #ffffff;
+  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  transform: translateY(5px);
+  -webkit-transform: translateY(5px);
+  -moz-transform: translateY(5px);
+  -ms-transform: translateY(5px);
+  -o-transform: translateY(5px);
+}
+
+@media (max-width: 768px) {
+  .projects-home .box-video h4 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width: 1720px) {
+  .projects-home .box-video h4 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.projects-home .box-video h4:hover {
+  transform: translateY(0px);
+  -webkit-transform: translateY(0px);
+  -moz-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  -o-transform: translateY(0px);
+}
+
+.projects-home .box-video .caption {
+  cursor: pointer;
+  position: absolute;
+  opacity: 0;
+  bottom: 0;
+  -webkit-transition: all 0.15s ease-in-out;
+  transition: all 0.15s ease-in-out;
+  width: 100%;
+  transform: translateY(100px);
+  -webkit-transform: translateY(100px);
+  -moz-transform: translateY(100px);
+  -ms-transform: translateY(100px);
+  -o-transform: translateY(100px);
+}
+
+.projects-home .box-video .blur {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 150px;
+  width: 100%;
+  z-index: 5;
+  position: absolute;
+  bottom: 0;
+}
+
+.projects-home .box-video .caption-text {
+  z-index: 10;
+  color: #fff;
+  width: 100%;
+  left: 4%;
+  bottom: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 24px 32px;
+  background-color: #000;
+}
+
+.projects-home .box-video .caption-text.edition {
+  background-color: #d4ad38;
+}
+
+.projects-home .box-video .caption-text.color {
+  background-color: #4ae7e8;
+}
+
+.projects-home .box-video .caption-text.music {
+  background-color: #d33e43;
+}
+
+.projects-home .box-video .caption-text.animation {
+  background-color: #80b752;
+}
+
+.projects-home .box-video .caption-text.online {
+  background-color: #3e0960;
+}
+
+.projects-home .box-video .caption-text i {
+  font-size: 32px;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .projects-home .box-video .caption-text i {
+    font-size: 24px;
+  }
+}
+
+.projects-home .box-video .caption-text h5 {
+  font-family: "Raleway", sans-serif;
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 400;
+  color: #000000;
+}
+
+@media (max-width: 768px) {
+  .projects-home .box-video .caption-text h5 {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}
+
+@media (min-width: 1720px) {
+  .projects-home .box-video .caption-text h5 {
+    font-size: 32px;
+    line-height: 40px;
+  }
+}
+
+.projects-home .box-video .caption-text p {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 300;
+  color: #000000;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .projects-home .box-video .caption-text p {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+.projects-home .box-video .project-hover {
+  position: absolute;
+  width: 100%;
+  background-color: #d33e43;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: #ffffff;
+  font-family: "Raleway", sans-serif;
+  bottom: 0;
+  display: none;
+}
+
+.projects-home .box-video .project-hover .left {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  padding: 40px 24px;
+}
+
+.projects-home .box-video .project-hover .left i {
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.projects-home .box-video .project-hover .left h4 {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 300;
+}
+
+.projects-home .box-video .project-hover .right {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 50%;
+          flex: 1 1 50%;
+  padding: 40px 24px;
+}
+
+.projects-home .box-video .project-hover .right h5 {
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 26px;
+}
+
+.projects-home .box-video .project-hover .right p {
+  font-size: 16px;
+  line-height: 24px;
+}
+/*# sourceMappingURL=projects-home.component.css.map */

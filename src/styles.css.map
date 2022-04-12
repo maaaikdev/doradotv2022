@@ -1,0 +1,10 @@
+{
+    "version": 3,
+    "mappings": "AACA,OAAO,CAAC,6IAAI",
+    "sources": [
+        "styles.scss",
+        "assets/variables/_colors.scss"
+    ],
+    "names": [],
+    "file": "styles.css"
+}

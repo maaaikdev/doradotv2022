@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&family=Raleway:wght@200;300;400;500;600&display=swap");
+footer {
+  background-color: #000000;
+  padding: 6% 0;
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 32px;
+  }
+}
+
+footer .img-logo {
+  text-align: center;
+}
+
+footer .img-logo img {
+  width: 60%;
+}
+
+@media (max-width: 768px) {
+  footer .img-logo img {
+    width: 40%;
+    margin-bottom: 40px;
+  }
+}
+
+@media (min-width: 1720px) {
+  footer .img-logo img {
+    width: 52%;
+  }
+}
+
+@media (max-width: 768px) {
+  footer .txt-logo {
+    text-align: center;
+  }
+}
+
+footer .txt-logo h4 {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #d4ad38;
+}
+
+footer .txt-logo p {
+  font-family: "Raleway", sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  color: #ffffff;
+}
+
+footer .txt-logo p a {
+  text-decoration: none;
+  color: #ffffff;
+}
+/*# sourceMappingURL=footer.component.css.map */
