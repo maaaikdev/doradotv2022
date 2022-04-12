@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { BrokerService } from 'src/app/core/broker.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProjectsService } from 'src/app/core/projects.service';
+import { NgxSpinnerService } from "ngx-spinner";
 
 declare var $: any;
 
@@ -20,12 +21,15 @@ export class HomeComponent implements OnInit {
 	projectItemSlider: any;
 	itemVideoNull: any;
 	projectVideoItem = [];
+	spinner1 = 'sp1';
+	spinnerActive = true
 
 	constructor(
 		public broker: BrokerService,
 		private sanitazer: DomSanitizer,
-		public project: ProjectsService
-	) { }
+		public project: ProjectsService,
+		private spinner: NgxSpinnerService
+	) {	 }
 
 	ngOnInit() {
 		this.getProjectsHome();
@@ -36,7 +40,6 @@ export class HomeComponent implements OnInit {
 		this.broker.projectsItemsHome().subscribe((response: any) => {
 			if(response != undefined) {
 				this.projectsData = response;
-				console.log("PROJECT DATA HOME", this.projectsData)
 				this.projectItem = this.projectsData.data;
 				this.itemVideoNull = this.projectItem.filter(video => video.gif != null);
 				this.project.nextProject(this.projectsData);
@@ -45,17 +48,22 @@ export class HomeComponent implements OnInit {
 		});
 	}
 	getProjectsHomeSlider(){
-		this.broker.projectsItemsSlider().subscribe((response: any) => {			
+		// this.spinner.show('spinner1')
+		this.spinnerActive = true;
+		
+		this.broker.projectsItemsSlider().subscribe((response: any) => {					
 			this.projectsDataSlider = response;
-			this.projectItemSlider = this.projectsDataSlider.data
-			console.log("PROJECTS SLIDER", this.projectsDataSlider)
+			this.projectItemSlider = this.projectsDataSlider.data;
+			this.spinnerActive = false;
+			// setTimeout(() => {
+			// 	/** spinner ends after 5 seconds */
+			// 	this.spinner.hide();
+			// }, 5000);	
 		});		
 	}
 
 	getVideoCarousel(items) {
-		console.log("ITEMSSSS", items)
-		this.projectVideo = items.filter(video => video.home_slider === true)
-		console.log("FILTRO", this.projectVideo)		
+		this.projectVideo = items.filter(video => video.home_slider === true)		
 	}
 	
 	getVideo(){
