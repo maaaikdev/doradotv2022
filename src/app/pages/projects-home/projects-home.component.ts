@@ -20,7 +20,6 @@ export class ProjectsHomeComponent implements OnInit {
 	}
 
 	withinProject(proj) {
-		console.log("PROJECT para nuevo component", proj);
 		this.projecAuthor.openProject(proj);
 	}
 

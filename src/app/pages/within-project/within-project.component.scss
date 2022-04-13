@@ -16,8 +16,8 @@
     }
     .video-embed {
         iframe {
-            width: 1280px;
-            height: 720px;
+            width: 854px;
+            height: 480px;
             @media(max-width:768px) {
                 width: 100%;
                 height: auto;
@@ -55,12 +55,18 @@
                 font-size: 24px;
                 line-height: 32px;
             }
+            &.white {
+                color: $white;
+            }
         }
         p {
             font-family: $raleway;
             font-size: 16px;
             line-height: 24px;
             font-weight: 400;
+            &.white {
+                color: $white;
+            }
         }
     }
 }
@@ -101,13 +107,13 @@
             width: 100%;
         }
         img {
-            width: 190%;
+            width: 130%;
             margin: 0 auto;
             @media(max-width:768px){
                 width: 100%;
             }
             @media(min-width: 1720px) {
-                width: 180%;
+                width: 125%;
             }
         }
     }
@@ -115,16 +121,18 @@
         flex: 1 1 30%;
         width: 30%;
         iframe {
-            width: 1280px;
-            height: 720px;
+            width: 854px;
+            height: 480px;
             @media(max-width:768px) {
                 width: 100%;
                 height: auto;
                 transform: scale(1.2);
             }
             @media(min-width:1720px){
-                width: 1280px;
-                height: 720px;
+                // width: 1280px;
+                // height: 720px;
+                width: 854px;
+                height: 480px;
             }
         }
     }
@@ -149,12 +157,18 @@
             align-items: center;
             margin-bottom: 32px;
             cursor: pointer;
+            &.white {
+                color: $white;
+            }
             &:hover {
                 opacity: .8;
             }
             i {
                 font-size: 18px;
                 margin-left: 16px;
+                &.white {
+                    color: $white;
+                }
             }
         }
         h3 {
@@ -166,11 +180,17 @@
                 font-size: 24px;
                 line-height: 32px;
             }
+            &.white {
+                color: $white;
+            }
         }
         p {
             font-family: $raleway;
             font-size: 16px;
             line-height: 24px;
+            &.white {
+                color: $white;
+            }
         }
     }
 }

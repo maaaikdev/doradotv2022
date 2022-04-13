@@ -15,6 +15,7 @@ import { CategoriesComponent } from './pages/categories/categories.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ContactComponent } from './pages/contact/contact.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     ProjectsHomeComponent,
     WithinProjectComponent,
     CategoriesComponent,
-    ContactComponent
+    ContactComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

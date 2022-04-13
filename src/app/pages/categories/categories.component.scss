@@ -18,43 +18,53 @@
     &.online {
         background-color: $purple;
     }
-    .nav-tabs {
-        border-bottom: none;
-        padding-left: 16px;
-        margin-bottom: 42px;
-        li {
-            border-right: 1px solid $purple;
-            button {
-                font-family: $raleway;
-                font-size: 12px;
-                line-height: 24px;
-                font-weight: 500;
-                color: $purple;
-                background-color: transparent;
-                border: none;  
-                padding: 0px 16px;
-                -webkit-transition:all 0.15s ease-in-out;
-                -moz-transition:all 0.15s ease-in-out;
-                -o-transition:all 0.15s ease-in-out;
-                -ms-transition:all 0.15s ease-in-out;
-                transition:all 0.15s ease-in-out;
-                &:hover {
-                    transform: translateY(-3px);
-                    -webkit-transform:translateY(-3px);
-                    -moz-transform:translateY(-3px);
-                    -ms-transform:translateY(-3px);
-                    -o-transform:translateY(-3px);
+    .head-tabs {
+        padding: 0 2%;
+        h3 {
+            font-family: $raleway;
+            font-size: 40px;
+            line-height: 48px;
+            font-weight: 500;
+            color: $purple;
+        }
+        .nav-tabs {
+            border-bottom: none;
+            margin-bottom: 28px;
+            margin-left: -16px;
+            li {
+                border-right: 1px solid $purple;
+                button {
+                    font-family: $raleway;
+                    font-size: 12px;
+                    line-height: 24px;
+                    font-weight: 500;
+                    color: $purple;
+                    background-color: transparent;
+                    border: none;  
+                    padding: 0px 16px;
+                    -webkit-transition:all 0.15s ease-in-out;
+                    -moz-transition:all 0.15s ease-in-out;
+                    -o-transition:all 0.15s ease-in-out;
+                    -ms-transition:all 0.15s ease-in-out;
+                    transition:all 0.15s ease-in-out;
+                    &:hover {
+                        transform: translateY(-3px);
+                        -webkit-transform:translateY(-3px);
+                        -moz-transform:translateY(-3px);
+                        -ms-transform:translateY(-3px);
+                        -o-transform:translateY(-3px);
+                    }
+                }
+                &:last-child {
+                    border-right: none;
                 }
             }
-            &:last-child {
-                border-right: none;
-            }
         }
-    }
+    }    
     .tab-content {
         .tab-pane {
             .author-header {
-                padding: 24px 32px;
+                padding: 16px 32px 24px;
                 h3 {
                     font-family: $raleway;
                     font-size: 16px;
@@ -229,6 +239,9 @@ $anim-speed: 0.3s;
                 flex: 1 1 100%;
                 width: 100%;
             }
+            .img-author {
+                width: 100%;
+            }
             iframe {
                 width: 100%;
                 height: 57vh;
@@ -288,12 +301,12 @@ $anim-speed: 0.3s;
             }
         }        
     }
-    img{
-        margin: 0px;
-        padding: 0px;
-        float: left;
-        z-index: 4;
-    }
+    // img{
+    //     margin: 0px;
+    //     padding: 0px;
+    //     float: left;
+    //     z-index: 4;
+    // }
     .caption{
         cursor: pointer;
         position: absolute;
@@ -419,16 +432,19 @@ $anim-speed: 0.3s;
 
                     }
                     .video-box {
-                        iframe {
-                            width: 854px;
-                            height: 480px;
-                            // @media(min-width:1720px){
-                            //     width: ;
-                            // }
-                            @media(max-width:768px) {
-                                width: 100%;
-                                height: initial;
-                            }
+                        // iframe {
+                        //     width: 854px;
+                        //     height: 480px;
+                        //     // @media(min-width:1720px){
+                        //     //     width: ;
+                        //     // }
+                        //     @media(max-width:768px) {
+                        //         width: 100%;
+                        //         height: initial;
+                        //     }
+                        // }
+                        .img-author {
+                            width: 100%;
                         }
                         h5 {
                             font-family: $raleway;

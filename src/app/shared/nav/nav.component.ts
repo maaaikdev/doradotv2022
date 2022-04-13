@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
 		public broker: BrokerService,
 		private router: Router,
 		public project: ProjectsService
-	) {	}
+	) {		}
 
 	@HostListener('window:scroll', ['$event'])
 	onScroll(event) {
@@ -35,7 +35,6 @@ export class NavComponent implements OnInit {
 		this.configHeader();
 		this.broker.menuOptions().subscribe((response: any) => {
 			this.menuArray = response.data;
-			console.log("MENU", this.menuArray)
 		});
 	}
 	configHeader() {
@@ -65,19 +64,7 @@ export class NavComponent implements OnInit {
 	
 	}
 
-	// colorCategory(bgProj) {
-	// 	//this.broker.category = bgProj;
-	// 	this.broker.projectsService(bgProj).subscribe((response: any) => {
-	// 		console.log("PROJECT PER SERVICES", response)
-	// 		this.broker.workers = response;
-	// 		this.broker.workerData = this.broker.workers.data[0].workers[0];		
-	// 	});
-	// 	$("#menuModal").modal('hide');
-	// 	this.router.navigate(['/studio'],{ queryParams: { category: bgProj} });
-	// }
-
 	changeColor(bg) {
-		console.log("CHANGE MENU", bg);
 		var change = $(".modal-body");
 		var btnMenu = $(".btn-aMenu");
 		switch (bg) {

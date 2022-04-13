@@ -14,7 +14,8 @@ export const environment = {
 	filters: {
 		projectFilter: '?filter[home_slider][nempty]&fields=*.*.*.*.*',
 		projectHome:'?filter[home][nempty]&fields=*.*.*.*.*',
-		workersProject: '?filter[slug][eq]=julian-rivera-contreras&fields=*.*.*.*.*',
+		//workersProject: '?filter[slug][eq]=julian-rivera-contreras&fields=*.*.*.*.*',
+		workersProject: '?filter[slug][eq]=',
 		// projectPerService: '?filter[slug][eq]=edicion&fields=*.*.*.*.*'
 		projectPerService: '?filter[slug][eq]='
 	}

@@ -32,18 +32,14 @@ export class WithinProjectComponent implements OnInit {
 		public router: Router,
 		public broker: BrokerService,
 		public _location: Location
-	) {
-		// this.activateRoute.queryParams.subscribe((params): any => {
-		// 	this.category = params.category;
-		// 	this.idProject = params.idProject;
-		// });
-		// //console.log("PARAMETERS", [this.category, this.idProject])
-	}
+	) {	}
 
 	ngOnInit() {
 		window.scrollTo(0, 0);
 		this.changeColor(this.addProject.projectAuthor.services[0].service_id.slug);
+		console.log("NEXT PROJECT 1", this.addProject.projectAuthor)
 		this.nextProjectUp = this.addProject.nextProjectAdd.data.find((p) => p.id === this.addProject.projectAuthor.id+1);
+		console.log("NEXT PROJECT 2", this.nextProjectUp)
 	}
 
 	withinProject(proj) {

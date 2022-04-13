@@ -28,8 +28,8 @@
         <iframe [src]="addProject.projectAuthor?.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
     <div class="video-description">
-        <h2>{{addProject.projectAuthor?.title}}</h2>
-        <p>{{addProject.projectAuthor?.credits}}</p>
+        <h2 [ngClass]="addProject.projectAuthor.services[0].service_id.slug == 'online' ? 'white' : ''">{{addProject.projectAuthor?.title}}</h2>
+        <p [ngClass]="addProject.projectAuthor.services[0].service_id.slug == 'online' ? 'white' : ''">{{addProject.projectAuthor?.credits}}</p>
     </div>
 </section>
 <section class="project-other" [ngClass]="getBg(nextProjectUp.services[0].service_id.slug)">
@@ -40,11 +40,11 @@
             alt="{{nextProjectUp?.name}}" />
     </div>
     <div class="description-proj">
-        <a class="next-project" (click)="withinProject(nextProjectUp)">
+        <a class="next-project" (click)="withinProject(nextProjectUp)" [ngClass]="nextProjectUp.services[0].service_id.slug == 'online' ? 'white' : ''">
             Next project
-            <i class="fa fa-arrow-right" aria-hidden="true"></i>
+            <i class="fa fa-arrow-right" aria-hidden="true" [ngClass]="nextProjectUp.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
         </a>
-        <h3>{{nextProjectUp?.photo_text}}</h3>
-        <p>{{nextProjectUp?.name}}</p>
+        <h3 [ngClass]="nextProjectUp.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.photo_text}}</h3>
+        <p [ngClass]="nextProjectUp.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.name}}</p>
     </div>
 </section>

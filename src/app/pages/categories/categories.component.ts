@@ -15,6 +15,8 @@ export class CategoriesComponent implements OnInit {
 	workerItem: any;
 	workerData: any;
 	captureVideo: any;
+	// authorWorker: any;
+	// projects: any;
 	
 	constructor(
 		private activateRoute: ActivatedRoute,
@@ -23,30 +25,35 @@ export class CategoriesComponent implements OnInit {
 	) {
 		this.activateRoute.queryParams.subscribe((params): any => {
 			this.category = params.category;		
-			console.log("PARMASSSS CATEGORY", this.category);			
 		});
-		console.log("WORKERRSSS COMPONENT", this.project.workers)
 	}
 
-	ngOnInit() {
-		this.project.colorCategory(this.category);
+	ngOnInit() {	
 	}
 
 	tabData(names) {
 		this.project.workerData = names;
-		console.log("WORKER DATA", this.workerData)
+		this.broker.workerProjects(this.project.workerData.worker_id.slug).subscribe((response: any) => {
+			this.broker.authorWorker = response;
+			this.broker.projects = this.broker.authorWorker?.data[0].projects
+			this.project.spinnerActive = false;
+		});
+		
 	}
 
 	lineBreak(txt) {
 		//txt.split("\n").join("<br />");
 		txt.replace(/\s+/g, " ").trim();
-		// console.log("TXT", txt)
 		return txt
 	}
 
 	videoModal(projects) {
 		this.captureVideo = projects;
-		console.log("CAPTURE VIDEO", this.captureVideo)
+	}
+
+	withinProject(proj) {
+		console.log("PROJJ", proj.project_id)
+		this.project.openProject(proj.project_id);
 	}
 
 	getBg() {

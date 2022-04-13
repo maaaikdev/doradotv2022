@@ -1,25 +1,14 @@
 <section class="projects-home" >
-    <div class="box-video" *ngFor="let projects of dataVideo; let i = index" [ngClass]="i == 2 || i == 5 || i == 7 || i == 9 || i == 11 || i == 13 || i == 15 || i == 17 || i == 19 ? 'wid-100' : 'wid-50' ">
-        <video autoplay muted loop [ngClass]="i == 2 || i == 5 || i == 7 || i == 9 || i == 11 || i == 13 || i == 15 || i == 17 || i == 19 ? 'object-fit' : ''">
+    <div class="box-video" *ngFor="let projects of dataVideo; let i = index" [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'wid-100' : 'wid-50' ">
+        <video autoplay muted loop [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'object-fit' : ''">
             <source [src]="projects.gif.data.full_url" type="video/mp4" />
         </video>
-        <!-- <h3>{{projects.gif.title}}</h3>
-        <div class="project-hover" id="projectWindow{{i}}">
-            <div class="left">
-                <i class="fa fa-play" aria-hidden="true"></i>
-                <h4>{{projects.gif.title}}</h4>
-            </div>
-            <div class="right">
-               <h5>Undefined</h5>
-               <p>{{projects.name}}</p>
-            </div>
-        </div> -->
-        <h4>{{projects.gif.title}}</h4>
+        <h4>{{projects.title}}</h4>
         <div class="caption" (click)="withinProject(projects)">
             <div class="caption-text " [ngClass]="getBg(projects.services[0].service_id.slug)">
-                <i class="fa fa-play" aria-hidden="true"></i>
-                <h5>{{projects.gif.title}}</h5>
-                <p>{{projects.name}}</p>
+                <i class="fa fa-play" aria-hidden="true" [ngClass]="projects.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
+                <h5 [ngClass]="projects.services[0].service_id.slug == 'online' ? 'white' : ''">{{projects.title}}</h5>
+                <p [ngClass]="projects.services[0].service_id.slug == 'online' ? 'white' : ''">{{projects.name}}</p>
             </div>
         </div>
     </div>

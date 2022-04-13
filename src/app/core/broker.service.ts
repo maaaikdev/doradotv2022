@@ -14,6 +14,8 @@ export class BrokerService {
 	category: any;
 	workers:any;
 	workerData: any;
+	authorWorker:any;
+	projects: any;
 
   	constructor(private http: HttpClient) { }
 
@@ -34,9 +36,15 @@ export class BrokerService {
 	workerItems(){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.worker, {headers})
 	}
-	workerProjects(){
-		return this.http.get(environment.apiEndPoint + environment.menuOptions.worker + environment.filters.workersProject, {headers})
+	// workerProjects(){
+	// 	return this.http.get(environment.apiEndPoint + environment.menuOptions.worker + environment.filters.workersProject, {headers})
+	// }
+	workerProjects(author){
+		return this.http.get(environment.apiEndPoint + environment.menuOptions.worker + environment.filters.workersProject+author+'&fields=*.*.*.*.*', {headers})
 	}
+	workerProjects1(){
+		return this.http.get('https://admin.dorado.tv/doradotv/items/worker?filter%5bslug%5d%5beq%5d=julian-rivera-contreras&fields=*.*.*.*.*', {headers})
+	}	
 	projectsService(category){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.service + environment.filters.projectPerService+category+'&fields=*.*.*.*.*', {headers})
 	}
