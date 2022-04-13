@@ -44,6 +44,8 @@ export class ProjectsService {
 				$("#menuModal").modal('hide');
 				this.broker.workerProjects(this.workers.data[0].workers[0].worker_id.slug).subscribe((response: any) => {					
 					this.broker.authorWorker = response;
+					console.log("AUTHOR ROKER", this.broker.authorWorker)
+					//this.nextProject(this.broker.authorWorker.data[0].projects);
 					this.broker.projects = this.broker.authorWorker?.data[0].projects;							
 				});
 				this.spinnerActive = false;	
@@ -59,5 +61,6 @@ export class ProjectsService {
 
 	nextProject(next) {
 		this.nextProjectAdd = next
+		console.log("NEXT NEXT 11111", this.nextProjectAdd)
 	}
 }

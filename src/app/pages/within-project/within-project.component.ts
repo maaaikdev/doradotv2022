@@ -37,14 +37,15 @@ export class WithinProjectComponent implements OnInit {
 	ngOnInit() {
 		window.scrollTo(0, 0);
 		this.changeColor(this.addProject.projectAuthor.services[0].service_id.slug);
+		console.log("NEXT PROJECT A", this.addProject.nextProjectAdd)
 		console.log("NEXT PROJECT 1", this.addProject.projectAuthor)
-		this.nextProjectUp = this.addProject.nextProjectAdd.data.find((p) => p.id === this.addProject.projectAuthor.id+1);
+		this.nextProjectUp = this.addProject.nextProjectAdd.find((p) => p.id === this.addProject.projectAuthor.id+1);
 		console.log("NEXT PROJECT 2", this.nextProjectUp)
 	}
 
 	withinProject(proj) {
 		this.addProject.projectAuthor = proj;
-		this.nextProjectUp = this.addProject.nextProjectAdd.data.find((p) => p.id === this.addProject.projectAuthor.id+1);
+		this.nextProjectUp = this.addProject.nextProjectAdd.find((p) => p.id === this.addProject.projectAuthor.id+1);
 		if(this.nextProjectUp == undefined) {
 			this.nextProjectUp = this.addProject.nextProjectAdd.data.shift();
 		}

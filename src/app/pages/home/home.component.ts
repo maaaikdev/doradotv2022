@@ -40,7 +40,7 @@ export class HomeComponent implements OnInit {
 				this.projectsData = response;
 				this.projectItem = this.projectsData.data;
 				this.itemVideoNull = this.projectItem.filter(video => video.gif != null);
-				this.project.nextProject(this.projectsData);
+				this.project.nextProject(this.projectsData.data);
 				this.spinnerActive = false;
 				//this.projectVideoItem = this.projectVideoItem.concat(this.project.openProject2(response.data));
 			}			

@@ -54,6 +54,7 @@ export class CategoriesComponent implements OnInit {
 	withinProject(proj) {
 		console.log("PROJJ", proj.project_id)
 		this.project.openProject(proj.project_id);
+		this.project.nextProject(this.broker.authorWorker.data[0].projects);
 	}
 
 	getBg() {
