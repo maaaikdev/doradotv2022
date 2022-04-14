@@ -15,6 +15,34 @@ export class NavComponent implements OnInit {
 	url: any;
 	bgCategory: any;
 	scroll = false;
+	btnCta: any;
+	logoDorado = '';
+	insta = '';
+	email = '';
+	vimeo = '';
+	rrSS = [
+		{
+			title:"DoradoTV Instagram",
+			img: "assets/images/nav/social-instagram.svg",
+			imgMobile: "assets/images/footer/social-instagram.svg",
+			alt: "Social Media DoradoTV",
+			link: "https://www.instagram.com/dorado.tv/"
+		},
+		{
+			title:"DoradoTV Email",
+			img: "assets/images/nav/social-mail.svg",
+			imgMobile: "assets/images/footer/social-mail.svg",
+			alt: "Social Media DoradoTV",
+			link: "mailto:contacto@dorado.tv"
+		},
+		{
+			title:"DoradoTV Vimeo",
+			img: "assets/images/nav/social-vimeo.svg",
+			imgMobile: "assets/images/footer/social-vimeo.svg",
+			alt: "Social Media DoradoTV",
+			link: "https://vimeo.com/doradotv"
+		},
+	]
 
 	constructor(
 		public broker: BrokerService,
@@ -33,8 +61,13 @@ export class NavComponent implements OnInit {
 
 	ngOnInit() {
 		this.configHeader();
+		this.logo()
+		this.btnColorMobile()
 		this.broker.menuOptions().subscribe((response: any) => {
 			this.menuArray = response.data;
+			this.menuArray.forEach(element => {
+				this.btnCta = element.id
+			});			
 		});
 	}
 	configHeader() {
@@ -49,19 +82,39 @@ export class NavComponent implements OnInit {
 	}
 
 	onButtonGroupClick($event){
-		let clickedElement = $event.target || $event.srcElement;
-	
-		if( clickedElement.nodeName === "A" ) {
-	
+		let clickedElement = $event.target || $event.srcElement;	
+		if( clickedElement.nodeName === "A" ) {	
 		  let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".active");
 		  // if a Button already has Class: .active
 		  if( isCertainButtonAlreadyActive ) {
 			isCertainButtonAlreadyActive.classList.remove("active");
-		  }
-	
+		  }	
 		  clickedElement.className += " active";
+		}	
+	}
+
+	logo() {
+		if ($(window).width() >= 768) {			
+			this.logoDorado = 'assets/images/nav/logo-DorardoTV-dark.svg'
+		} else {
+			this.logoDorado = 'assets/images/nav/logo-DorardoTV-icon.png'
 		}
-	
+	}
+
+	btnColorMobile() {
+		if ($(window).width() >= 768) {
+			$("#btn0").removeClass("edition");
+			$("#btn1").removeClass("color");
+			$("#btn2").removeClass("music");
+			$("#btn3").removeClass("animation");
+			$("#btn4").removeClass("online");
+		} else {
+			$("#btn0").addClass("edition");
+			$("#btn1").addClass("color");
+			$("#btn2").addClass("music");
+			$("#btn3").addClass("animation");
+			$("#btn4").addClass("online");
+		}
 	}
 
 	changeColor(bg) {

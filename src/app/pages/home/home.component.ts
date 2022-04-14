@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
 	) {	 }
 
 	ngOnInit() {
+		window.scrollTo(0, 0);
 		this.getProjectsHome();
 		this.getProjectsHomeSlider();		
 	}
@@ -67,8 +68,8 @@ export class HomeComponent implements OnInit {
 		$element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 	}
 
-	withinProject(proj) {
+	withinProject(proj, color, id) {
 		console.log("PROJ HOME", proj)
-		this.project.openProject(proj);
+		this.project.openProject(proj, color, id);
 	}
 }

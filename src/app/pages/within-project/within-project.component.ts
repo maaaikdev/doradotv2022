@@ -24,6 +24,9 @@ export class WithinProjectComponent implements OnInit {
 	imgAdd: any;
 	nanData: any;
 	nextProjectUp: any;
+	slug: string;
+	author: string;
+	nextProjectAdd: any;
 	
 
 	constructor(
@@ -32,13 +35,18 @@ export class WithinProjectComponent implements OnInit {
 		public router: Router,
 		public broker: BrokerService,
 		public _location: Location
-	) {	}
+	) {
+		this.slug = this.activateRoute.snapshot.params['slug'];
+    	this.author = this.activateRoute.snapshot.params['author'];
+		console.log("DATA WITHIN PROJECT", [this.slug, this.author])
+	}
 
 	ngOnInit() {
 		window.scrollTo(0, 0);
-		this.changeColor(this.addProject.projectAuthor.services[0].service_id.slug);
-		console.log("NEXT PROJECT A", this.addProject.nextProjectAdd)
-		console.log("NEXT PROJECT 1", this.addProject.projectAuthor)
+		this.changeColor();
+		console.log("NEXT PROJECT A", this.addProject.nextProjectAdd);
+		console.log("NEXT PROJECT 1", this.addProject.projectAuthor);
+		//this.nextProject(this.addProject.projectAuthor)
 		this.nextProjectUp = this.addProject.nextProjectAdd.find((p) => p.id === this.addProject.projectAuthor.id+1);
 		console.log("NEXT PROJECT 2", this.nextProjectUp)
 	}
@@ -50,6 +58,11 @@ export class WithinProjectComponent implements OnInit {
 			this.nextProjectUp = this.addProject.nextProjectAdd.data.shift();
 		}
 	}
+
+	// nextProject(next) {
+	// 	this.nextProjectAdd = next
+	// 	console.log("NEXT NEXT 11111", this.nextProjectAdd)
+	// }
 
 	getBg(color) {
 		switch (color) {			
@@ -73,9 +86,10 @@ export class WithinProjectComponent implements OnInit {
 		}		
 	}
 
-	changeColor(bg) {
+	changeColor() {
 		var change = $(".project-in");
-		switch (bg) {
+		console.log("COLOR BG", this.slug)
+		switch (this.slug) {			
 			case 'edicion':
 				change.addClass("edition");
 				change.removeClass("color");

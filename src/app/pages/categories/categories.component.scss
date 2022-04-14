@@ -2,7 +2,7 @@
 @import url(//codepen.io/chrisdothtml/pen/ojLzJK.css);
 
 .workers {
-    padding: 120px 0 32px;
+    padding: 120px 0 32px;    
     &.edition {
         background-color: $gold;
     }
@@ -20,19 +20,35 @@
     }
     .head-tabs {
         padding: 0 2%;
+        @media(max-width:768px){
+            padding: 0 24px;
+        }
         h3 {
             font-family: $raleway;
             font-size: 40px;
             line-height: 48px;
             font-weight: 500;
             color: $purple;
+            @media(max-width:768px) {
+                font-size: 28px;
+                line-height: 36px;
+            }
         }
         .nav-tabs {
             border-bottom: none;
             margin-bottom: 28px;
             margin-left: -16px;
+            @media(max-width:768px) {
+                display: flex;
+                flex-direction: column;
+                padding-left: 40px;
+                list-style: initial;
+            }
             li {
                 border-right: 1px solid $purple;
+                @media(max-width:768px) {
+                    border-right: none;
+                }
                 button {
                     font-family: $raleway;
                     font-size: 12px;
@@ -47,6 +63,9 @@
                     -o-transition:all 0.15s ease-in-out;
                     -ms-transition:all 0.15s ease-in-out;
                     transition:all 0.15s ease-in-out;
+                    @media(max-width:768px) {
+                        padding: 0px;
+                    }
                     &:hover {
                         transform: translateY(-3px);
                         -webkit-transform:translateY(-3px);
@@ -65,12 +84,15 @@
         .tab-pane {
             .author-header {
                 padding: 16px 32px 24px;
+                @media(max-width:768px){
+                    padding: 0 24px 16px;
+                }
                 h3 {
                     font-family: $raleway;
                     font-size: 16px;
                     line-height: 24px;
                     font-weight: 500;
-                    color: $white;
+                    color: $white;                    
                 }
                 h2 {
                     font-family: $raleway;
@@ -78,6 +100,10 @@
                     line-height: 48px;
                     font-weight: 500;
                     color: $purple;
+                    @media(max-width:768px){
+                        font-size: 28px;
+                        line-height: 36px;
+                    }
                 }
             }            
             .video-gallery {
@@ -213,9 +239,15 @@ $anim-speed: 0.3s;
             background-color: #000;
             cursor: pointer;
             @media(max-width:768px) {
-                height: 400px;
-                overflow: hidden;
+                // height: 400px;
+                // overflow: hidden;
                 align-items: center;
+            }
+            .img-author {
+                @media(max-width:768px) {
+                    width: 130%;
+                    max-width: 130%;
+                }
             }
             &:hover {
                 .caption {
@@ -282,8 +314,8 @@ $anim-speed: 0.3s;
                 -ms-transform:translateY(5px);
                 -o-transform:translateY(5px);
                 @media(max-width:768px) {
-                    font-size: 24px;
-                    line-height: 32px;
+                    font-size: 18px;
+                    line-height: 24px;
                     left: 24px;
                     bottom: 16px;
                 }
@@ -374,8 +406,8 @@ $anim-speed: 0.3s;
             font-weight: 400;
             color: $black;
             @media(max-width:768px) {
-                font-size: 24px;
-                line-height: 32px;
+                font-size: 18px;
+                line-height: 24px;
                 margin-bottom: 0;
             }
             @media(min-width:1720px){

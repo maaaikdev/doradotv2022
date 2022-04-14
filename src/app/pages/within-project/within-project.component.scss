@@ -8,7 +8,7 @@
     justify-content: center;
     text-align: center;
     @media(max-width:768px) {
-        padding: 110px 0 32px;
+        padding: 110px 24px 32px;
     }
     .icon-dorado {
         width: 70px;
@@ -163,6 +163,11 @@
             &:hover {
                 opacity: .8;
             }
+            @media(max-width:768px) {
+                margin-bottom: 24px;
+                font-size: 14px;
+                line-height: 20px;
+            }
             i {
                 font-size: 18px;
                 margin-left: 16px;
@@ -177,8 +182,9 @@
             line-height: 64px;
             font-weight: 300;
             @media(max-width:768px){
-                font-size: 24px;
-                line-height: 32px;
+                font-size: 18px;
+                line-height: 24px;
+                font-weight: 600;
             }
             &.white {
                 color: $white;
@@ -190,6 +196,10 @@
             line-height: 24px;
             &.white {
                 color: $white;
+            }
+            @media(max-width:768px){
+                font-size: 16px;
+                line-height: 24px;
             }
         }
     }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BrokerService } from './broker.service';
 
 declare var $: any;
@@ -15,27 +15,34 @@ export class ProjectsService {
 	workerData: any;
 	dataProjectVimeo: any;
 	nextProjectAdd: any;
-	spinnerActive = true
+	spinnerActive = true;
+	nextProjectAddWorker: any;
+	colorCatgeory: any;
 	
 	constructor(
 		public router: Router,
 		public broker: BrokerService,
+		private activateRoute: ActivatedRoute
 	) {
 		
 	 }
 
-	openProject(itemArrived){
+	openProject(itemArrived, color, id){
+		console.log("DATA", [itemArrived, color, id])
 		this.projectAuthor = itemArrived;
-		this.dataProject = itemArrived.id;
-		this.dataProjectVimeo = itemArrived.vimeo;
-		this.router.navigate(['/project'])
+		// this.colorCatgeory = color;
+		// this.dataProject = itemArrived.id;
+		// this.dataProjectVimeo = itemArrived.vimeo;
+		//this.router.navigate(['/project']);
+		this.router.navigate(['/project/'+color+'/'+itemArrived.gif.id+'']);
 		//this.router.navigate(['/project'],{ queryParams: { category: this.projectAuthor.services[0].service_id.slug, idProject: this.projectAuthor.gif.id } });
 	}
 
-	colorCategory(bgProj) {		
+	colorCategory(colorCatgeory) {		
 		this.spinnerActive = true;
-		this.broker.projectsService(bgProj).subscribe((response: any) => {
+		this.broker.projectsService(colorCatgeory).subscribe((response: any) => {
 			this.workers = response;
+			console.log("WORKERS SEERVICES", this.workers)
 			if(this.workers.data[0].workers[0] == undefined) {
 				$("#menuModal").modal('hide');
 				this.router.navigate(['/'])
@@ -45,11 +52,11 @@ export class ProjectsService {
 				this.broker.workerProjects(this.workers.data[0].workers[0].worker_id.slug).subscribe((response: any) => {					
 					this.broker.authorWorker = response;
 					console.log("AUTHOR ROKER", this.broker.authorWorker)
-					//this.nextProject(this.broker.authorWorker.data[0].projects);
+					this.nextProject(this.broker.authorWorker.data[0].projects);
 					this.broker.projects = this.broker.authorWorker?.data[0].projects;							
 				});
 				this.spinnerActive = false;	
-				this.router.navigate(['/studio'],{ queryParams: { category: bgProj} });
+				this.router.navigate(['/studio/'+this.workers.data[0].slug+'/'+this.workers.data[0].workers[0].worker_id.slug+'']);
 			}			
 		});
 	}
@@ -63,4 +70,7 @@ export class ProjectsService {
 		this.nextProjectAdd = next
 		console.log("NEXT NEXT 11111", this.nextProjectAdd)
 	}
+	// nextProjectWorker(next) {
+	// 	this.nextProjectAddWorker = next
+	// }
 }

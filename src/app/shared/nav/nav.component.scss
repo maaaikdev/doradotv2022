@@ -168,30 +168,54 @@ nav {
         max-width: 100%;
         margin: 0 auto;        
         .modal-content {    
-            border-radius: 0;        
+            border-radius: 0;
+            background-color: transparent;       
             .modal-body {
                 position: relative;
                 display: flex;               
                 height: 100vh;
+                @media(max-width:768px) {
+                    padding: 16px 0;
+                }
                 &.edition {
                     background-color: $gold;
+                    @media(max-width:768px){
+                        background-color: rgba($color: $black, $alpha: .8);
+                    }
                 }
                 &.color {
                     background-color: $blue-light;
+                    @media(max-width:768px){
+                        background-color: rgba($color: $black, $alpha: .8);
+                    }
                 }
                 &.music {
                     background-color: $red;
+                    @media(max-width:768px){
+                        background-color: rgba($color: $black, $alpha: .8);
+                    }
                 }
                 &.animation {
                     background-color: $green;
+                    @media(max-width:768px){
+                        background-color: rgba($color: $black, $alpha: .8);
+                    }
                 }
                 &.online {
                     background-color: $purple;
+                    @media(max-width:768px){
+                        background-color: rgba($color: $black, $alpha: .8);
+                    }
                 }
                 .btn-close {
                     position: absolute;
                     top: 24px;
                     right: 24px;
+                    @media(max-width:768px){
+                        filter: invert(86%) sepia(99%) saturate(1319%) hue-rotate(11deg) brightness(119%) contrast(119%);
+                        -webkit-filter: invert(86%) sepia(99%) saturate(1319%) hue-rotate(11deg) brightness(119%) contrast(119%);
+                        -moz-filter: invert(86%) sepia(99%) saturate(1319%) hue-rotate(11deg) brightness(119%) contrast(119%);
+                    }
                 }
                 .menu-body {
                     display: flex;
@@ -209,8 +233,11 @@ nav {
                     }
                     .section-btn {
                         display: flex;
-                        flex-direction: column;                     
-                        a {
+                        flex-direction: column;
+                        @media(max-width:768px) {                            
+                            width: 100%;
+                        }                    
+                        .btn-aMenu {
                             text-decoration: none;
                             font-family: $raleway;
                             font-size: 36px;
@@ -220,7 +247,28 @@ nav {
                             color: $white;
                             margin: 24px auto;
                             cursor: pointer;
-                            position: relative;                            
+                            position: relative;
+                            @media(max-width:768px) {
+                                font-size: 24px;
+                                width: 100%;
+                                padding: 8px;
+                                margin: 0 auto;
+                            }
+                            &.edition {
+                                background-color: $gold;
+                            }
+                            &.color {
+                                background-color: $blue-light;
+                            }
+                            &.music {
+                                background-color: $red;
+                            }
+                            &.animation {
+                                background-color: $green;
+                            }
+                            &.online {
+                                background-color: $purple;
+                            }
                             &.active {
                                 color: $purple;
                                 &:before {
@@ -249,7 +297,10 @@ nav {
                             font-size: 24px;
                             line-height: 32px;
                             margin-bottom: 4px;
-                            color: $purple;                            
+                            color: $purple;
+                            @media(max-width:768px) {
+                                color: $gold;
+                            }
                         }                        
                     }
                     .section-social {
