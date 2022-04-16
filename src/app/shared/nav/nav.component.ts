@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+// import { Console } from 'console';
 import { BrokerService } from 'src/app/core/broker.service';
 import { ProjectsService } from 'src/app/core/projects.service';
 
@@ -16,10 +17,17 @@ export class NavComponent implements OnInit {
 	bgCategory: any;
 	scroll = false;
 	btnCta: any;
+	color: any;
 	logoDorado = '';
 	insta = '';
 	email = '';
 	vimeo = '';
+	socialPurple = true;
+	socialGold = true;
+	slug: any;
+	urlSplit: any;
+	light = false;
+	dark = false;
 	rrSS = [
 		{
 			title:"DoradoTV Instagram",
@@ -47,8 +55,11 @@ export class NavComponent implements OnInit {
 	constructor(
 		public broker: BrokerService,
 		private router: Router,
-		public project: ProjectsService
-	) {		}
+		public project: ProjectsService,
+		private activateRoute: ActivatedRoute
+	) {
+		this.slug = this.activateRoute.snapshot.params['slug'];
+	}
 
 	@HostListener('window:scroll', ['$event'])
 	onScroll(event) {
@@ -65,20 +76,47 @@ export class NavComponent implements OnInit {
 		this.btnColorMobile()
 		this.broker.menuOptions().subscribe((response: any) => {
 			this.menuArray = response.data;
+			console.log("MENU", this.menuArray)
 			this.menuArray.forEach(element => {
-				this.btnCta = element.id
+				this.btnCta = element.id,
+				this.color = element.slug
 			});			
 		});
 	}
 	configHeader() {
 		this.router.events.subscribe((val) => {
 			if (val instanceof NavigationEnd) {
-			  this.url = val.url.split('?')[0];			  
-		   	}
-			if(this.url == '/project') {
-				
-			}
-	  });
+				this.url = val.url.split('?')[0];
+				console.log("URL", this.url)
+				if(this.url == '/') {
+					this.light = true;
+
+				} else {
+					var urlSplit = this.url.split("/")[2];
+					this.urlSplit = urlSplit;
+					console.log("COLOR SPLIT", this.urlSplit)
+					switch (this.urlSplit) {			
+						case 'edicion':
+							this.dark = true;
+							break
+						case 'correccion-de-color':
+							this.dark = true;
+							break
+						case 'animacion':
+							this.dark = true;
+							break
+						case 'online':
+							this.light = true;
+							break
+						case 'musica-original':
+							this.dark = true;
+							break
+						default:
+							return '';
+					}
+				}				
+		   	}			
+	  	});
 	}
 
 	onButtonGroupClick($event){
@@ -95,9 +133,19 @@ export class NavComponent implements OnInit {
 
 	logo() {
 		if ($(window).width() >= 768) {			
-			this.logoDorado = 'assets/images/nav/logo-DorardoTV-dark.svg'
+			switch (this.color) {			
+				case 'edicion, correccion-de-color, animacion, musica-original':
+					this.logoDorado = 'assets/images/nav/icon-dorado.svg'
+					break
+				case 'online':
+					this.logoDorado = 'assets/images/nav/logo-DorardoTV-icon.png' 
+					break
+				default:
+					this.logoDorado = 'assets/images/nav/icon-dorado.svg'
+					break
+			}
 		} else {
-			this.logoDorado = 'assets/images/nav/logo-DorardoTV-icon.png'
+			this.logoDorado = 'assets/images/nav/logo-DorardoTV-icon.png' 		
 		}
 	}
 
@@ -119,45 +167,72 @@ export class NavComponent implements OnInit {
 
 	changeColor(bg) {
 		var change = $(".modal-body");
-		var btnMenu = $(".btn-aMenu");
-		switch (bg) {
-			case 'Edición':
-				change.addClass("edition");
-				change.removeClass("color");
-				change.removeClass("animation");
-				change.removeClass("online");
-				change.removeClass("music");			
-				break
-			case 'Corrección de Color':
-				change.addClass("color");
-				change.removeClass("edition");
-				change.removeClass("animation");
-				change.removeClass("online");
-				change.removeClass("music");				
-				break
-			case 'Animación':
-				change.addClass("animation");
-				change.removeClass("color");
-				change.removeClass("edition");
-				change.removeClass("online");
-				change.removeClass("music");				
-				break
-			case 'Online':
-				change.addClass("online");
-				change.removeClass("color");
-				change.removeClass("animation");
-				change.removeClass("edition");
-				change.removeClass("music");
-				break
-			case 'Música Original':
-				change.addClass("music");
-				change.removeClass("color");
-				change.removeClass("animation");
-				change.removeClass("online");
-				change.removeClass("edition");				
-				break
-			default:
-				return '';
+		var about = $(".section-about a");
+		if ($(window).width() >= 768) {				
+			switch (bg) {
+				case 'edicion':
+					this.logoDorado = 'assets/images/nav/icon-dorado.svg';
+					this.socialPurple = true;
+					this.socialGold = false;
+					change.addClass("edition");
+					change.removeClass("color");
+					change.removeClass("animation");
+					change.removeClass("online");
+					change.removeClass("music");						
+					about.removeClass("gold");					
+					break
+				case 'correccion-de-color':
+					this.logoDorado = 'assets/images/nav/icon-dorado.svg';
+					this.socialPurple = true;
+					this.socialGold = false;
+					change.addClass("color");
+					change.removeClass("edition");
+					change.removeClass("animation");
+					change.removeClass("online");
+					change.removeClass("music");					
+					about.removeClass("gold");
+					
+					break
+				case 'animacion':
+					this.logoDorado = 'assets/images/nav/icon-dorado.svg';
+					this.socialPurple = true;
+					this.socialGold = false;
+					change.addClass("animation");
+					change.removeClass("color");
+					change.removeClass("edition");
+					change.removeClass("online");
+					change.removeClass("music");
+					about.removeClass("gold");
+					break
+				case 'online':
+					this.logoDorado = 'assets/images/nav/logo-DorardoTV-icon.png';
+					this.socialPurple = false;
+					this.socialGold = true;
+					change.addClass("online");
+					change.removeClass("color");
+					change.removeClass("animation");
+					change.removeClass("edition");
+					change.removeClass("music");					
+					about.addClass("gold");
+					break
+				case 'musica-original':
+					this.logoDorado = 'assets/images/nav/icon-dorado.svg';
+					this.socialPurple = true;
+					this.socialGold = false;
+					change.addClass("music");
+					change.removeClass("color");
+					change.removeClass("animation");
+					change.removeClass("online");
+					change.removeClass("edition");
+					about.removeClass("gold");
+					break
+				default:
+					return '';
+			}
+		} else {
+			this.logoDorado = 'assets/images/nav/icon-dorado.svg';
+			this.socialPurple = false;
+			this.socialGold = true;
 		}
 	}
 }

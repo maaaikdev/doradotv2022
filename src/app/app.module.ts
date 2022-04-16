@@ -16,6 +16,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ContactComponent } from './pages/contact/contact.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [

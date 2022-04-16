@@ -2,27 +2,47 @@
     Launch demo modal
   </button> -->
   <!-- <nav [ngClass]="url == '/project' || url == '/studio' ? 'dark' : '' && {'scrolled': scroll}"> -->
-<nav [ngClass]="{'scrolled': scroll}">
+<nav [ngClass]="{'scrolled': scroll}" *ngIf="light">
 	<div class="left">
 		<a routerLink="">
-			<img [src]="url == '/project' || url == '/studio' ? 'assets/images/nav/logo-DorardoTV-dark.svg' : 'assets/images/nav/logo-DorardoTV.png' " title="Logo Dorado TV" alt=" Logo Dorado TV" class="logo-dorado"/>
-			<!-- <img src="assets/images/nav/logo-DorardoTV-dark.svg" title="Logo Dorado TV" alt=" Logo Dorado TV" class="logo-dorado"/> -->
+			<img src="assets/images/nav/logo-DorardoTV.png" title="Logo Dorado TV" alt=" Logo Dorado TV" class="logo-dorado"/>
 		</a>
 	</div>
 	<div class="right">
 		<div class="menu">
 			<a href="#" class="menu-nav-toggle" data-bs-toggle="modal" data-bs-target="#menuModal">
-				<i [ngClass]="url == '/project' || url == '/studio' ? 'dark' : '' "></i>
+				<i></i>
 			</a>
 		</div>	
 		<div class="lang-menu">
-			<a class="language" [ngClass]="url == '/project' || url == '/studio' ? 'dark' : '' ">
+			<a class="language">
 				ESP
-				<i class="fa fa-angle-down d-none d-md-block" aria-hidden="true" [ngClass]="url == '/project' || url == '/studio' ? 'dark' : '' "></i>
+				<i class="fa fa-angle-down d-none d-md-block" aria-hidden="true"></i>
 			</a>
 		</div>		
 	</div>    
-</nav>  
+</nav>
+
+<nav [ngClass]="{'scrolled': scroll, 'dark': dark}" *ngIf="dark">
+	<div class="left">
+		<a routerLink="">
+			<img src="assets/images/nav/logo-DorardoTV-dark.svg" title="Logo Dorado TV" alt=" Logo Dorado TV" class="logo-dorado"/>
+		</a>
+	</div>
+	<div class="right">
+		<div class="menu">
+			<a href="#" class="menu-nav-toggle" data-bs-toggle="modal" data-bs-target="#menuModal">
+				<i class="dark"></i>
+			</a>
+		</div>	
+		<div class="lang-menu">
+			<a class="language dark">
+				ESP
+				<i class="fa fa-angle-down dark d-none d-md-block" aria-hidden="true"></i>
+			</a>
+		</div>		
+	</div>    
+</nav>
   
   <!-- Modal -->
 <div class="modal fade" id="menuModal" tabindex="-1" aria-labelledby="menulLabel" aria-hidden="true">
@@ -37,7 +57,7 @@
 					<div class="section-btn" (click)="onButtonGroupClick($event)">
 						<a class="btn-aMenu" id="btn{{j}}"
 							*ngFor="let menuItem of menuArray; let j = index" 
-							(mouseover)="changeColor(menuItem.name)"
+							(mouseover)="changeColor(menuItem.slug)"
 							(click)="project.colorCategory(menuItem.slug)"
 							routerLink="/studio/{{menuItem.slug}}/julian-rivera-contreras"												
 							[ngClass]="{'active': menuItem.active || btnColorMobile()}" >
@@ -46,19 +66,12 @@
 					</div>
 					<div class="section-about">
 						<a routerLink="/contact" data-bs-dismiss="modal" aria-label="Close">About</a>
-						<!-- <a href="#">Follow us</a>						 -->
 					</div>
 					<div class="section-social">
 						<a [href]="social.link" target="_blank" *ngFor="let social of rrSS">
-							<img [src]="social.img" title="social.title" alt="social.alt" class="social d-none d-md-block"/>
-							<img [src]="social.imgMobile" title="social.title" alt="social.alt" class="social d-block d-md-none"/>
+							<img [src]="social.img" title="social.title" alt="social.alt" class="social" *ngIf="socialPurple" />
+							<img [src]="social.imgMobile" title="social.title" alt="social.alt" class="social" *ngIf="socialGold" />
 						</a>
-						<!-- <a href="#" target="_blank">
-							<img src="assets/images/nav/social-mail.svg" title="DoradoTV Email" alt="Social Media DoradoTV" class="social"/>
-						</a>    
-						<a href="#" target="_blank">
-							<img src="assets/images/nav/social-vimeo.svg" title="DoradoTV Vimeo" alt="Social Media DoradoTV" class="social"/>
-						</a> -->
 					</div>
 				</div>
 			</div>

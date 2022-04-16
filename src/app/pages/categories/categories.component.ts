@@ -22,6 +22,7 @@ export class CategoriesComponent implements OnInit {
 	author: string;
 	authorWorker: any;
 	projects: any;
+	animationPorj: any;
 	// authorWorker: any;
 	// projects: any;
 	
@@ -39,29 +40,37 @@ export class CategoriesComponent implements OnInit {
 		this.getBg();
 		this.broker.projectsService(this.slug).subscribe((response: any) => {
 			this.workers = response;
-			if(this.workers.data[0].workers[0] == undefined) {
+			console.log("CATEGORIES WORKERS", this.workers)
+			if(this.workers.data[0] == undefined) {
 				$("#menuModal").modal('hide');
 				this.router.navigate(['/'])
-			} else {				
-				this.workerData = this.workers.data[0].workers[0];
-				$("#menuModal").modal('hide');
-				this.broker.workerProjects(this.author).subscribe((response: any) => {					
-					this.authorWorker = response;
-					this.projects = this.authorWorker?.data[0].projects;
-					console.log("PROJECTS", this.projects)
-				});
-				this.project.spinnerActive = false;	
+			} else {
+				if(this.slug == 'animacion' || this.slug == 'online') {
+					if(this.workers.data[0].reel != "") {
+						this.project.spinnerActive = false;	
+					} else {
+						$("#menuModal").modal('hide');
+						this.router.navigate(['/'])
+					}					
+				} else {
+					this.workerData = this.workers.data[0].workers[0];
+					$("#menuModal").modal('hide');
+					this.broker.workerProjects(this.author).subscribe((response: any) => {					
+						this.authorWorker = response;
+						this.projects = this.authorWorker?.data[0].projects;
+						console.log("PROJECTS", this.projects)
+					});
+					this.project.spinnerActive = false;	
+				}
 			}			
 		});
 	}
 
 	tabData(names) {
 		this.workerData = names;
-		this.broker.workerProjects(this.workerData.worker_id.slug).subscribe((response: any) => {
-			this.authorWorker = response;
-			this.projects = this.authorWorker?.data[0].projects;
-			this.project.spinnerActive = false;
-		});
+		this.router.navigate(['/studio/'+this.slug+'/'+this.workerData.worker_id.slug+'']).then(() => {
+			window.location.reload();
+		});	
 		
 	}
 
@@ -76,9 +85,9 @@ export class CategoriesComponent implements OnInit {
 	}
 
 	withinProject(proj, color, id) {
-		console.log("PROJJ", proj.project_id)
+		console.log("PROJJ", [proj, color, id])
 		this.project.openProject(proj.project_id, color, id);
-		this.project.nextProject(this.authorWorker.data[0].projects);
+		//this.project.nextProject(this.authorWorker.data[0].projects);
 	}
 
 	getBg() {

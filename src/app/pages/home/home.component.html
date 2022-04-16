@@ -4,11 +4,11 @@
 		<video autoplay muted loop>
 			<source [src]="items.gif.data.full_url" type="video/mp4" />
 		</video>
-		<div class="head-project" (click)="withinProject(items, items.services[0].service_id.slug, items.services[0].service_id.slug)">
+		<div class="head-project" (click)="withinProject(items, items?.workers[0].worker_id.slug, items?.services[0].service_id.slug, items?.id)">
 			<i class="fa fa-play" aria-hidden="true"></i>
-			<h2>{{items.title}}</h2>
-			<h3>{{items.subtitle}}</h3>
-			<p>{{items.credits}}</p>
+			<h2>{{items?.title}}</h2>
+			<h3>{{items?.subtitle}}</h3>
+			<p>{{items?.credits}}</p>
 		</div>
 	</slide>
 </carousel>

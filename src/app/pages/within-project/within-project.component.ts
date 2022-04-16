@@ -24,9 +24,15 @@ export class WithinProjectComponent implements OnInit {
 	imgAdd: any;
 	nanData: any;
 	nextProjectUp: any;
+	id: any;
 	slug: string;
 	author: string;
 	nextProjectAdd: any;
+	workers: any;
+	workerData: any;
+	authorWorker: any;
+	projects: any;
+	projectAuthor: any;
 	
 
 	constructor(
@@ -36,33 +42,40 @@ export class WithinProjectComponent implements OnInit {
 		public broker: BrokerService,
 		public _location: Location
 	) {
+		this.id = this.activateRoute.snapshot.params['id'];
 		this.slug = this.activateRoute.snapshot.params['slug'];
     	this.author = this.activateRoute.snapshot.params['author'];
-		console.log("DATA WITHIN PROJECT", [this.slug, this.author])
+		console.log("DATA WITHIN PROJECT", [parseInt(this.id), this.slug, this.author])
 	}
 
-	ngOnInit() {
-		window.scrollTo(0, 0);
-		this.changeColor();
-		console.log("NEXT PROJECT A", this.addProject.nextProjectAdd);
-		console.log("NEXT PROJECT 1", this.addProject.projectAuthor);
-		//this.nextProject(this.addProject.projectAuthor)
-		this.nextProjectUp = this.addProject.nextProjectAdd.find((p) => p.id === this.addProject.projectAuthor.id+1);
-		console.log("NEXT PROJECT 2", this.nextProjectUp)
+	ngOnInit() {		
+		window.scrollTo(0, 0);			
+		this.broker.projectsService(this.slug).subscribe((response: any) => {	
+			this.workers = response;
+			if(this.workers.data[0].workers[0] == undefined) {
+				this.router.navigate(['/']);
+			} else {	
+				this.broker.workerProjects(this.author).subscribe((response: any) => {
+					this.authorWorker = response;
+					this.projects = this.authorWorker?.data[0].projects;
+					console.log("ProjectSSSS", this.projects);
+					const refreshProject = this.projects.find((p) => p.project_id.id === parseInt(this.id));
+					this.projectAuthor = refreshProject.project_id;
+					console.log("MAIN-Project", this.projectAuthor);
+					const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+					this.nextProjectUp = nextProject?.project_id;			
+					console.log("NEXT-Project", this.nextProjectUp);
+					this.changeColor();
+					this.addProject.spinnerActive = false;	
+				});	
+			}			
+		});
+		this.addProject.spinnerActive = false;		
 	}
-
-	withinProject(proj) {
-		this.addProject.projectAuthor = proj;
-		this.nextProjectUp = this.addProject.nextProjectAdd.find((p) => p.id === this.addProject.projectAuthor.id+1);
-		if(this.nextProjectUp == undefined) {
-			this.nextProjectUp = this.addProject.nextProjectAdd.data.shift();
-		}
+	withinProject(proj, author, id) {
+		console.log("PROJJ NEXT PROYECT", [proj, author, id])
+		this.addProject.openProject(proj, author, id);
 	}
-
-	// nextProject(next) {
-	// 	this.nextProjectAdd = next
-	// 	console.log("NEXT NEXT 11111", this.nextProjectAdd)
-	// }
 
 	getBg(color) {
 		switch (color) {			
@@ -118,7 +131,7 @@ export class WithinProjectComponent implements OnInit {
 				change.removeClass("edition");
 				change.removeClass("music");
 				break
-			case 'musica-originall':
+			case 'musica-original':
 				change.addClass("music");
 				change.removeClass("color");
 				change.removeClass("animation");

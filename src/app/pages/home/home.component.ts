@@ -41,7 +41,7 @@ export class HomeComponent implements OnInit {
 				this.projectsData = response;
 				this.projectItem = this.projectsData.data;
 				this.itemVideoNull = this.projectItem.filter(video => video.gif != null);
-				this.project.nextProject(this.projectsData.data);
+				//this.project.nextProject(this.projectsData.data);
 				this.spinnerActive = false;
 				//this.projectVideoItem = this.projectVideoItem.concat(this.project.openProject2(response.data));
 			}			
@@ -68,8 +68,10 @@ export class HomeComponent implements OnInit {
 		$element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 	}
 
-	withinProject(proj, color, id) {
-		console.log("PROJ HOME", proj)
-		this.project.openProject(proj, color, id);
+	
+
+	withinProject(proj, author, color, id) {
+		console.log("COLOR", [proj, author, color, id])
+		this.project.openProjectHome(proj, author, color, id);
 	}
 }

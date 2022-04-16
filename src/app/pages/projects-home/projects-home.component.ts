@@ -19,9 +19,9 @@ export class ProjectsHomeComponent implements OnInit {
 	ngOnInit() {
 	}
 
-	withinProject(proj, color, id) {
-		console.log("COLOR", color)
-		this.projecAuthor.openProject(proj, color, id);
+	withinProject(proj, author, color, id) {
+		console.log("COLOR", [proj, author, color, id])
+		this.projecAuthor.openProjectHome(proj, author, color, id);
 	}
 
 	getBg(category) {

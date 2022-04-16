@@ -2,7 +2,7 @@
 @import url(//codepen.io/chrisdothtml/pen/ojLzJK.css);
 
 .workers {
-    padding: 120px 0 32px;    
+    padding: 120px 0 0;    
     &.edition {
         background-color: $gold;
     }
@@ -110,6 +110,63 @@
                 display: flex;
                 flex-flow: row wrap;
                 position: relative;             
+            }
+        }
+    }
+    &.animation {
+        height: 100vh;
+        h3 {
+            font-family: $raleway;
+            font-size: 40px;
+            line-height: 48px;
+            font-weight: 500;
+            color: $purple;
+            @media(max-width:768px) {
+                font-size: 28px;
+                line-height: 36px;
+            }
+        }
+        .video-embed {
+            display: flex;
+            padding: 24px 0 40px;
+            justify-content: center;
+            iframe {
+                width: 854px;
+                height: 480px;
+                @media(max-width:768px) {
+                    width: 100%;
+                    height: auto;
+                    transform: scale(1.2);
+                }
+                @media(min-width:1720px){
+                    width: 1280px;
+                    height: 720px;
+                }
+            }
+        }
+        .video-description {
+            margin: 32px auto 0;
+            h2 {
+                font-family: $raleway;
+                font-size: 32px;
+                line-height: 40px;
+                font-weight: 500;
+                @media(max-width:768px){
+                    font-size: 24px;
+                    line-height: 32px;
+                }
+                &.white {
+                    color: $white;
+                }
+            }
+            p {
+                font-family: $raleway;
+                font-size: 16px;
+                line-height: 24px;
+                font-weight: 400;
+                &.white {
+                    color: $white;
+                }
             }
         }
     }

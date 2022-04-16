@@ -25,6 +25,7 @@ nav {
     }
     &.dark {
         border-bottom: none;
+        border-bottom: 1px solid $purple;
     }
     .left, .right {
         flex: 1 1 50%;
@@ -299,6 +300,9 @@ nav {
                             margin-bottom: 4px;
                             color: $purple;
                             @media(max-width:768px) {
+                                color: $gold;
+                            }
+                            &.gold {
                                 color: $gold;
                             }
                         }                        

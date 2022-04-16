@@ -11,7 +11,7 @@ const routes: Routes = [
 		path: '', component: HomeComponent
 	},
 	{
-		path: 'project/:slug/:author', component: WithinProjectComponent
+		path: 'project/:slug/:author/:id', component: WithinProjectComponent
 	},
 	// {
 	// 	path: 'studio', component: CategoriesComponent
