@@ -2,7 +2,7 @@
 <app-spinner [text]="'Cargando...'" *ngIf="addProject.spinnerActive"></app-spinner>
 <section class="project-in">    
     <div class="video-embed">
-        <iframe [src]="projectAuthor.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe [src]="projectAuthor?.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
     <div class="video-description">
         <h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.title}}</h2>
@@ -17,7 +17,7 @@
             alt="{{nextProjectUp?.name}}" />
     </div>
     <div class="description-proj">
-        <a class="next-project" (click)="withinProject(nextProjectUp, author, nextProjectUp?.id)" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">
+        <a class="next-project" (click)="withinProject(nextProjectUp, author, nextProjectUp?.id,  nextProjectUp?.home, nextProjectUp?.home_slider )" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">
             Next project
             <i class="fa fa-arrow-right" aria-hidden="true" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
         </a>

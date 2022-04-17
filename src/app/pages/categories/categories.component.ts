@@ -84,9 +84,9 @@ export class CategoriesComponent implements OnInit {
 		this.captureVideo = projects;
 	}
 
-	withinProject(proj, color, id) {
-		console.log("PROJJ", [proj, color, id])
-		this.project.openProject(proj.project_id, color, id);
+	withinProject(proj, color, id, home, homeSlider) {
+		console.log("PROJJ", [proj, color, id, home, homeSlider])
+		this.project.openProject(proj.project_id, color, id, home, homeSlider);
 		//this.project.nextProject(this.authorWorker.data[0].projects);
 	}
 

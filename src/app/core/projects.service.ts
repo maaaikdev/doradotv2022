@@ -18,6 +18,8 @@ export class ProjectsService {
 	spinnerActive = true;
 	nextProjectAddWorker: any;
 	colorCatgeory: any;
+	home: any;
+	homeSlider: any;
 	
 	constructor(
 		public router: Router,
@@ -27,9 +29,12 @@ export class ProjectsService {
 		
 	 }
 
-	openProject(itemArrived, author, id){
-		console.log("DATA", [itemArrived, author, id])
+	openProject(itemArrived, author, id, home, homeSlider){
+		console.log("DATA", [itemArrived, author, id, home, homeSlider])
 		this.projectAuthor = itemArrived;
+		localStorage.setItem("home", home);
+		localStorage.setItem("home_slider", homeSlider);
+		//this.router.navigate(['/project/'+itemArrived.services[0].service_id.slug+'/'+author+'/'+itemArrived.id+''])
 		this.router.navigate(['/project/'+itemArrived.services[0].service_id.slug+'/'+author+'/'+itemArrived.id+'']).then(() => {
 			window.location.reload();
 		});	
@@ -44,6 +49,17 @@ export class ProjectsService {
 		this.router.navigate(['/project/'+color+'/'+author+'/'+id+'']).then(() => {
 			window.location.reload();
 		});	
+	}
+
+	openProjectHome2(proj, author, color, id, home, homeSlider){
+		console.log("DATA", [proj, author, color, id, home, homeSlider])
+		this.projectAuthor = author;
+		localStorage.setItem("home", home);
+		localStorage.setItem("home_slider", homeSlider);
+		this.router.navigate(['/project/'+color+'/'+author+'/'+id+''])
+		// this.router.navigate(['/project/'+color+'/'+author+'/'+id+'']).then(() => {
+		// 	window.location.reload();
+		// });	
 	}
 
 	colorCategory(colorCatgeory) {

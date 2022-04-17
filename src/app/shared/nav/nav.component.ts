@@ -76,7 +76,6 @@ export class NavComponent implements OnInit {
 		this.btnColorMobile()
 		this.broker.menuOptions().subscribe((response: any) => {
 			this.menuArray = response.data;
-			console.log("MENU", this.menuArray)
 			this.menuArray.forEach(element => {
 				this.btnCta = element.id,
 				this.color = element.slug
@@ -87,14 +86,12 @@ export class NavComponent implements OnInit {
 		this.router.events.subscribe((val) => {
 			if (val instanceof NavigationEnd) {
 				this.url = val.url.split('?')[0];
-				console.log("URL", this.url)
 				if(this.url == '/') {
 					this.light = true;
 
 				} else {
 					var urlSplit = this.url.split("/")[2];
 					this.urlSplit = urlSplit;
-					console.log("COLOR SPLIT", this.urlSplit)
 					switch (this.urlSplit) {			
 						case 'edicion':
 							this.dark = true;

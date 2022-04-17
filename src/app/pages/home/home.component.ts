@@ -39,6 +39,7 @@ export class HomeComponent implements OnInit {
 		this.broker.projectsItemsHome().subscribe((response: any) => {
 			if(response != undefined) {
 				this.projectsData = response;
+				console.log("PROJECT HOME ALL", this.project )
 				this.projectItem = this.projectsData.data;
 				this.itemVideoNull = this.projectItem.filter(video => video.gif != null);
 				//this.project.nextProject(this.projectsData.data);
@@ -70,8 +71,8 @@ export class HomeComponent implements OnInit {
 
 	
 
-	withinProject(proj, author, color, id) {
-		console.log("COLOR", [proj, author, color, id])
-		this.project.openProjectHome(proj, author, color, id);
+	withinProject(proj, author, color, id, home, homeSlider) {
+		console.log("COLOR", [proj, author, color, id, homeSlider])
+		this.project.openProjectHome2(proj, author, color, id, home, homeSlider);
 	}
 }

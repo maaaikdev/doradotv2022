@@ -33,6 +33,10 @@ export class WithinProjectComponent implements OnInit {
 	authorWorker: any;
 	projects: any;
 	projectAuthor: any;
+	projectsData: any;
+	home: any;
+	homeSlider: any;
+	projectsDataSlider: any;
 	
 
 	constructor(
@@ -49,32 +53,75 @@ export class WithinProjectComponent implements OnInit {
 	}
 
 	ngOnInit() {		
-		window.scrollTo(0, 0);			
+		window.scrollTo(0, 0);
+		this.home = localStorage.getItem('home');
+		this.homeSlider = localStorage.getItem('home_slider')
+		console.log("HOMEEEEE LOCAL STORAGE", this.home);
+		console.log("HOMEEEEE LOCAL STORAGE SLIDER", this.homeSlider)
 		this.broker.projectsService(this.slug).subscribe((response: any) => {	
 			this.workers = response;
+			console.log("TTTTTTTT 1", this.workers)		
 			if(this.workers.data[0].workers[0] == undefined) {
 				this.router.navigate(['/']);
-			} else {	
-				this.broker.workerProjects(this.author).subscribe((response: any) => {
-					this.authorWorker = response;
-					this.projects = this.authorWorker?.data[0].projects;
-					console.log("ProjectSSSS", this.projects);
-					const refreshProject = this.projects.find((p) => p.project_id.id === parseInt(this.id));
-					this.projectAuthor = refreshProject.project_id;
-					console.log("MAIN-Project", this.projectAuthor);
-					const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
-					this.nextProjectUp = nextProject?.project_id;			
-					console.log("NEXT-Project", this.nextProjectUp);
-					this.changeColor();
-					this.addProject.spinnerActive = false;	
-				});	
+			} else {
+				if(this.home == 'true' && this.homeSlider == 'false') {
+					console.log("ENTRE AL PROYECTOS HOME");
+					this.broker.workerProjects(this.author).subscribe((response: any) => {
+						this.authorWorker = response;
+						this.broker.projectsItemsHome().subscribe((response: any) => {
+							this.projectsData = response;
+							this.projects = this.projectsData.data
+							const refreshProject = this.projects.find((p) => p.id === parseInt(this.id));
+							this.projectAuthor = refreshProject
+							console.log("TTTTTTTT 2 HOME", this.projectAuthor);
+							const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+							this.nextProjectUp = nextProject;			
+							console.log("NEXT-Project", this.nextProjectUp);
+							this.changeColor();
+							this.addProject.spinnerActive = false;		
+						});						
+					});
+				} else if(this.home == 'true' && this.homeSlider == 'true'){
+					console.log("ENTRE AL HOME SLIDER");
+					this.broker.workerProjects(this.author).subscribe((response: any) => {
+						this.authorWorker = response;	
+						this.broker.projectsItemsSlider().subscribe((response: any) => {					
+							this.projectsDataSlider = response;
+							this.projects = this.projectsDataSlider.data
+							const refreshProject = this.projects.find((p) => p.id === parseInt(this.id));
+							this.projectAuthor = refreshProject
+							console.log("TTTTTTTT 2 HOME", this.projectAuthor);
+							const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+							this.nextProjectUp = nextProject;			
+							console.log("NEXT-Project", this.nextProjectUp);
+							this.changeColor();
+							this.addProject.spinnerActive = false;	
+						});				
+					});
+				}else {
+					console.log("ENTRE AL PROYECTOS CATEGORIA")
+					this.broker.workerProjects(this.author).subscribe((response: any) => {
+						this.authorWorker = response;
+						console.log("TTTTTTTT 2", this.authorWorker)
+						this.projects = this.authorWorker?.data[0].projects;
+						console.log("ProjectSSSS", this.projects);
+						const refreshProject = this.projects.find((p) => p.project_id.id === parseInt(this.id));
+						this.projectAuthor = refreshProject.project_id;
+						console.log("MAIN-Project", this.projectAuthor);
+						const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+						this.nextProjectUp = nextProject?.project_id;			
+						console.log("NEXT-Project", this.nextProjectUp);
+						this.changeColor();
+						this.addProject.spinnerActive = false;	
+					});
+				}
 			}			
 		});
 		this.addProject.spinnerActive = false;		
 	}
-	withinProject(proj, author, id) {
-		console.log("PROJJ NEXT PROYECT", [proj, author, id])
-		this.addProject.openProject(proj, author, id);
+	withinProject(proj, author, id, home, homeSLider) {
+		console.log("PROJJ NEXT PROYECT", [proj, author, id, home, homeSLider])
+		this.addProject.openProject(proj, author, id, home, homeSLider);
 	}
 
 	getBg(color) {
