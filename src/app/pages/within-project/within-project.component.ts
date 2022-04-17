@@ -61,6 +61,7 @@ export class WithinProjectComponent implements OnInit {
 				this.router.navigate(['/']);
 			} else {
 				if(this.home == 'true' && this.homeSlider == 'false') {
+					this.changeColor();
 					this.broker.workerProjects(this.author).subscribe((response: any) => {
 						this.authorWorker = response;
 						this.broker.projectsItemsHome().subscribe((response: any) => {
@@ -75,6 +76,7 @@ export class WithinProjectComponent implements OnInit {
 						});						
 					});
 				} else if(this.home == 'true' && this.homeSlider == 'true'){
+					this.changeColor();
 					this.broker.workerProjects(this.author).subscribe((response: any) => {
 						this.authorWorker = response;	
 						this.broker.projectsItemsSlider().subscribe((response: any) => {					
@@ -89,14 +91,14 @@ export class WithinProjectComponent implements OnInit {
 						});				
 					});
 				}else {
+					this.changeColor();
 					this.broker.workerProjects(this.author).subscribe((response: any) => {
 						this.authorWorker = response;
 						this.projects = this.authorWorker?.data[0].projects;
 						const refreshProject = this.projects.find((p) => p.project_id.id === parseInt(this.id));
 						this.projectAuthor = refreshProject.project_id;
 						const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
-						this.nextProjectUp = nextProject?.project_id;
-						this.changeColor();
+						this.nextProjectUp = nextProject?.project_id;						
 						this.addProject.spinnerActive = false;	
 					});
 				}

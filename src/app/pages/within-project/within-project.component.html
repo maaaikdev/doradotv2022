@@ -2,7 +2,7 @@
 <app-spinner [text]="'Cargando...'" *ngIf="addProject.spinnerActive"></app-spinner>
 <section class="project-in">    
     <div class="video-embed">
-        <iframe [src]="projectAuthor?.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+        <iframe [src]="projectAuthor.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
     <div class="video-description">
         <h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.title}}</h2>
