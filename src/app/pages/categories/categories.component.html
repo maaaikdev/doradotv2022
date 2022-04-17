@@ -23,8 +23,8 @@
                             <div class="caption" (click)="withinProject(project, author, project?.project_id.id, project?.project_id.home, project?.project_id.home_slider)">
                                 <div class="caption-text" [ngClass]="getBg()">
                                     <i class="fa fa-play" aria-hidden="true"></i>
-                                    <h5>{{project.project_id?.name}}</h5>
-                                    <p>{{project.worker_id?.name}}</p>
+                                    <h5>{{project.project_id?.title}}</h5>
+                                    <p>{{project.project_id?.subtitle}}</p>
                                 </div>
                             </div>
                         </div>   
