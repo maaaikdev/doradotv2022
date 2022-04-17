@@ -30,7 +30,6 @@ export class ProjectsService {
 	 }
 
 	openProject(itemArrived, author, id, home, homeSlider){
-		console.log("DATA", [itemArrived, author, id, home, homeSlider])
 		this.projectAuthor = itemArrived;
 		localStorage.setItem("home", home);
 		localStorage.setItem("home_slider", homeSlider);
@@ -41,7 +40,6 @@ export class ProjectsService {
 	}
 
 	openProjectHome(proj, author, color, id){
-		console.log("DATA", [proj, author, color, id])
 		this.projectAuthor = author;
 		setTimeout(() => {
 			this.spinnerActive = true;	
@@ -52,7 +50,6 @@ export class ProjectsService {
 	}
 
 	openProjectHome2(proj, author, color, id, home, homeSlider){
-		console.log("DATA", [proj, author, color, id, home, homeSlider])
 		this.projectAuthor = author;
 		localStorage.setItem("home", home);
 		localStorage.setItem("home_slider", homeSlider);
@@ -72,7 +69,6 @@ export class ProjectsService {
 			} else {				
 				if(colorCatgeory == 'animacion' || colorCatgeory == 'online') {
 					if(this.workers.data[0].reel != "") {
-						console.log("ENTRE ANIMACION", this.workers);	
 						$("#menuModal").modal('hide');				
 						this.router.navigate(['/studio/'+this.workers.data[0].slug]).then(() => {
 							window.location.reload();
@@ -82,7 +78,6 @@ export class ProjectsService {
 						this.router.navigate(['/'])
 					}					
 				} else {
-					console.log("ENTRE A OTRO", this.workers);	
 					this.workerData = this.workers.data[0].workers[0];
 					$("#menuModal").modal('hide');
 					this.broker.workerProjects(this.workers.data[0].workers[0].worker_id.slug).subscribe((response: any) => {					
@@ -101,15 +96,6 @@ export class ProjectsService {
 	}
 
 	scrollToElement($element): void {
-		console.log($element);
 		$element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 	}
-
-	// nextProject(next) {
-	// 	this.nextProjectAdd = next
-	// 	console.log("NEXT NEXT 11111", this.nextProjectAdd)
-	// }
-	// nextProjectWorker(next) {
-	// 	this.nextProjectAddWorker = next
-	// }
 }

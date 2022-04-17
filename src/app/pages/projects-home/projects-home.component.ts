@@ -19,22 +19,17 @@ export class ProjectsHomeComponent implements OnInit {
 		public projecAuthor: ProjectsService
 	) {
 		this.projectArray = this.dataVideo
-		console.log("PROJECT ONE HOME", this.dataVideo)
 	 }
 
 
 	ngOnInit() {
-		
-		//console.log("PROJECT ARRAY HOME", this.projectItem)
 	}
 
 	withinProject(proj, author, color, id) {
-		console.log("COLOR", [proj, author, color, id])
 		this.projecAuthor.openProjectHome(proj, author, color, id);
 	}
 
 	withinProjectHome(proj, author, color, id, home, homeSlider) {
-		console.log("COLOR", [proj, author, color, id, home, homeSlider])
 		this.projecAuthor.openProjectHome2(proj, author, color, id, home, homeSlider);
 	}
 

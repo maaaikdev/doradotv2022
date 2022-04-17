@@ -11,16 +11,6 @@ export class AppComponent {
 	constructor(
 		// public broker: BrokerService
 	) { 
-		// this.broker.menuOptions().subscribe((response: any) => {
-		// 	console.log("MENU", response)
-		// });
-
-		// this.broker.projectsItems().subscribe((response: any) => {
-		// 	console.log("PROJECTS", response)
-		// });
-
-		// this.broker.workerItems().subscribe((response: any) => {
-		// 	console.log("WORKERS", response)
-		// });
+		
 	}
 }
