@@ -55,15 +55,16 @@ export class WithinProjectComponent implements OnInit {
 			if(this.workers.data[0].workers[0] == undefined) {
 				this.router.navigate(['/']);
 			} else {	
-				this.broker.workerProjects(this.author).subscribe((response: any) => {
-					this.authorWorker = response;
-					this.projects = this.authorWorker?.data[0].projects;
+				this.broker.projectsWorker(this.author).subscribe((response: any) => {
+					this.authorWorker = response;	
+					this.projects = this.authorWorker?.data;
 					console.log("ProjectSSSS", this.projects);
-					const refreshProject = this.projects.find((p) => p.project_id.id === parseInt(this.id));
-					this.projectAuthor = refreshProject.project_id;
+					const refreshProject = this.projects.find((p) => p.id === parseInt(this.id));
+					console.log("REFRESH-Project", refreshProject);
+					this.projectAuthor = refreshProject;
 					console.log("MAIN-Project", this.projectAuthor);
 					const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
-					this.nextProjectUp = nextProject?.project_id;			
+					this.nextProjectUp = nextProject;			
 					console.log("NEXT-Project", this.nextProjectUp);
 					this.changeColor();
 					this.addProject.spinnerActive = false;	

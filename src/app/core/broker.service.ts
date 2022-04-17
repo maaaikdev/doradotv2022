@@ -48,4 +48,8 @@ export class BrokerService {
 	projectsService(category){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.service + environment.filters.projectPerService+category+'&fields=*.*.*.*.*', {headers})
 	}
+	//Usar este
+	projectsWorker(author){
+		return this.http.get(environment.apiEndPoint + environment.menuOptions.project + environment.filters.projectsWorker+author+'&fields=*.*.*.*', {headers})
+	}
 }

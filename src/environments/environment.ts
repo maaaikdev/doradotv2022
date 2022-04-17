@@ -17,7 +17,9 @@ export const environment = {
 		//workersProject: '?filter[slug][eq]=julian-rivera-contreras&fields=*.*.*.*.*',
 		workersProject: '?filter[slug][eq]=',
 		// projectPerService: '?filter[slug][eq]=edicion&fields=*.*.*.*.*'
-		projectPerService: '?filter[slug][eq]='
+		projectPerService: '?filter[slug][eq]=',
+
+		projectsWorker: '?filter[workers.worker_id.slug]='
 	}
 };
 
