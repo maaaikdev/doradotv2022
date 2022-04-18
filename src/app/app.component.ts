@@ -11,6 +11,6 @@ export class AppComponent {
 	constructor(
 		// public broker: BrokerService
 	) { 
-		
+		localStorage.setItem('lang', 'es')
 	}
 }

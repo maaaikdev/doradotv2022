@@ -52,4 +52,8 @@ export class BrokerService {
 	projectsWorker(author){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.project + environment.filters.projectsWorker+author+'&fields=*.*.*.*', {headers})
 	}
+
+	languageApp() {
+		return this.http.get(environment.apiEndPoint + environment.filters.menuLang, {headers})
+	}
 }

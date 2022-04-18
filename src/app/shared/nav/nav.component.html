@@ -15,8 +15,12 @@
 			</a>
 		</div>	
 		<div class="lang-menu">
-			<a class="language">
-				ESP
+			<a class="language" *ngIf="langTxt == 'ES'" (click)="lang('en')">
+				{{langTxt}}
+				<i class="fa fa-angle-down d-none d-md-block" aria-hidden="true"></i>
+			</a>
+			<a class="language" *ngIf="langTxt == 'EN'" (click)="lang('es')">
+				{{langTxt}}
 				<i class="fa fa-angle-down d-none d-md-block" aria-hidden="true"></i>
 			</a>
 		</div>		
@@ -37,7 +41,7 @@
 		</div>	
 		<div class="lang-menu">
 			<a class="language dark">
-				ESP
+				{{langTxt}}
 				<i class="fa fa-angle-down dark d-none d-md-block" aria-hidden="true"></i>
 			</a>
 		</div>		
@@ -55,17 +59,25 @@
 						<img [src]="logoDorado" alt="DoradoTV" title="DoradoTV" class="icon-dorado"/>
 					</a>					
 					<div class="section-btn" (click)="onButtonGroupClick($event)">
-						<a class="btn-aMenu" id="btn{{j}}"
-							*ngFor="let menuItem of menuArray; let j = index" 
-							(mouseover)="changeColor(menuItem.slug)"
-							(click)="project.colorCategory(menuItem.slug)"
-							routerLink="/studio/{{menuItem.slug}}/julian-rivera-contreras"												
-							[ngClass]="{'active': menuItem.active || btnColorMobile()}" >
-							{{menuItem.name}}
-						</a>						
+						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langTxt == 'EN')"
+							*ngFor="let item of menuItems| slice: 1: 6; let j = index"
+							(mouseover)="changeColor(item.slug)"
+							
+							(click)="author(item.slug)"
+							[ngClass]="{'active': item.active || btnColorMobile()}">
+							{{item.translations[0].translation}}
+						</a>
+						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langTxt == 'ES')"
+							*ngFor="let item of menuItems| slice: 1: 6; let j = index"
+							(mouseover)="changeColor(item.slug)"
+							
+							(click)="author(item.slug)"
+							[ngClass]="{'active': item.active || btnColorMobile()}">
+							{{item.translations[1].translation}}
+						</a>
 					</div>
 					<div class="section-about">
-						<a routerLink="/contact" data-bs-dismiss="modal" aria-label="Close">About</a>
+						<a routerLink="/contact" data-bs-dismiss="modal" aria-label="Close">{{about}}</a>
 					</div>
 					<div class="section-social">
 						<a [href]="social.link" target="_blank" *ngFor="let social of rrSS">
