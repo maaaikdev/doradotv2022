@@ -19,7 +19,7 @@
                     <div class="video-embed">
                         <div class="video-box" *ngFor="let project of projects; let i = index" [ngClass]="i == 0 || i == 3 || i == 6 || i == 9 ? 'wid-100' : 'wid-50' ">
                             <img [src]="project.project_id.photo.data.thumbnails[5].url" alt="" title="" class="img-author" />
-                            <h4>{{project.project_id?.name}}</h4>
+                            <h4>{{project.project_id?.title}}</h4>
                             <div class="caption" (click)="withinProject(project, author, project?.project_id.id, project?.project_id.home, project?.project_id.home_slider)">
                                 <div class="caption-text" [ngClass]="getBg()">
                                     <i class="fa fa-play" aria-hidden="true"></i>
