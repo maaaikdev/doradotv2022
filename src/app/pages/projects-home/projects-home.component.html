@@ -15,7 +15,7 @@
 </section> -->
 <section class="projects-home" >
     <div class="box-video" *ngFor="let projects of dataVideo; let i = index" [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'wid-100' : 'wid-50' ">
-        <video autoplay muted loop [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'object-fit' : ''">
+        <video autoplay [muted]="'muted'" loop [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'object-fit' : ''">
             <source [src]="projects.gif.data.full_url" type="video/mp4" />
         </video>
         <h4>{{projects.title}}</h4>
