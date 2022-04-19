@@ -22,11 +22,9 @@ export class BrokerService {
 	menuOptions(){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.menu, {headers})
 	}
-
 	projectsItems(){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.project, {headers})
 	}
-
 	projectsItemsSlider(){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.project + environment.filters.projectFilter, {headers})
 	}
@@ -36,9 +34,6 @@ export class BrokerService {
 	workerItems(){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.worker, {headers})
 	}
-	// workerProjects(){
-	// 	return this.http.get(environment.apiEndPoint + environment.menuOptions.worker + environment.filters.workersProject, {headers})
-	// }
 	workerProjects(author){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.worker + environment.filters.workersProject+author+'&fields=*.*.*.*.*', {headers})
 	}
@@ -48,11 +43,9 @@ export class BrokerService {
 	projectsService(category){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.service + environment.filters.projectPerService+category+'&fields=*.*.*.*.*', {headers})
 	}
-	//Usar este
 	projectsWorker(author){
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.project + environment.filters.projectsWorker+author+'&fields=*.*.*.*', {headers})
 	}
-
 	languageApp() {
 		return this.http.get(environment.apiEndPoint + environment.filters.menuLang, {headers})
 	}

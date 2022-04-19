@@ -1,27 +1,5 @@
 @import '../../../styles.scss';
 
-// footer {
-//     display: flex;
-//     flex-direction: row;
-//     padding: 24px 42px 32px;
-//     position: absolute;
-//     bottom: 14px;
-//     z-index: 20;
-//     @media(min-width:1720px) {
-//         bottom: 0;
-//     }
-//     .social {
-//         width: 24px;
-//         margin-right: 32px;
-//         &:hover {
-//             transform: scale(1.2);
-//         }
-//         @media(min-width:1720px) {
-//             width: 32px;
-//             margin-right: 32p
-//         }
-//     }
-// }
 footer {
     background-color: $gray-dark;
     padding: 6% 0;

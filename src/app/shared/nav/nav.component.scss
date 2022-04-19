@@ -100,7 +100,6 @@ nav {
     &:hover {
         border-bottom: none !important;
         i{
-            //background: rgba(0,0,0,1);
             &::before, &::after {
                 content:'';
                 width: 40px;

@@ -13,7 +13,6 @@ export class ProjectsHomeComponent implements OnInit {
 	projectArray: any;
 
 	@Input() dataVideo: any;
-	//@Input() projectItem: any;
 
 	constructor(
 		public projecAuthor: ProjectsService

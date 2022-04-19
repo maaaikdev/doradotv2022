@@ -90,12 +90,10 @@ export class NavComponent implements OnInit {
 		// });
 		this.broker.languageApp().subscribe((response: any) => {
 			this.menuItems = response.data;
-			console.log("MENU", this.menuItems)
 		})
 	}
 
 	lang(l){
-		console.log("LANGUAGE", l)
 		localStorage.setItem('lang', l)
 		var lang = localStorage.getItem('lang');
 		if(lang == 'es') {
@@ -111,8 +109,6 @@ export class NavComponent implements OnInit {
 	}
 
 	author(category){
-		console.log("CATEGORY LINK", category)
-		console.log("AUTHORS", [this.menuItems[6].slug, this.menuItems[9].slug, this.menuItems[4].slug, this.menuItems[5].slug, this.menuItems[12].slug])
 		switch (category) {					
 			case 'edicion':
 				//this.router.navigate(['/studio/'+category+'/'+this.menuItems[6].slug+''])
@@ -154,7 +150,6 @@ export class NavComponent implements OnInit {
 				} else {
 					var urlSplit = this.url.split("/")[2];
 					this.urlSplit = urlSplit;
-					console.log("URL SPLIT", this.urlSplit)
 					switch (this.urlSplit) {			
 						case 'edicion':
 							this.dark = true;
@@ -183,7 +178,6 @@ export class NavComponent implements OnInit {
 		let clickedElement = $event.target || $event.srcElement;	
 		if( clickedElement.nodeName === "A" ) {	
 		  let isCertainButtonAlreadyActive = clickedElement.parentElement.querySelector(".active");
-		  // if a Button already has Class: .active
 		  if( isCertainButtonAlreadyActive ) {
 			isCertainButtonAlreadyActive.classList.remove("active");
 		  }	

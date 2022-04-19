@@ -33,7 +33,6 @@ export class ProjectsService {
 		this.projectAuthor = itemArrived;
 		localStorage.setItem("home", home);
 		localStorage.setItem("home_slider", homeSlider);
-		//this.router.navigate(['/project/'+itemArrived.services[0].service_id.slug+'/'+author+'/'+itemArrived.id+''])
 		this.router.navigate(['/project/'+itemArrived.services[0].service_id.slug+'/'+author+'/'+itemArrived.id+'']).then(() => {
 			window.location.reload();
 		});	
@@ -54,9 +53,6 @@ export class ProjectsService {
 		localStorage.setItem("home", home);
 		localStorage.setItem("home_slider", homeSlider);
 		this.router.navigate(['/project/'+color+'/'+author+'/'+id+''])
-		// this.router.navigate(['/project/'+color+'/'+author+'/'+id+'']).then(() => {
-		// 	window.location.reload();
-		// });	
 	}
 
 	colorCategory(colorCatgeory) {
@@ -82,15 +78,13 @@ export class ProjectsService {
 					$("#menuModal").modal('hide');
 					this.broker.workerProjects(this.workers.data[0].workers[0].worker_id.slug).subscribe((response: any) => {					
 						this.broker.authorWorker = response;
-						//this.nextProject(this.broker.authorWorker.data[0].projects);
 						this.broker.projects = this.broker.authorWorker?.data[0].projects;							
 					});
 					this.spinnerActive = false;
 					this.router.navigate(['/studio/'+this.workers.data[0].slug+'/'+this.workers.data[0].workers[0].worker_id.slug+'']).then(() => {
 						window.location.reload();
 					});	
-				}				
-				// this.router.navigate(['/studio/'+this.workers.data[0].slug+'/'+this.workers.data[0].workers[0].worker_id.slug+'']);
+				}
 			}			
 		});
 	}

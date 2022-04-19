@@ -23,8 +23,6 @@ export class CategoriesComponent implements OnInit {
 	authorWorker: any;
 	projects: any;
 	animationPorj: any;
-	// authorWorker: any;
-	// projects: any;
 	
 	constructor(
 		private activateRoute: ActivatedRoute,
@@ -73,7 +71,6 @@ export class CategoriesComponent implements OnInit {
 	}
 
 	lineBreak(txt) {
-		//txt.split("\n").join("<br />");
 		txt.replace(/\s+/g, " ").trim();
 		return txt
 	}
@@ -84,7 +81,6 @@ export class CategoriesComponent implements OnInit {
 
 	withinProject(proj, color, id, home, homeSlider) {
 		this.project.openProject(proj.project_id, color, id, home, homeSlider);
-		//this.project.nextProject(this.authorWorker.data[0].projects);
 	}
 
 	getBg() {
