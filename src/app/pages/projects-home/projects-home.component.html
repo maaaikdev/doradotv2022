@@ -23,7 +23,7 @@
             <div class="caption-text " [ngClass]="getBg(projects?.services[0].service_id.slug)">
                 <i class="fa fa-play" aria-hidden="true" [ngClass]="projects?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
                 <h5 [ngClass]="projects?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projects.title}}</h5>
-                <p [ngClass]="projects?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projects.name}}</p>
+                <p [ngClass]="projects?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projects.subtitle}}</p>
             </div>
         </div>
     </div>

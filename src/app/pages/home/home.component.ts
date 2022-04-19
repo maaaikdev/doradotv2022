@@ -40,6 +40,8 @@ export class HomeComponent implements OnInit {
 			if(response != undefined) {
 				this.projectsData = response;
 				this.projectItem = this.projectsData.data;
+				this.projectItem = this.projectItem.sort((a,b)=> (a.order_home > b.order_home) ? 1 : -1) 
+
 				this.itemVideoNull = this.projectItem.filter(video => video.gif != null);
 				//this.project.nextProject(this.projectsData.data);
 				this.spinnerActive = false;
@@ -52,6 +54,7 @@ export class HomeComponent implements OnInit {
 		this.broker.projectsItemsSlider().subscribe((response: any) => {					
 			this.projectsDataSlider = response;
 			this.projectItemSlider = this.projectsDataSlider.data;
+			this.projectItemSlider = this.projectItemSlider.sort((a,b)=> (a.order_home > b.order_home) ? 1 : -1) 
 			this.spinnerActive = false;
 		});		
 	}
