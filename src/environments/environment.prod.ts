@@ -13,6 +13,7 @@ export const environment = {
 		workersProject: '?filter[slug][eq]=',
 		projectPerService: '?filter[slug][eq]=',
 		menuLang: '/menu?fields=*.*',
-		projectsWorker: '?filter[workers.worker_id.slug]='
+		newProjectsWorker: 'filter[workers.worker_id.slug]=',
+		newProjectsService: 'filter[services.service_id.slug]='
 	}
 };

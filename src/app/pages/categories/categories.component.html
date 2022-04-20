@@ -19,13 +19,13 @@
                 <div class="video-gallery">
                     <div class="video-embed">
                         <div class="video-box" *ngFor="let project of projects; let i = index" [ngClass]="i == 0 || i == 3 || i == 6 || i == 9 ? 'wid-100' : 'wid-50' ">
-                            <img [src]="project.project_id.photo.data.thumbnails[5].url" alt="" title="" class="img-author" />
-                            <h4>{{project.project_id?.title}}</h4>
-                            <div class="caption" (click)="withinProject(project, author, project?.project_id.id, project?.project_id.home, project?.project_id.home_slider)">
+                            <img [src]="project.photo.data.thumbnails[5].url" alt="" title="" class="img-author" />
+                            <h4>{{project.title}}</h4>
+                            <div class="caption" (click)="withinProject(project, author, project?.id, project?.home, project?.home_slider)">
                                 <div class="caption-text" [ngClass]="getBg()">
                                     <i class="fa fa-play" aria-hidden="true"></i>
-                                    <h5>{{project.project_id?.title}}</h5>
-                                    <p>{{project.project_id?.subtitle}}</p>
+                                    <h5>{{project.title}}</h5>
+                                    <p>{{project.subtitle}}</p>
                                 </div>
                             </div>
                         </div>   

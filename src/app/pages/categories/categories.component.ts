@@ -44,7 +44,7 @@ export class CategoriesComponent implements OnInit {
 				$("#menuModal").modal('hide');
 				this.router.navigate(['/'])
 			} else {
-				if(this.slug == 'animacion' || this.slug == 'online') {
+				if(this.slug == 'animacion') {
 					if(this.workers.data[0].reel != "") {
 						this.project.spinnerActive = false;	
 					} else {
@@ -54,9 +54,11 @@ export class CategoriesComponent implements OnInit {
 				} else {
 					this.workerData = this.workers.data[0].workers[0];
 					$("#menuModal").modal('hide');
-					this.broker.workerProjects(this.author).subscribe((response: any) => {					
-						this.authorWorker = response;
-						this.projects = this.authorWorker?.data[0].projects;
+					this.broker.newProjectsPerServiceAndWorker(this.slug, this.author).subscribe((response: any) => {					
+						this.authorWorker = response.data;
+						console.log('Projects: ')
+						console.log(this.authorWorker)
+						this.projects = this.authorWorker;
 					});
 					this.project.spinnerActive = false;	
 				}
