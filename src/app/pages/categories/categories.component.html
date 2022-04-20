@@ -1,7 +1,8 @@
 <app-spinner [text]="'Cargando...'" *ngIf="project.spinnerActive"></app-spinner>
 <section class="workers" [ngClass]="getBg()" *ngIf="slug == 'edicion' || slug == 'correccion-de-color' || slug == 'online' || slug == 'musica-original' ">
     <div class="head-tabs">
-        <h3>{{workerData?.service_id.name}}</h3>
+        <!-- <h3>{{workerData?.service_id.name}}</h3> -->
+        <h3 [innerHTML]="lang == 'es' ? workers?.data[0].translations[1].translation : workers?.data[0].translations[0].translation "></h3>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation" *ngFor="let names of workers?.data[0].workers; let i = index">
                 <button class="nav-link" [ngClass]="{'active': i == 0}" id="worker{{i}}-tab" data-bs-toggle="tab" attr.data-bs-target="#worker{{i}}" type="button" role="tab" attr.aria-controls="worker{{i}}" aria-selected="true" (click)="tabData(names)">{{names?.worker_id.slug}}</button>

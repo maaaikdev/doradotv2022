@@ -28,10 +28,11 @@ export class NavComponent implements OnInit {
 	urlSplit: any;
 	light = false;
 	dark = false;
-	langTxt = 'EN';
+	langTxt = 'ES';
 	menuItems: any;
 	item: any;
-	about = 'Acerca de'
+	about = 'Acerca de';
+	langMenu: any;
 	rrSS = [
 		{
 			title:"DoradoTV Instagram",
@@ -75,19 +76,11 @@ export class NavComponent implements OnInit {
 	}
 
 	ngOnInit() {	
-		var lang = localStorage.getItem('lang');
-		this.lang(lang)
+		this.langMenu = localStorage.getItem('lang');
 
 		this.configHeader();
 		this.logo()
 		this.btnColorMobile()
-		// this.broker.menuOptions().subscribe((response: any) => {
-		// 	this.menuArray = response.data;
-		// 	this.menuArray.forEach(element => {
-		// 		this.btnCta = element.id,
-		// 		this.color = element.slug
-		// 	});	
-		// });
 		this.broker.languageApp().subscribe((response: any) => {
 			this.menuItems = response.data;
 		})
@@ -95,17 +88,13 @@ export class NavComponent implements OnInit {
 
 	lang(l){
 		localStorage.setItem('lang', l)
-		var lang = localStorage.getItem('lang');
-		if(lang == 'es') {
-			this.langTxt = 'ES';
+		this.langMenu = localStorage.getItem('lang');
+		if(this.langMenu == 'es') {
 			this.about = 'Acerca de'
-			window.onload
 		} else {
-			this.langTxt = 'EN';
-			this.about = 'About'
-			window.onload
+			this.about = 'About';		
 		}
-		return this.langTxt
+		window.location.reload()
 	}
 
 	author(category){

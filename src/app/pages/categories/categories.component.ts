@@ -23,6 +23,7 @@ export class CategoriesComponent implements OnInit {
 	authorWorker: any;
 	projects: any;
 	animationPorj: any;
+	lang: string;
 	
 	constructor(
 		private activateRoute: ActivatedRoute,
@@ -36,6 +37,7 @@ export class CategoriesComponent implements OnInit {
 
 	ngOnInit() {
 		this.getBg();
+		this.lang = localStorage.getItem('lang');
 		this.broker.projectsService(this.slug).subscribe((response: any) => {
 			this.workers = response;
 			if(this.workers.data[0] == undefined) {

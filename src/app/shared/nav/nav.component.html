@@ -15,12 +15,12 @@
 			</a>
 		</div>	
 		<div class="lang-menu">
-			<a class="language" *ngIf="langTxt == 'ES'" (click)="lang('en')">
-				{{langTxt}}
+			<a class="language" *ngIf="langMenu == 'es'" (click)="lang('en')">
+				EN
 				<i class="fa fa-angle-down d-none d-md-block" aria-hidden="true"></i>
 			</a>
-			<a class="language" *ngIf="langTxt == 'EN'" (click)="lang('es')">
-				{{langTxt}}
+			<a class="language" *ngIf="langMenu == 'en'" (click)="lang('es')">
+				ES
 				<i class="fa fa-angle-down d-none d-md-block" aria-hidden="true"></i>
 			</a>
 		</div>		
@@ -38,13 +38,17 @@
 			<a href="#" class="menu-nav-toggle" data-bs-toggle="modal" data-bs-target="#menuModal">
 				<i class="dark"></i>
 			</a>
-		</div>	
+		</div>
 		<div class="lang-menu">
-			<a class="language dark">
-				{{langTxt}}
+			<a class="language dark" *ngIf="langMenu == 'es'" (click)="lang('en')">
+				EN
 				<i class="fa fa-angle-down dark d-none d-md-block" aria-hidden="true"></i>
 			</a>
-		</div>		
+			<a class="language dark" *ngIf="langMenu == 'en'" (click)="lang('es')">
+				ES
+				<i class="fa fa-angle-down dark d-none d-md-block" aria-hidden="true"></i>
+			</a>
+		</div>	
 	</div>    
 </nav>
   
@@ -59,7 +63,7 @@
 						<img [src]="logoDorado" alt="DoradoTV" title="DoradoTV" class="icon-dorado"/>
 					</a>					
 					<div class="section-btn" (click)="onButtonGroupClick($event)">
-						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langTxt == 'EN')"
+						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langMenu == 'en')"
 							*ngFor="let item of menuItems| slice: 1: 6; let j = index"
 							(mouseover)="changeColor(item.slug)"
 							
@@ -67,7 +71,7 @@
 							[ngClass]="{'active': item.active || btnColorMobile()}">
 							{{item.translations[0].translation}}
 						</a>
-						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langTxt == 'ES')"
+						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langMenu == 'es')"
 							*ngFor="let item of menuItems| slice: 1: 6; let j = index"
 							(mouseover)="changeColor(item.slug)"
 							
@@ -77,7 +81,8 @@
 						</a>
 					</div>
 					<div class="section-about">
-						<a routerLink="/contact" data-bs-dismiss="modal" aria-label="Close">{{about}}</a>
+						<a routerLink="/contact" *ngIf="langMenu == 'es'" data-bs-dismiss="modal" aria-label="Close">Acerca de</a>
+						<a routerLink="/contact" *ngIf="langMenu == 'en'" data-bs-dismiss="modal" aria-label="Close">About</a>
 					</div>
 					<div class="section-social">
 						<a [href]="social.link" target="_blank" *ngFor="let social of rrSS">

@@ -66,7 +66,7 @@ nav {
         &.dark {
             color: $purple!important;
             &:hover {
-                color: $white;
+                color: $white!important;
             }
         }
         &:hover {
