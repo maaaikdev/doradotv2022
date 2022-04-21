@@ -33,6 +33,9 @@
                 font-size: 28px;
                 line-height: 36px;
             }
+            &.white {
+                color:$white;
+            }
         }
         .nav-tabs {
             border-bottom: none;
@@ -73,6 +76,9 @@
                         -ms-transform:translateY(-3px);
                         -o-transform:translateY(-3px);
                     }
+                    &.white {
+                        color:$white;
+                    }
                 }
                 &:last-child {
                     border-right: none;
@@ -103,6 +109,9 @@
                     @media(max-width:768px){
                         font-size: 28px;
                         line-height: 36px;
+                    }
+                    &.white {
+                        color: $white;
                     }
                 }
             }            
@@ -442,6 +451,9 @@ $anim-speed: 0.3s;
             @media(max-width:768px) {
                 font-size: 24px;
             }
+            &.white {
+                color: $white;
+            }
         }
         h5 {
             font-family: $raleway;
@@ -458,6 +470,9 @@ $anim-speed: 0.3s;
                 font-size: 32px;
                 line-height: 40px;
             }
+            &.white {
+                color: $white;
+            }
         }
         p {
             font-family: $raleway;
@@ -469,6 +484,9 @@ $anim-speed: 0.3s;
             @media(max-width:768px) {
                 font-size: 14px;
                 line-height: 20px;
+            }
+            &.white {
+                color: $white;
             }
         }
     }

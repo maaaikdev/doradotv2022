@@ -71,7 +71,7 @@ export class NavComponent implements OnInit {
 		if (window.pageYOffset !== 0) {
 			this.scroll = true;
 		} else {
-		this.scroll = false;
+			this.scroll = false;
 		}
 	}
 
@@ -133,7 +133,7 @@ export class NavComponent implements OnInit {
 		this.router.events.subscribe((val) => {
 			if (val instanceof NavigationEnd) {
 				this.url = val.url.split('?')[0];
-				if(this.url == '/') {
+				if(this.url == '/' || this.url == '/contact') {
 					this.light = true;
 					this.dark = false;
 				} else {

@@ -30,23 +30,24 @@
 <nav [ngClass]="{'scrolled': scroll, 'dark': dark}" *ngIf="dark">
 	<div class="left">
 		<a routerLink="">
-			<img src="assets/images/nav/logo-DorardoTV-dark.svg" title="Logo Dorado TV" alt=" Logo Dorado TV" class="logo-dorado"/>
+			<img src="assets/images/nav/logo-DorardoTV-dark.svg" title="Logo Dorado TV" alt=" Logo Dorado TV" class="logo-dorado" [hidden]="scroll"/>
+			<img src="assets/images/nav/logo-DorardoTV.png" title="Logo Dorado TV" alt=" Logo Dorado TV" class="logo-dorado" [hidden]="!scroll" />
 		</a>
 	</div>
 	<div class="right">
 		<div class="menu">
 			<a href="#" class="menu-nav-toggle" data-bs-toggle="modal" data-bs-target="#menuModal">
-				<i class="dark"></i>
+				<i [ngClass]="scroll == false ? 'dark' : ''"></i>
 			</a>
 		</div>
 		<div class="lang-menu">
-			<a class="language dark" *ngIf="langMenu == 'es'" (click)="lang('en')">
+			<a class="language" *ngIf="langMenu == 'es'" (click)="lang('en')" [ngClass]="scroll == false ? 'dark' : ''">
 				EN
-				<i class="fa fa-angle-down dark d-none d-md-block" aria-hidden="true"></i>
+				<i class="fa fa-angle-down d-none d-md-block" aria-hidden="true" [ngClass]="scroll == false ? 'dark' : ''"></i>
 			</a>
-			<a class="language dark" *ngIf="langMenu == 'en'" (click)="lang('es')">
+			<a class="language" *ngIf="langMenu == 'en'" (click)="lang('es')" [ngClass]="scroll == false ? 'dark' : ''">
 				ES
-				<i class="fa fa-angle-down dark d-none d-md-block" aria-hidden="true"></i>
+				<i class="fa fa-angle-down d-none d-md-block" aria-hidden="true" [ngClass]="scroll == false ? 'dark' : ''"></i>
 			</a>
 		</div>	
 	</div>    
