@@ -6,7 +6,7 @@
         [ngClass]="slug == 'online' ? 'white' : ''"></h3>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation" *ngFor="let names of workers?.data[0].workers; let i = index">
-                <button class="nav-link" [ngClass]="{'active': i == 0, 'white': slug == 'online'}" id="worker{{i}}-tab" data-bs-toggle="tab" attr.data-bs-target="#worker{{i}}" type="button" role="tab" attr.aria-controls="worker{{i}}" aria-selected="true" (click)="tabData(names)">{{names?.worker_id.slug}}</button>
+                <button class="nav-link" [ngClass]="{'active': i == 0, 'white': slug == 'online'}" id="worker{{i}}-tab" data-bs-toggle="tab" attr.data-bs-target="#worker{{i}}" type="button" role="tab" attr.aria-controls="worker{{i}}" aria-selected="true" (click)="tabData(names)">{{names?.worker_id.name2}}</button>
             </li>
         </ul>
     </div>    
@@ -14,7 +14,7 @@
         <div class="tab-pane fade" *ngFor="let names of workers?.data[0].workers; let i = index" [ngClass]="{'show active': i == 0}" id="worker{{i}}" role="tabpanel" attr.aria-labelledby="worker{{i}}-tab">
             <div class="author-header">
                 <!-- <h2 [innerHTML]="lineBreak(workerData?.worker_id.name)"></h2> -->
-                <h2 [ngClass]="{'white': slug == 'online'}">{{names.worker_id.name}}</h2>
+                <h2 [ngClass]="{'white': slug == 'online'}">{{names.worker_id.name2}}</h2>
             </div>            
             <div class="container-a2">
                 <div class="video-gallery">

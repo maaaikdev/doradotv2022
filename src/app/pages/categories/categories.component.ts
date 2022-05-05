@@ -56,8 +56,6 @@ export class CategoriesComponent implements OnInit {
 					$("#menuModal").modal('hide');
 					this.broker.newProjectsPerServiceAndWorker(this.slug, this.author).subscribe((response: any) => {					
 						this.authorWorker = response.data;
-						console.log('Projects: ')
-						console.log(this.authorWorker)
 						this.projects = this.authorWorker;
 					});
 					this.project.spinnerActive = false;	

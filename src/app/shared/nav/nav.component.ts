@@ -1,8 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { Component, OnInit, HostListener, Inject } from '@angular/core';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
 // import { Console } from 'console';
 import { BrokerService } from 'src/app/core/broker.service';
 import { ProjectsService } from 'src/app/core/projects.service';
+
 
 declare var $: any;
 
@@ -33,6 +35,7 @@ export class NavComponent implements OnInit {
 	item: any;
 	about = 'Acerca de';
 	langMenu: any;
+	//langMenu = 'es';
 	rrSS = [
 		{
 			title:"DoradoTV Instagram",
@@ -61,9 +64,17 @@ export class NavComponent implements OnInit {
 		public broker: BrokerService,
 		private router: Router,
 		public project: ProjectsService,
-		private activateRoute: ActivatedRoute
+		private activateRoute: ActivatedRoute,
+		@Inject(DOCUMENT) private _document: Document
 	) {
+		this.langMenu = localStorage.getItem('lang');
 		this.slug = this.activateRoute.snapshot.params['slug'];
+		if(this.langMenu == null || this.langMenu == undefined){			
+			localStorage.setItem('lang', 'es');
+			this.langMenu = localStorage.getItem('lang');
+		} else {			
+			this.langMenu = localStorage.getItem('lang');
+		}
 	}
 
 	@HostListener('window:scroll', ['$event'])
@@ -75,9 +86,7 @@ export class NavComponent implements OnInit {
 		}
 	}
 
-	ngOnInit() {	
-		this.langMenu = localStorage.getItem('lang');
-
+	ngOnInit() {
 		this.configHeader();
 		this.logo()
 		this.btnColorMobile()
@@ -94,34 +103,38 @@ export class NavComponent implements OnInit {
 		} else {
 			this.about = 'About';		
 		}
-		window.location.reload()
+		setTimeout(() => this._document.defaultView.location.reload());
 	}
 
-	author(category){
+	author(category, l){
 		switch (category) {					
 			case 'edicion':
-				//this.router.navigate(['/studio/'+category+'/'+this.menuItems[6].slug+''])
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[6].slug+'']).then(() => {
+					localStorage.setItem('lang', l)
 					window.location.reload();
 				});
 				break;
 			case 'correccion-de-color':
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[9].slug+'']).then(() => {
+					localStorage.setItem('lang', l)
 					window.location.reload();
 				});
 				break;
 			case 'animacion':
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[4].slug+'']).then(() => {
+					localStorage.setItem('lang', l)
 					window.location.reload();
 				});
 				break;
 			case 'online':
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[5].slug+'']).then(() => {
+					localStorage.setItem('lang', l)
 					window.location.reload();
 				});
 				break;
 			case 'musica-original':
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[12].slug+'']).then(() => {
+					localStorage.setItem('lang', l)
 					window.location.reload();
 				});
 				break;

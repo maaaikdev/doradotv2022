@@ -68,7 +68,7 @@
 							*ngFor="let item of menuItems| slice: 1: 6; let j = index"
 							(mouseover)="changeColor(item.slug)"
 							
-							(click)="author(item.slug)"
+							(click)="author(item.slug, 'en')"
 							[ngClass]="{'active': item.active || btnColorMobile()}">
 							{{item.translations[0].translation}}
 						</a>
@@ -76,7 +76,7 @@
 							*ngFor="let item of menuItems| slice: 1: 6; let j = index"
 							(mouseover)="changeColor(item.slug)"
 							
-							(click)="author(item.slug)"
+							(click)="author(item.slug, 'es')"
 							[ngClass]="{'active': item.active || btnColorMobile()}">
 							{{item.translations[1].translation}}
 						</a>
