@@ -31,8 +31,6 @@ export class ProjectsService {
 
 	openProject(itemArrived, author, id, home, homeSlider){
 		this.projectAuthor = itemArrived;
-		localStorage.setItem("home", home);
-		localStorage.setItem("home_slider", homeSlider);
 		this.router.navigate(['/project/'+itemArrived.services[0].service_id.slug+'/'+author+'/'+itemArrived.id+'']).then(() => {
 			window.location.reload();
 		});	

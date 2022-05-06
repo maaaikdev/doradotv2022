@@ -24,6 +24,8 @@ export class CategoriesComponent implements OnInit {
 	projects: any;
 	animationPorj: any;
 	lang: string;
+	public activePillIndex:number = 0;
+	activeTabTemplate: any;
 	
 	constructor(
 		private activateRoute: ActivatedRoute,
@@ -33,43 +35,55 @@ export class CategoriesComponent implements OnInit {
 	) {
 		this.slug = this.activateRoute.snapshot.params['slug'];
     	this.author = this.activateRoute.snapshot.params['author'];
+		this.projectItems(this.slug, this.author);
+		if(localStorage.getItem('activeTabTemplate')){
+			this.activeTabTemplate = localStorage.getItem('activeTabTemplate');
+			setTimeout(() => {
+				$('#worker'+this.activeTabTemplate+'-tab').addClass('active');
+			}, 1600);
+		} else {
+		}
 	}
 
 	ngOnInit() {
-		this.getBg();
-		this.lang = localStorage.getItem('lang');
-		this.broker.projectsService(this.slug).subscribe((response: any) => {
+		this.getBg();		
+		this.lang = localStorage.getItem('lang');		
+	}
+
+	private projectItems(slug, author) {		
+		this.broker.projectsService(slug).subscribe((response: any) => {
+			this.project.spinnerActive = true;
 			this.workers = response;
 			if(this.workers.data[0] == undefined) {
 				$("#menuModal").modal('hide');
 				this.router.navigate(['/'])
-			} else {
+			} else {				
 				if(this.slug == 'animacion') {
 					if(this.workers.data[0].reel != "") {
-						this.project.spinnerActive = false;	
 					} else {
 						$("#menuModal").modal('hide');
 						this.router.navigate(['/'])
 					}					
-				} else {
+				} else {					
 					this.workerData = this.workers.data[0].workers[0];
-					$("#menuModal").modal('hide');
-					this.broker.newProjectsPerServiceAndWorker(this.slug, this.author).subscribe((response: any) => {					
+					$("#menuModal").modal('hide');					
+					this.broker.newProjectsPerServiceAndWorker(slug, author).subscribe((response: any) => {					
 						this.authorWorker = response.data;
 						this.projects = this.authorWorker;
-					});
-					this.project.spinnerActive = false;	
-				}
+						this.project.spinnerActive = false;	
+					});					
+				}				
 			}			
-		});
+		});		
 	}
 
-	tabData(names) {
+	tabData(names, index, slug) {
 		this.workerData = names;
+		localStorage.setItem('activeTabTemplate', index);
 		this.router.navigate(['/studio/'+this.slug+'/'+this.workerData.worker_id.slug+'']).then(() => {
+			this.projectItems(this.slug, this.workerData.worker_id.slug);
 			window.location.reload();
-		});	
-		
+		});
 	}
 
 	lineBreak(txt) {
@@ -82,7 +96,7 @@ export class CategoriesComponent implements OnInit {
 	}
 
 	withinProject(proj, color, id, home, homeSlider) {
-		this.project.openProject(proj.project_id, color, id, home, homeSlider);
+		this.project.openProject(proj, color, id, home, homeSlider);
 	}
 
 	getBg() {
