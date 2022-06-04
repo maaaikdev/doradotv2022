@@ -54,6 +54,8 @@ export class CategoriesComponent implements OnInit {
 		this.broker.projectsService(slug).subscribe((response: any) => {
 			this.project.spinnerActive = true;
 			this.workers = response;
+			this.workers.data[0].workers.sort((a,b)=> (a.worker_id.sort > b.worker_id.sort) ? 1 : -1)
+			
 			if(this.workers.data[0] == undefined) {
 				$("#menuModal").modal('hide');
 				this.router.navigate(['/'])
@@ -64,11 +66,13 @@ export class CategoriesComponent implements OnInit {
 						$("#menuModal").modal('hide');
 						this.router.navigate(['/'])
 					}					
-				} else {					
+				} else {	
+					 			
 					this.workerData = this.workers.data[0].workers[0];
 					$("#menuModal").modal('hide');					
 					this.broker.newProjectsPerServiceAndWorker(slug, author).subscribe((response: any) => {					
 						this.authorWorker = response.data;
+						console.log(this.authorWorker)
 						this.projects = this.authorWorker;
 						this.project.spinnerActive = false;	
 					});					

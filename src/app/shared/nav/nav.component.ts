@@ -115,7 +115,7 @@ export class NavComponent implements OnInit {
 				});
 				break;
 			case 'correccion-de-color':
-				this.router.navigate(['/studio/'+category+'/'+this.menuItems[9].slug+'']).then(() => {
+				this.router.navigate(['/studio/'+category+'/'+this.menuItems[10].slug+'']).then(() => {
 					localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();
@@ -136,7 +136,7 @@ export class NavComponent implements OnInit {
 				});
 				break;
 			case 'musica-original':
-				this.router.navigate(['/studio/'+category+'/'+this.menuItems[12].slug+'']).then(() => {
+				this.router.navigate(['/studio/'+category+'/'+this.menuItems[14].slug+'']).then(() => {
 					localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();

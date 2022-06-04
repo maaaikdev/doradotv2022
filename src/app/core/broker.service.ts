@@ -44,13 +44,13 @@ export class BrokerService {
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.service + environment.filters.projectPerService+category+'&fields=*.*.*.*.*', {headers})
 	}
 	newProjectsWorker(author){
-		return this.http.get(environment.apiEndPoint + environment.menuOptions.project + environment.filters.newProjectsWorker+author+'&fields=*.*.*.*', {headers})
+		return this.http.get(environment.apiEndPoint + environment.menuOptions.project + '?' + environment.filters.newProjectsWorker+author+'&fields=*.*.*.*', {headers})
 	}
 	languageApp() {
 		return this.http.get(environment.apiEndPoint + environment.filters.menuLang, {headers})
 	}
 	newProjectsPerServiceAndWorker(category, worker){
-		return this.http.get(environment.apiEndPoint + environment.menuOptions.project + '?' + environment.filters.newProjectsService+category+ '&' +environment.filters.newProjectsWorker+ worker +'&fields=*.*.*.*', {headers})
+		return this.http.get(environment.apiEndPoint + environment.menuOptions.project + '?' + + environment.filters.newProjectsService+category+ '&' +environment.filters.newProjectsWorker+ worker +'&fields=*.*.*.*', {headers})
 
 	}
 

@@ -60,48 +60,83 @@ export class WithinProjectComponent implements OnInit {
 			if(this.workers.data[0].workers[0] == undefined) {
 				this.router.navigate(['/']);
 			} else {
-				if(this.home == 'true' && this.homeSlider == 'false') {
+				// if(this.home == 'true' && this.homeSlider == 'false') {
+				// 	this.changeColor();
+				// 	this.broker.workerProjects(this.author).subscribe((response: any) => {
+				// 		this.authorWorker = response;
+				// 		this.broker.projectsItemsHome().subscribe((response: any) => {
+				// 			this.projectsData = response;
+				// 			this.projects = this.projectsData.data
+				// 			console.log("projects  home no  slider")
+				// 			console.log(this.projects)
+				// 			const refreshProject = this.projects.find((p) => p.id === parseInt(this.id));
+				// 			this.projectAuthor = refreshProject
+				// 			console.log(this.projectAuthor)
+				// 			const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+				// 			this.nextProjectUp = nextProject;	
+				// 			this.changeColor();
+				// 			this.addProject.spinnerActive = false;		
+				// 		});						
+				// 	});
+				//} else if(this.home == 'true' && this.homeSlider == 'true'){
+					// this.changeColor();
+					// this.broker.workerProjects(this.author).subscribe((response: any) => {
+					// 	this.authorWorker = response;	
+					// 	this.broker.projectsItemsSlider().subscribe((response: any) => {	
+
+							
+					// 		this.projectsDataSlider = response;
+					// 		this.projects = this.projectsDataSlider.data
+					// 		console.log("projects  home  slider")
+					// 		console.log(this.projects)
+					// 		const refreshProject = this.projects.find((p) => p.id === parseInt(this.id));
+					// 		this.projectAuthor = refreshProject
+					// 		console.log(this.projectAuthor)
+					// 		const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+					// 		this.nextProjectUp = nextProject;
+					// 		this.changeColor();
+					// 		this.addProject.spinnerActive = false;	
+					// 	});				
+					// });
+			//	}else {
 					this.changeColor();
-					this.broker.workerProjects(this.author).subscribe((response: any) => {
+					// this.broker.workerProjects(this.author).subscribe((response: any) => {
+					// 	this.authorWorker = response;
+					// 	this.projects = this.authorWorker?.data[0].projects;
+					// 	console.log(this.projects)
+
+					// 	const refreshProject = this.projects.find((p) => p.project_id.id === parseInt(this.id));
+					// 	this.projectAuthor = refreshProject.project_id;
+					// 	console.log(this.projectAuthor)
+		
+					// 	let nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+			
+					// 	while (nextProject?.project_id.id == this.projectAuthor.id) {
+					// 		nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+					// 	}
+					// 	this.nextProjectUp = nextProject?.project_id;						
+					// 	this.addProject.spinnerActive = false;	
+					// });
+
+					this.broker.newProjectsWorker(this.author).subscribe((response: any) => {
+						
 						this.authorWorker = response;
-						this.broker.projectsItemsHome().subscribe((response: any) => {
-							this.projectsData = response;
-							this.projects = this.projectsData.data
-							const refreshProject = this.projects.find((p) => p.id === parseInt(this.id));
-							this.projectAuthor = refreshProject
-							const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
-							this.nextProjectUp = nextProject;	
-							this.changeColor();
-							this.addProject.spinnerActive = false;		
-						});						
-					});
-				} else if(this.home == 'true' && this.homeSlider == 'true'){
-					this.changeColor();
-					this.broker.workerProjects(this.author).subscribe((response: any) => {
-						this.authorWorker = response;	
-						this.broker.projectsItemsSlider().subscribe((response: any) => {					
-							this.projectsDataSlider = response;
-							this.projects = this.projectsDataSlider.data
-							const refreshProject = this.projects.find((p) => p.id === parseInt(this.id));
-							this.projectAuthor = refreshProject
-							const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
-							this.nextProjectUp = nextProject;
-							this.changeColor();
-							this.addProject.spinnerActive = false;	
-						});				
-					});
-				}else {
-					this.changeColor();
-					this.broker.workerProjects(this.author).subscribe((response: any) => {
-						this.authorWorker = response;
-						this.projects = this.authorWorker?.data[0].projects;
-						const refreshProject = this.projects.find((p) => p.project_id.id === parseInt(this.id));
-						this.projectAuthor = refreshProject.project_id;
-						const nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
-						this.nextProjectUp = nextProject?.project_id;						
+						this.projects = response.data;
+	
+
+						const refreshProject = this.projects.find((p) => p.id === parseInt(this.id));
+						this.projectAuthor = refreshProject;
+						console.log(this.projectAuthor)
+		
+						let nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+			
+						while (nextProject?.id == this.projectAuthor.id) {
+							nextProject = this.projects[Math.floor(Math.random() * this.projects.length)];
+						}
+						this.nextProjectUp = nextProject;						
 						this.addProject.spinnerActive = false;	
 					});
-				}
+			//	}
 			}			
 		});
 		this.addProject.spinnerActive = false;		
