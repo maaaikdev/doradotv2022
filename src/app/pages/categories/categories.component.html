@@ -11,9 +11,6 @@
     </div>    
     <div class="tab-content" id="myTabContent">
         <div class="tab-pane fade" *ngFor="let names of workers?.data[0].workers; let i = index" [ngClass]="{'show active': i == 0 }" id="worker{{i}}" role="tabpanel" attr.aria-labelledby="worker{{i}}-tab">
-            <!-- <div class="author-header">
-                <h2 [ngClass]="{'white': slug == 'online'}">{{names.worker_id.name2}}</h2>
-            </div>             -->
             <div class="container-a2">
                 <div class="video-gallery">
                     <div class="video-embed">
@@ -36,12 +33,7 @@
 </section>
 
 <section class="workers animation" [ngClass]="getBg()" *ngIf="slug == 'animacion'">
-    <!-- <h3>{{workerData?.service_id.name}}</h3>   -->
     <div class="video-embed">
         <iframe [src]="workers.data[0].reel | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
-    <!-- <div class="video-description">
-        <h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.title}}</h2>
-        <p [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.credits}}</p>
-    </div> -->
 </section>

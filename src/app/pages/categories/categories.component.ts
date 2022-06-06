@@ -62,6 +62,7 @@ export class CategoriesComponent implements OnInit {
 			} else {				
 				if(this.slug == 'animacion') {
 					if(this.workers.data[0].reel != "") {
+						this.project.spinnerActive = false;	
 					} else {
 						$("#menuModal").modal('hide');
 						this.router.navigate(['/'])
