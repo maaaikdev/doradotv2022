@@ -4,8 +4,9 @@
 		<video autoplay [muted]="'muted'" loop>
 			<source [src]="items.gif.data.full_url" type="video/mp4" />
 		</video>
-		<div class="head-project" (click)="withinProject(items, items?.workers[0].worker_id.slug, items?.services[0].service_id.slug, items?.id, items?.home_slider, items?.home_slider)">
-			<i class="fa fa-play" aria-hidden="true"></i>
+		<!-- <div class="head-project" (click)="withinProject(items, items?.workers[0].worker_id.slug, items?.services[0].service_id.slug, items?.id, items?.home_slider, items?.home_slider)"> -->
+		<div class="head-project" >
+			<i class="fa fa-play" aria-hidden="true" (click)="openModal(template, items)"></i>
 			<h2>{{items?.title}}</h2>
 			<h3>{{items?.subtitle}}</h3>
 			<p>{{items?.credits}}</p>
@@ -13,3 +14,36 @@
 	</slide>
 </carousel>
 <app-projects-home [dataVideo]="itemVideoNull" #target></app-projects-home>
+
+<ng-template #template>
+	 <div class="modal-header">
+		<button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+			<i class="fa fa-times" aria-hidden="true" [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
+		</button>
+	</div>
+	<section class="project-in" [ngClass]="getBg(projectAuthor?.services[0].service_id.slug)">    
+		<div class="video-embed">
+			<iframe [src]="projectAuthor.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+		</div>
+		<div class="video-description">
+			<h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.title}}</h2>
+			<p [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.credits}}</p>
+		</div>
+	</section>
+	<section class="project-other" [ngClass]="getBg(nextProjectUp?.services[0].service_id.slug)">
+		<div class="image-proj">
+			<img 
+				[src]="nextProjectUp?.photo.data.full_url"            
+				title="{{nextProjectUp?.photo_text}}" 
+				alt="{{nextProjectUp?.name}}" />
+		</div>
+		<div class="description-proj">
+			<a class="next-project" (click)="nextProject(nextProjectUp)" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">
+				Next project
+				<i class="fa fa-arrow-right" aria-hidden="true" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
+			</a>
+			<h3 [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.title}}</h3>
+			<p [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.subtitle}}</p>
+		</div>
+	</section>
+</ng-template>

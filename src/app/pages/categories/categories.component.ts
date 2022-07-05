@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BrokerService } from 'src/app/core/broker.service';
 import { ProjectsService } from 'src/app/core/projects.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 declare var $: any;
 
@@ -12,6 +13,7 @@ declare var $: any;
 })
 export class CategoriesComponent implements OnInit {
 
+	modalRef?: BsModalRef;
 	category: any;
 	workers: any;
 	workerItem: any;
@@ -26,12 +28,16 @@ export class CategoriesComponent implements OnInit {
 	lang: string;
 	public activePillIndex:number = 0;
 	activeTabTemplate: any;
+	projectAuthor: any;
+	projectItemSlider: any;
+	nextProjectUp: any;
 	
 	constructor(
 		private activateRoute: ActivatedRoute,
 		public broker: BrokerService,
 		public project: ProjectsService,
 		public router: Router,
+		private modalService: BsModalService
 	) {
 		this.slug = this.activateRoute.snapshot.params['slug'];
     	this.author = this.activateRoute.snapshot.params['author'];
@@ -54,7 +60,7 @@ export class CategoriesComponent implements OnInit {
 		this.broker.projectsService(slug).subscribe((response: any) => {
 			this.project.spinnerActive = true;
 			this.workers = response;
-			this.workers.data[0].workers.sort((a,b)=> (a.worker_id.sort > b.worker_id.sort) ? 1 : -1)
+			this.workers.data[0].workers.sort((a,b)=> (a.worker_id.sort_order > b.worker_id.sort_order) ? 1 : -1)
 			
 			if(this.workers.data[0] == undefined) {
 				$("#menuModal").modal('hide');
@@ -73,8 +79,10 @@ export class CategoriesComponent implements OnInit {
 					$("#menuModal").modal('hide');					
 					this.broker.newProjectsPerServiceAndWorker(slug, author).subscribe((response: any) => {					
 						this.authorWorker = response.data;
-						console.log(this.authorWorker)
 						this.projects = this.authorWorker;
+						this.projects.sort(function(a, b){
+							return a.sort_order - b.sort_order
+						});	
 						this.project.spinnerActive = false;	
 					});					
 				}				
@@ -100,12 +108,68 @@ export class CategoriesComponent implements OnInit {
 		this.captureVideo = projects;
 	}
 
-	withinProject(proj, color, id, home, homeSlider) {
-		this.project.openProject(proj, color, id, home, homeSlider);
+	withinProject(proj, author, color, id, home, homeSlider) {
+		this.project.openProject(proj, author, color, id, home, homeSlider);
 	}
+
+	//NEW MODAL
+	openModal(template: TemplateRef<any>, item) {
+		this.modalRef = this.modalService.show(template);
+		this.projectAuthor = item
+		const refreshProject = this.projects.find((p) => p.id === parseInt(this.projectAuthor.id));
+		const index = this.projects.findIndex( (element) => element.id === parseInt(this.projectAuthor.id));
+		this.getNextMember(this.projects, index);
+	}
+
+	nextProject(nextProjectUp){
+		this.projectAuthor = nextProjectUp
+		const refreshProject = this.projects.find((p) => p.id === parseInt(this.projectAuthor.id));
+		const index = this.projects.findIndex( (element) => element.id === parseInt(this.projectAuthor.id));
+		this.getNextMember(this.projects, index);
+	}
+
+	getNextMember(array, startIndex) {
+		const ultimoElemento = array[array.length - 1]
+		startIndex = startIndex || 0;
+		startIndex++;
+		//this.nextProjectUp = array[startIndex];
+		if(this.nextProjectUp == ultimoElemento){
+			this.nextProjectUp = array[0];
+		}
+		 else if(this.projectAuthor == ultimoElemento) {
+			this.nextProjectUp = array[0];
+		} 
+		else {
+			this.nextProjectUp = array[startIndex];
+		}
+	};
 
 	getBg() {
 		switch (this.slug) {			
+			case 'edicion':
+				return 'edition'
+				break
+			case 'correccion-de-color':
+				return 'color';
+				break
+			case 'animacion':
+				return 'animation';
+				break
+			case 'online':
+				return 'online';
+				break
+			case 'musica-original':
+				return 'music';
+				break
+			default:
+				return '';
+		}		
+	}
+
+	
+
+	getBgFill(category) {
+		switch (category) {			
 			case 'edicion':
 				return 'edition'
 				break

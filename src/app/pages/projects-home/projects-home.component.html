@@ -1,25 +1,11 @@
-<!-- <section class="projects-home" >
-    <div class="box-video" *ngFor="let projects of dataVideo; let i = index" [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'wid-100' : 'wid-50' ">
-        <video autoplay [muted]="'muted'" loop [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'object-fit' : ''">
-            <source [src]="projects.gif.data.full_url" type="video/mp4" />
-        </video>
-        <h4>{{projects.title}}</h4>
-        <div class="caption" (click)="withinProject(projects, projects?.workers[0].worker_id.slug, projects?.services[0].service_id.slug, projects?.id)">
-            <div class="caption-text " [ngClass]="getBg(projects.services[0].service_id.slug)">
-                <i class="fa fa-play" aria-hidden="true" [ngClass]="projects.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
-                <h5 [ngClass]="projects.services[0].service_id.slug == 'online' ? 'white' : ''">{{projects.title}}</h5>
-                <p [ngClass]="projects.services[0].service_id.slug == 'online' ? 'white' : ''">{{projects.name}}</p>
-            </div>
-        </div>
-    </div>
-</section> -->
 <section class="projects-home" >
     <div class="box-video" *ngFor="let projects of dataVideo; let i = index" [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'wid-100' : 'wid-50' ">
         <video (click)="withinProjectHome(projects, projects?.workers[0].worker_id.slug, projects?.services[0].service_id.slug, projects?.id, projects?.home, projects?.home_slider)" autoplay [muted]="'muted'" loop [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'object-fit' : ''">
             <source [src]="projects.gif.data.full_url" type="video/mp4" />
         </video>
         <h4>{{projects.title}}</h4>
-        <div class="caption" (click)="withinProjectHome(projects, projects?.workers[0].worker_id.slug, projects?.services[0].service_id.slug, projects?.id, projects?.home, projects?.home_slider)">
+        <!-- <div class="caption" (click)="withinProjectHome(projects, projects?.workers[0].worker_id.slug, projects?.services[0].service_id.slug, projects?.id, projects?.home, projects?.home_slider)"> -->
+            <div class="caption" (click)="openModal(template, projects)">
             <div class="caption-text " [ngClass]="getBg(projects?.services[0].service_id.slug)">
                 <i class="fa fa-play" aria-hidden="true" [ngClass]="projects?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
                 <h5 [ngClass]="projects?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projects.title}}</h5>
@@ -28,3 +14,36 @@
         </div>
     </div>
 </section>
+
+<ng-template #template>
+    <div class="modal-header">
+       <button type="button" class="btn-close close pull-right" aria-label="Close" (click)="modalRef?.hide()">
+           <i class="fa fa-times" aria-hidden="true" [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
+       </button>
+   </div>
+   <section class="project-in" [ngClass]="getBg(projectAuthor?.services[0].service_id.slug)">    
+       <div class="video-embed">
+           <iframe [src]="projectAuthor.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+       </div>
+       <div class="video-description">
+           <h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.title}}</h2>
+           <p [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.credits}}</p>
+       </div>
+   </section>
+   <section class="project-other" [ngClass]="getBg(nextProjectUp?.services[0].service_id.slug)">
+       <div class="image-proj">
+           <img 
+               [src]="nextProjectUp?.photo.data.full_url"            
+               title="{{nextProjectUp?.photo_text}}" 
+               alt="{{nextProjectUp?.name}}" />
+       </div>
+       <div class="description-proj">
+           <a class="next-project" (click)="nextProject(nextProjectUp)" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">
+               Next project
+               <i class="fa fa-arrow-right" aria-hidden="true" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
+           </a>
+           <h3 [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.title}}</h3>
+           <p [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.subtitle}}</p>
+       </div>
+   </section>
+</ng-template>

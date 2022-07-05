@@ -156,7 +156,6 @@ export class NavComponent implements OnInit {
 				} else {
 					var urlSplit = this.url.split("/")[2];
 					this.urlSplit = urlSplit;
-					console.log("URL", this.urlSplit )
 					switch (this.urlSplit) {			
 						case 'edicion':
 							this.light = false;

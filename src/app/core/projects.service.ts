@@ -20,6 +20,7 @@ export class ProjectsService {
 	colorCatgeory: any;
 	home: any;
 	homeSlider: any;
+	project: any;
 	
 	constructor(
 		public router: Router,
@@ -29,25 +30,32 @@ export class ProjectsService {
 		
 	 }
 
-	openProject(itemArrived, author, id, home, homeSlider){
-		this.projectAuthor = itemArrived;
-		this.router.navigate(['/project/'+itemArrived.services[0].service_id.slug+'/'+author+'/'+itemArrived.id+'']).then(() => {
+	openProject(proj, author, color, id, home, homeSlider){
+		this.projectAuthor = author;
+		this.project = proj
+		localStorage.setItem("home", home);
+		localStorage.setItem("home_slider", homeSlider);
+		this.router.navigate(['/project/'+proj.services[0].service_id.slug+'/'+author+'/'+proj.id+'']).then(() => {
 			window.location.reload();
-		});	
+		});
+		//this.router.navigate(['/project/'+proj.services[0].service_id.slug+'/'+author+'/'+proj.id+''])
 	}
 
-	openProjectHome(proj, author, color, id){
+	openProjectHome(proj, author, color, id, home, homeSlider){
 		this.projectAuthor = author;
+		this.project = proj
 		setTimeout(() => {
 			this.spinnerActive = true;	
 		}, 1500);	
-		this.router.navigate(['/project/'+color+'/'+author+'/'+id+'']).then(() => {
-			window.location.reload();
-		});	
+		// this.router.navigate(['/project/'+color+'/'+author+'/'+id+'']).then(() => {
+		// 	window.location.reload();
+		// });
+		this.router.navigate(['/project/'+color+'/'+author+'/'+id+''])
 	}
 
 	openProjectHome2(proj, author, color, id, home, homeSlider){
 		this.projectAuthor = author;
+		this.project = proj
 		localStorage.setItem("home", home);
 		localStorage.setItem("home_slider", homeSlider);
 		this.router.navigate(['/project/'+color+'/'+author+'/'+id+''])

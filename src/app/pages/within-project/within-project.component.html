@@ -17,7 +17,7 @@
             alt="{{nextProjectUp?.name}}" />
     </div>
     <div class="description-proj">
-        <a class="next-project" (click)="withinProject(nextProjectUp, author, nextProjectUp?.id,  nextProjectUp?.home, nextProjectUp?.home_slider )" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">
+        <a class="next-project" (click)="withinProject(nextProjectUp, author, slug, nextProjectUp?.id, nextProjectUp?.home, nextProjectUp?.home_slider )" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">
             Next project
             <i class="fa fa-arrow-right" aria-hidden="true" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
         </a>
