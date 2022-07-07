@@ -60,7 +60,7 @@ export class CategoriesComponent implements OnInit {
 		this.broker.projectsService(slug).subscribe((response: any) => {
 			this.project.spinnerActive = true;
 			this.workers = response;
-			this.workers.data[0].workers.sort((a,b)=> (a.worker_id.sort_order > b.worker_id.sort_order) ? 1 : -1)
+			this.workers.data[0].workers.sort((a,b)=> (a.worker_id.sort > b.worker_id.sort) ? 1 : -1)
 			
 			if(this.workers.data[0] == undefined) {
 				$("#menuModal").modal('hide');
