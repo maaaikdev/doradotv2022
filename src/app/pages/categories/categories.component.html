@@ -14,7 +14,7 @@
             <div class="container-a2">
                 <div class="video-gallery">
                     <div class="video-embed">
-                        <div class="video-box" *ngFor="let project of projects; let i = index" [ngClass]="i == 0 || i == 3 || i == 6 || i == 9 ? 'wid-100' : 'wid-50' ">
+                        <div class="video-box" *ngFor="let project of projects; let i = index" [ngClass]="i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 ? 'wid-100' : 'wid-50' ">
                             <img (click)="openModal(template, project)" [src]="project.photo.data.thumbnails[5].url" alt="" title="" class="img-author" />
                             <h4>{{project.title}}</h4>
                             <!-- <div class="caption" (click)="withinProject(project, author, slug, project?.id, project?.home, project?.home_slider)"> -->
