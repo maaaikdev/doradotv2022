@@ -1,5 +1,5 @@
 <app-spinner [text]="'Cargando...'" *ngIf="project.spinnerActive"></app-spinner>
-<section class="workers" [ngClass]="getBg()" *ngIf="slug == 'edicion' || slug == 'correccion-de-color' || slug == 'online' || slug == 'musica-original' ">
+<section class="workers" [ngClass]="getBg()" *ngIf="slug == 'edicion' || slug == 'correccion-de-color' || slug == 'online' || slug == 'musica-original'  || slug == 'diseno-sonoro-y-mezcla'">
     <div class="head-tabs">
         <h3 [innerHTML]="lang == 'es' ? workers?.data[0].translations[1].translation : workers?.data[0].translations[0].translation"
         [ngClass]="slug == 'online' ? 'white' : ''"></h3>

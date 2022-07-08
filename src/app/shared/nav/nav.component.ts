@@ -91,7 +91,12 @@ export class NavComponent implements OnInit {
 		this.btnColorMobile()
 		this.broker.languageApp().subscribe((response: any) => {
 			this.menuItems = response.data;
+			console.log(this.menuItems[0].translations.find(p=>p.language == 'es').translation)
 		})
+	}
+
+	getTranslation(item, lang){
+		return item.translations.find(p=>p.language==lang).translation;
 	}
 
 	lang(l){
@@ -108,14 +113,14 @@ export class NavComponent implements OnInit {
 	author(category, l){
 		switch (category) {					
 			case 'edicion':
-				this.router.navigate(['/studio/'+category+'/'+this.menuItems[6].slug+'']).then(() => {
+				this.router.navigate(['/studio/'+category+'/'+this.menuItems[7].slug+'']).then(() => {
 					localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();
 				});
 				break;
 			case 'correccion-de-color':
-				this.router.navigate(['/studio/'+category+'/'+this.menuItems[10].slug+'']).then(() => {
+				this.router.navigate(['/studio/'+category+'/'+this.menuItems[11].slug+'']).then(() => {
 					localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();
@@ -136,12 +141,19 @@ export class NavComponent implements OnInit {
 				});
 				break;
 			case 'musica-original':
-				this.router.navigate(['/studio/'+category+'/'+this.menuItems[14].slug+'']).then(() => {
+				this.router.navigate(['/studio/'+category+'/'+this.menuItems[15].slug+'']).then(() => {
 					localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();
 				});
 				break;
+			case 'diseno-sonoro-y-mezcla':
+					this.router.navigate(['/studio/'+category+'/'+this.menuItems[16].slug+'']).then(() => {
+						localStorage.setItem('lang', l);
+						localStorage.setItem('activeTabTemplate', '0');
+						window.location.reload();
+					});
+					break;	
 			default:
 				return '';
 		}
@@ -177,6 +189,10 @@ export class NavComponent implements OnInit {
 							this.light = false;
 							this.dark = true;
 							break
+						case 'diseno-sonoro-y-mezcla':
+							this.light = false;
+							this.dark = true;
+							break	
 						default:
 							return '';
 					}
@@ -199,7 +215,7 @@ export class NavComponent implements OnInit {
 	logo() {
 		if ($(window).width() >= 768) {			
 			switch (this.color) {			
-				case 'edicion, correccion-de-color, animacion, musica-original':
+				case 'edicion, correccion-de-color, animacion, musica-original, diseno-sonoro-y-mezcla':
 					this.logoDorado = 'assets/images/nav/icon-dorado.svg'
 					break
 				case 'online':
@@ -291,6 +307,17 @@ export class NavComponent implements OnInit {
 					change.removeClass("edition");
 					about.removeClass("gold");
 					break
+				case 'diseno-sonoro-y-mezcla':
+						this.logoDorado = 'assets/images/nav/icon-dorado.svg';
+						this.socialPurple = true;
+						this.socialGold = false;
+						change.addClass("music");
+						change.removeClass("color");
+						change.removeClass("animation");
+						change.removeClass("online");
+						change.removeClass("edition");
+						about.removeClass("gold");
+						break				
 				default:
 					return '';
 			}

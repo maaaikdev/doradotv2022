@@ -129,6 +129,9 @@ export class WithinProjectComponent implements OnInit {
 			case 'musica-original':
 				return 'music';
 				break
+			case 'diseno-sonoro-y-mezcla':
+				return 'music';
+				break		
 			default:
 				return '';
 		}		
@@ -172,6 +175,13 @@ export class WithinProjectComponent implements OnInit {
 				change.removeClass("online");
 				change.removeClass("edition");
 				break
+			case 'diseno-sonoro-y-mezcla':
+					change.addClass("music");
+					change.removeClass("color");
+					change.removeClass("animation");
+					change.removeClass("online");
+					change.removeClass("edition");
+					break	
 			default:
 				return '';
 		}

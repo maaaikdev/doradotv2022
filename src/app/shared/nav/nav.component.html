@@ -61,20 +61,20 @@
 					</a>					
 					<div class="section-btn" (click)="onButtonGroupClick($event)">
 						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langMenu == 'en')"
-							*ngFor="let item of menuItems| slice: 1: 6; let j = index"
+							*ngFor="let item of menuItems| slice: 1: 7; let j = index"
 							(mouseover)="changeColor(item.slug)"
 							
 							(click)="author(item.slug, 'en')"
 							[ngClass]="{'active': item.active || btnColorMobile()}">
-							{{item.translations[0].translation}}
+							{{getTranslation(item, 'en')}}
 						</a>
 						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langMenu == 'es')"
-							*ngFor="let item of menuItems| slice: 1: 6; let j = index"
+							*ngFor="let item of menuItems| slice: 1: 7; let j = index"
 							(mouseover)="changeColor(item.slug)"
 							
 							(click)="author(item.slug, 'es')"
 							[ngClass]="{'active': item.active || btnColorMobile()}">
-							{{item.translations[1].translation}}
+							{{getTranslation(item, 'es')}}
 						</a>
 					</div>
 					<div class="section-about">

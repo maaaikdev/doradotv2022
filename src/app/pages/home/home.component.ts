@@ -128,6 +128,9 @@ export class HomeComponent implements OnInit {
 			case 'musica-original':
 				return 'music';
 				break
+			case 'diseno-sonoro-y-mezcla':
+				return 'music';
+				break	
 			default:
 				return '';
 		}		
