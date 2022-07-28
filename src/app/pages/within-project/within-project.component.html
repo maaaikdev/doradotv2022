@@ -5,7 +5,7 @@
         <iframe [src]="projectAuthor.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
     </div>
     <div class="video-description">
-        <h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.title}}</h2>
+        <h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.titulo}}</h2>
         <p [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.credits}}</p>
     </div>
 </section>
@@ -21,7 +21,7 @@
             Next project
             <i class="fa fa-arrow-right" aria-hidden="true" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
         </a>
-        <h3 [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.title}}</h3>
+        <h3 [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.titulo}}</h3>
         <p [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.subtitle}}</p>
     </div>
 </section>

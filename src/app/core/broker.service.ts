@@ -53,5 +53,12 @@ export class BrokerService {
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.project + '?' + + environment.filters.newProjectsService+category+ '&' +environment.filters.newProjectsWorker+ worker +'&fields=*.*.*.*', {headers})
 
 	}
+	newProjectsHome(){
+		return this.http.get(environment.apiEndPoint + environment.menuOptions.home_projects + '?' + environment.filters.fields, {headers})
+	}
+	newProjectsSlider(){
+		return this.http.get(environment.apiEndPoint + environment.menuOptions.slider_projects + '?' + environment.filters.fields, {headers})
+	}
+
 
 }

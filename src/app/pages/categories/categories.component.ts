@@ -79,7 +79,8 @@ export class CategoriesComponent implements OnInit {
 					$("#menuModal").modal('hide');					
 					this.broker.newProjectsPerServiceAndWorker(slug, author).subscribe((response: any) => {					
 						this.authorWorker = response.data;
-						this.projects = this.authorWorker;						
+						this.projects = this.authorWorker;	
+						this.projects = this.projects.filter(video => video.status == "published");
 						this.projects.sort(function(a, b){
 							return a.sort_order - b.sort_order
 						});

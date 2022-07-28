@@ -16,12 +16,12 @@
                     <div class="video-embed">
                         <div class="video-box" *ngFor="let project of projects; let i = index" [ngClass]="i == 0 || i == 3 || i == 6 || i == 9 || i == 12 || i == 15 || i == 18 ? 'wid-100' : 'wid-50' ">
                             <img (click)="openModal(template, project)" [src]="project.photo.data.thumbnails[5].url" alt="" title="" class="img-author" />
-                            <h4>{{project.title}}</h4>
+                            <h4>{{project.titulo}}</h4>
                             <!-- <div class="caption" (click)="withinProject(project, author, slug, project?.id, project?.home, project?.home_slider)"> -->
                             <div class="caption" (click)="openModal(template, project)">
                                 <div class="caption-text" [ngClass]="getBg()">
                                     <i class="fa fa-play" aria-hidden="true" [ngClass]="{'white': slug == 'online'}"></i>
-                                    <h5 [ngClass]="{'white': slug == 'online'}">{{project.title}}</h5>
+                                    <h5 [ngClass]="{'white': slug == 'online'}">{{project.titulo}}</h5>
                                     <p [ngClass]="{'white': slug == 'online'}">{{project.subtitle}}</p>
                                 </div>
                             </div>
@@ -50,7 +50,7 @@
            <iframe [src]="projectAuthor.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
        </div>
        <div class="video-description">
-           <h2 [ngClass]="slug == 'online' ? 'white' : ''">{{projectAuthor?.title}}</h2>
+           <h2 [ngClass]="slug == 'online' ? 'white' : ''">{{projectAuthor?.titulo}}</h2>
            <p [ngClass]="slug == 'online' ? 'white' : ''">{{projectAuthor?.credits}}</p>
        </div>
    </section>
@@ -66,7 +66,7 @@
                Next project
                <i class="fa fa-arrow-right" aria-hidden="true" [ngClass]="slug == 'online' ? 'white' : ''"></i>
            </a>
-           <h3 [ngClass]="slug == 'online' ? 'white' : ''">{{nextProjectUp?.title}}</h3>
+           <h3 [ngClass]="slug == 'online' ? 'white' : ''">{{nextProjectUp?.titulo}}</h3>
            <p [ngClass]="slug == 'online' ? 'white' : ''">{{nextProjectUp?.subtitle}}</p>
        </div>
    </section>

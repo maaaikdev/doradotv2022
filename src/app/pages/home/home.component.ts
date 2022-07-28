@@ -42,24 +42,50 @@ export class HomeComponent implements OnInit {
 
 	getProjectsHome(){
 		this.spinnerActive = true;	
-		this.broker.projectsItemsHome().subscribe((response: any) => {
+		this.broker.newProjectsHome().subscribe((response: any) => {
 			if(response != undefined) {
-				this.projectsData = response;
-				this.projectItem = this.projectsData.data;
-				this.projectItem = this.projectItem.sort((a,b)=> (a.order_home > b.order_home) ? 1 : -1) 
 
+				// this.projectsData = response;
+				// this.projectItem = this.projectsData.data;
+				// this.projectItem = this.projectItem.sort((a,b)=> (a.order_home > b.order_home) ? 1 : -1) 
+
+				this.projectsData = response.data;
+				//console.log(this.projectsData);
+				this.projectsData = this.projectsData.sort((a,b)=> (a.sort > b.sort) ? 1 : -1); 
+				this.projectItem = this.projectsData.map(function(e){
+					return e.project;
+				});
+
+				this.itemVideoNull = this.projectItem.filter(video => video.status == "published");
 				this.itemVideoNull = this.projectItem.filter(video => video.gif != null);
-				this.itemVideoNull.sort(function(a, b){return a.sort_order - b.sort_order});
+
+
+			//	this.itemVideoNull.sort(function(a, b){return a.sort_order - b.sort_order});
 				this.spinnerActive = false;
 			}			
 		});
 	}
 	getProjectsHomeSlider(){
 		this.spinnerActive = true;		
-		this.broker.projectsItemsSlider().subscribe((response: any) => {					
-			this.projectsDataSlider = response;
-			this.projectItemSlider = this.projectsDataSlider.data;
-			this.projectItemSlider.sort(function(a, b){return a.sort_order - b.sort_order});
+		this.broker.newProjectsSlider().subscribe((response: any) => {					
+			// this.projectsDataSlider = response;
+			// this.projectItemSlider = this.projectsDataSlider.data;
+			// this.projectItemSlider.sort(function(a, b){return a.sort_order - b.sort_order});
+			this.projectsDataSlider = response.data;
+			console.log(this.projectsDataSlider);
+			this.projectsDataSlider = this.projectsDataSlider.sort((a,b)=> (a.sort > b.sort) ? 1 : -1); 
+
+			this.projectItemSlider = this.projectsDataSlider.map(function(e){
+				return e.project;
+			});
+
+			console.log("Projects slider")
+			console.log(this.projectItemSlider);
+			this.projectItemSlider = this.projectItemSlider.filter(video => video.status == "published");
+			this.projectItemSlider = this.projectItemSlider.filter(video => video.gif != null);
+
+
+
 			this.spinnerActive = false;
 		});		
 	}

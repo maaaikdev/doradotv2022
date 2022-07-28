@@ -7,7 +7,7 @@
 		<!-- <div class="head-project" (click)="withinProject(items, items?.workers[0].worker_id.slug, items?.services[0].service_id.slug, items?.id, items?.home_slider, items?.home_slider)"> -->
 		<div class="head-project" >
 			<i class="fa fa-play" aria-hidden="true" (click)="openModal(template, items)"></i>
-			<h2>{{items?.title}}</h2>
+			<h2>{{items?.titulo}}</h2>
 			<h3>{{items?.subtitle}}</h3>
 			<p>{{items?.credits}}</p>
 		</div>
@@ -26,7 +26,7 @@
 			<iframe [src]="projectAuthor.vimeo | safe: 'resourceUrl'" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 		</div>
 		<div class="video-description">
-			<h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.title}}</h2>
+			<h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.titulo}}</h2>
 			<p [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.credits}}</p>
 		</div>
 	</section>
@@ -42,7 +42,7 @@
 				Next project
 				<i class="fa fa-arrow-right" aria-hidden="true" [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''"></i>
 			</a>
-			<h3 [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.title}}</h3>
+			<h3 [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.titulo}}</h3>
 			<p [ngClass]="nextProjectUp?.services[0].service_id.slug == 'online' ? 'white' : ''">{{nextProjectUp?.subtitle}}</p>
 		</div>
 	</section>
