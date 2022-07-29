@@ -60,5 +60,8 @@ export class BrokerService {
 		return this.http.get(environment.apiEndPoint + environment.menuOptions.slider_projects + '?' + environment.filters.fields, {headers})
 	}
 
+	newProjectsPerWorker(worker){
+		return this.http.get(environment.apiEndPoint + environment.menuOptions.projects_workers + '?' + environment.filters.newProjectWorkerFilter + worker + '&' + environment.filters.fields, {headers})
+	}
 
 }

@@ -11,7 +11,8 @@ export const environment = {
 		worker: '/worker',
 		service: '/service',
 		home_projects:'/home_projects',
-		slider_projects:'/slider_projects'
+		slider_projects:'/slider_projects',
+		projects_workers:'/projects_workers'
 	},
 	filters: {
 		projectFilter: '?filter[home_slider][nempty]&fields=*.*.*.*.*',
@@ -21,6 +22,7 @@ export const environment = {
 		menuLang: '/menu?fields=*.*',
 		newProjectsWorker: 'filter[workers.worker_id.slug]=',
 		newProjectsService: 'filter[services.service_id.slug]=',
+		newProjectWorkerFilter:'filter[worker.slug]=',
 		fields:'&fields=*.*.*.*.*'
 	}
 };

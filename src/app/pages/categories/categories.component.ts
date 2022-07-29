@@ -12,7 +12,6 @@ declare var $: any;
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
-
 	modalRef?: BsModalRef;
 	category: any;
 	workers: any;
@@ -77,13 +76,15 @@ export class CategoriesComponent implements OnInit {
 					 			
 					this.workerData = this.workers.data[0].workers[0];
 					$("#menuModal").modal('hide');					
-					this.broker.newProjectsPerServiceAndWorker(slug, author).subscribe((response: any) => {					
+					this.broker.newProjectsPerWorker( author).subscribe((response: any) => {					
 						this.authorWorker = response.data;
-						this.projects = this.authorWorker;	
-						this.projects = this.projects.filter(video => video.status == "published");
-						this.projects.sort(function(a, b){
-							return a.sort_order - b.sort_order
+						this.authorWorker = this.authorWorker.sort((a,b)=> (a.sort > b.sort) ? 1 : -1); 
+
+						this.projects= this.authorWorker.map(function(e){
+							return e.project;
 						});
+						this.projects = this.projects.filter(video => video.status == "published");
+
 						this.project.spinnerActive = false;	
 					});					
 				}				

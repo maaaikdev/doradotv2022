@@ -7,7 +7,8 @@ export const environment = {
 	worker: '/worker',
 	service: '/service',
 	home_projects:'/home_projects',
-	slider_projects:'/slider_projects'
+	slider_projects:'/slider_projects',
+	projects_workers:'/projects_workers'
 },
 filters: {
 	projectFilter: '?filter[home_slider][nempty]&fields=*.*.*.*.*',
