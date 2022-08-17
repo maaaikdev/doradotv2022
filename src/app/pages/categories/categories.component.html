@@ -51,6 +51,7 @@
        </div>
        <div class="video-description">
            <h2 [ngClass]="slug == 'online' ? 'white' : ''">{{projectAuthor?.titulo}}</h2>
+           <h4 [ngClass]="slug == 'online' ? 'white' : ''">{{projectAuthor?.subtitle}}</h4>
            <p [ngClass]="slug == 'online' ? 'white' : ''">{{projectAuthor?.credits}}</p>
        </div>
    </section>
