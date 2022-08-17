@@ -32,6 +32,7 @@
 		</div>
 		<div class="video-description">
 			<h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.titulo}}</h2>
+			<h2 [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.subtitle}}</h2>
 			<p [ngClass]="projectAuthor?.services[0].service_id.slug == 'online' ? 'white' : ''">{{projectAuthor?.credits}}</p>
 		</div>
 	</section>

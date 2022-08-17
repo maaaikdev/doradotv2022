@@ -117,42 +117,42 @@ export class NavComponent implements OnInit {
 		switch (category) {					
 			case 'edicion':
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[7].slug+'']).then(() => {
-					localStorage.setItem('lang', l);
+				//	localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();
 				});
 				break;
 			case 'correccion-de-color':
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[11].slug+'']).then(() => {
-					localStorage.setItem('lang', l);
+				//	localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();
 				});
 				break;
 			case 'animacion':
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[4].slug+'']).then(() => {
-					localStorage.setItem('lang', l);
+				//	localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();
 				});
 				break;
 			case 'online':
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[5].slug+'']).then(() => {
-					localStorage.setItem('lang', l);
+				//	localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();
 				});
 				break;
 			case 'musica-original':
 				this.router.navigate(['/studio/'+category+'/'+this.menuItems[15].slug+'']).then(() => {
-					localStorage.setItem('lang', l);
+			//		localStorage.setItem('lang', l);
 					localStorage.setItem('activeTabTemplate', '0');
 					window.location.reload();
 				});
 				break;
 			case 'diseno-sonoro-y-mezcla':
 					this.router.navigate(['/studio/'+category+'/'+this.menuItems[16].slug+'']).then(() => {
-						localStorage.setItem('lang', l);
+				//		localStorage.setItem('lang', l);
 						localStorage.setItem('activeTabTemplate', '0');
 						window.location.reload();
 					});

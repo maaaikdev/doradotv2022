@@ -30,6 +30,7 @@ export class CategoriesComponent implements OnInit {
 	projectAuthor: any;
 	projectItemSlider: any;
 	nextProjectUp: any;
+	area:any;
 	
 	constructor(
 		private activateRoute: ActivatedRoute,
@@ -53,6 +54,7 @@ export class CategoriesComponent implements OnInit {
 	ngOnInit() {
 		this.getBg();		
 		this.lang = localStorage.getItem('lang');		
+		
 	}
 
 	private projectItems(slug, author) {		
@@ -60,6 +62,9 @@ export class CategoriesComponent implements OnInit {
 			this.project.spinnerActive = true;
 			this.workers = response;
 			this.workers.data[0].workers.sort((a,b)=> (a.worker_id.sort > b.worker_id.sort) ? 1 : -1)
+			this.area = this.workers?.data[0].translations.find(a=>a.language === this.lang);
+			console.log("aaaareaaaa")
+			console.log(this.area.translation);
 			
 			if(this.workers.data[0] == undefined) {
 				$("#menuModal").modal('hide');
