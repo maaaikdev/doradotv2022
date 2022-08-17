@@ -13,6 +13,9 @@ body {
             @media(min-width:1720px) {
                 margin-bottom: 3rem;
             }
+            @media(max-width:768px) {
+                display: none;
+            }
             button {
                 width: 7px;
                 height: 7px;
@@ -26,7 +29,12 @@ body {
                     opacity: 1;
                     border: 5px solid transparent;
                     outline: 2px solid $gold;                 
-                }                
+                }
+                @media(max-width:768px) {
+                    width: 8px;
+                    height: 8px;
+                    margin: 0 12px;
+                }
             }
         }
     }
@@ -148,20 +156,47 @@ body {
         bottom: 36px;
         display: flex;
         justify-content: center;
-        z-index: 1000;
+        z-index: 9;
         flex-direction: column;
         cursor: pointer;
+        @media(max-width:768px) {
+            width: 100%;
+            left: 0;
+            right: 0;
+            bottom: 8px;
+            text-align: center;
+        }
         span {
             font-family: $raleway;
             font-size: 20px;
             line-height: 40px;
             font-weight: 500;
-            color: $white;
+            color: $white;            
         }
         img {            
             width: 24px;
             margin: 0 auto;
+            @media(max-width:768px) {
+                display: none;
+            }
         }
+        .vertical-line {
+            display: none;
+            @media(max-width:768px) {
+                display: block;
+                background-color: $gold;
+                width: 3px;
+                height: 60px;
+                margin: 0 auto;   
+            }
+        }
+    }
+}
+
+#projectsScroll {
+    scroll-margin-top: 90px;
+    @media(max-width:768px) {
+        scroll-margin-top: 78px;  
     }
 }
 
