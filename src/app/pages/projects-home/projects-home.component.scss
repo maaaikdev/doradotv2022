@@ -42,10 +42,11 @@
             height: 100% !important;
             @media(max-width:768px) {
                 transform: initial;
+                object-fit: fill;
                 width: 100%;
             }
             &.object-fit{
-                object-fit: initial;
+                object-fit: none;
             }
         }
         h4 {

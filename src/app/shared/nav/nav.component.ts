@@ -24,7 +24,7 @@ export class NavComponent implements OnInit {
 	insta = '';
 	email = '';
 	vimeo = '';
-	socialPurple = true;
+	socialPurple = false;
 	socialGold = false;
 	slug: any;
 	urlSplit: any;
@@ -88,7 +88,8 @@ export class NavComponent implements OnInit {
 	ngOnInit() {
 		this.configHeader();
 		this.logo()
-		this.btnColorMobile()
+		this.btnColorMobile();
+		this.rrss();
 		this.broker.languageApp().subscribe((response: any) => {
 			this.menuItems = response.data;
 			console.log(this.menuItems[0].translations.find(p=>p.language == 'es').translation)
@@ -96,6 +97,8 @@ export class NavComponent implements OnInit {
 	}
 
 	getTranslation(item, lang){
+		console.log("LANG", lang)
+		//console.log("TRANSLATION", item.translations.find(p=>p.language==lang).translation)
 		return item.translations.find(p=>p.language==lang).translation;
 	}
 
@@ -237,19 +240,21 @@ export class NavComponent implements OnInit {
 			$("#btn2").removeClass("music");
 			$("#btn3").removeClass("animation");
 			$("#btn4").removeClass("online");
+			$("#btn5").removeClass("music");
 		} else {
 			$("#btn0").addClass("edition");
 			$("#btn1").addClass("color");
 			$("#btn2").addClass("music");
 			$("#btn3").addClass("animation");
 			$("#btn4").addClass("online");
+			$("#btn5").addClass("music");
 		}
 	}
 
 	changeColor(bg) {
 		var change = $(".modal-body");
 		var about = $(".section-about a");
-		if ($(window).width() >= 768) {				
+		if ($(window).width() >= 768) {		
 			switch (bg) {
 				case 'edicion':
 					this.logoDorado = 'assets/images/nav/icon-dorado.svg';
@@ -323,8 +328,31 @@ export class NavComponent implements OnInit {
 			}
 		} else {
 			this.logoDorado = 'assets/images/nav/icon-dorado.svg';
-			this.socialPurple = false;
 			this.socialGold = true;
+			this.socialPurple = false;			
+		}
+	}
+
+	rrss() {
+		if ($(window).width() >= 768) {		
+			switch (this.color) {
+				case 'edicion': 
+				case 'correccion-de-color':
+				case 'animacion': 
+				case 'online':
+				case 'musica-original':
+				case 'diseno-sonoro-y-mezcla':
+					this.logoDorado = 'assets/images/nav/logo-DorardoTV-icon.png'; 
+					this.socialPurple = true;
+					this.socialGold = false
+					break;		
+				default:
+					return '';
+			}
+		} else {
+			this.logoDorado = 'assets/images/nav/logo-DorardoTV-icon.png';
+			this.socialGold = true;
+			this.socialPurple = false;			
 		}
 	}
 }

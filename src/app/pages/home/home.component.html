@@ -10,10 +10,14 @@
 			<h2>{{items?.titulo}}</h2>
 			<h3>{{items?.subtitle}}</h3>
 			<p>{{items?.credits}}</p>
-		</div>
+		</div>		
 	</slide>
+	<div class="btn-scroll" (click)="scroll()" >
+		<span>Scroll</span>
+		<img src="assets/images/carousel/arrow-down.svg" alt="Arrow down" title="Arrow down" />
+	</div>
 </carousel>
-<app-projects-home [dataVideo]="itemVideoNull" #target></app-projects-home>
+<app-projects-home [dataVideo]="itemVideoNull" #testPortfolio id="projectsScroll"></app-projects-home>
 
 <ng-template #template>
 	 <div class="modal-header">

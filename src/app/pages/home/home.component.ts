@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef  } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, TemplateRef, ViewChild, ViewChildren  } from '@angular/core';
 import { BrokerService } from 'src/app/core/broker.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ProjectsService } from 'src/app/core/projects.service';
@@ -31,7 +31,8 @@ export class HomeComponent implements OnInit {
 		public broker: BrokerService,
 		private sanitazer: DomSanitizer,
 		public project: ProjectsService,
-		private modalService: BsModalService
+		private modalService: BsModalService,
+		private _elementRef: ElementRef
 	) {	 }
 
 	ngOnInit() {
@@ -127,14 +128,16 @@ export class HomeComponent implements OnInit {
 	
 	getVideo(){
 		return this.sanitazer.bypassSecurityTrustResourceUrl(this.projectVideo);
-	}
-
-	scrollToElement($element): void {
-		$element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 	}	
 
 	withinProject(proj, author, color, id, home, homeSlider) {
 		this.project.openProjectHome2(proj, author, color, id, home, homeSlider);
+	}
+
+	scroll() {
+		const element = document.getElementById("projectsScroll");
+		console.log("ELEMT", element);
+		element.scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
 	}
 
 	getBg(color) {
