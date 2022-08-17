@@ -142,6 +142,27 @@ body {
             }
         }
     }
+    .btn-scroll {
+        position: absolute;
+        right: 36px;
+        bottom: 36px;
+        display: flex;
+        justify-content: center;
+        z-index: 1000;
+        flex-direction: column;
+        cursor: pointer;
+        span {
+            font-family: $raleway;
+            font-size: 20px;
+            line-height: 40px;
+            font-weight: 500;
+            color: $white;
+        }
+        img {            
+            width: 24px;
+            margin: 0 auto;
+        }
+    }
 }
 
 // SPINNER 

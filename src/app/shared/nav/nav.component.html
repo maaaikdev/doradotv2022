@@ -58,8 +58,8 @@
 				<div class="menu-body">
 					<a routerLink="/">
 						<img [src]="logoDorado" alt="DoradoTV" title="DoradoTV" class="icon-dorado"/>
-					</a>					
-					<div class="section-btn" (click)="onButtonGroupClick($event)">
+					</a>
+					<!-- <div class="section-btn" (click)="onButtonGroupClick($event)">
 						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langMenu == 'en')"
 							*ngFor="let item of menuItems| slice: 1: 7; let j = index"
 							(mouseover)="changeColor(item.slug)"
@@ -68,13 +68,23 @@
 							[ngClass]="{'active': item.active || btnColorMobile()}">
 							{{getTranslation(item, 'en')}}
 						</a>
-						<a class="btn-aMenu" id="btn{{j}}" [hidden]="!(langMenu == 'es')"
-							*ngFor="let item of menuItems| slice: 1: 7; let j = index"
+						<a class="btn-aMenu" id="btn{{i}}" [hidden]="!(langMenu == 'es')"
+							*ngFor="let item of menuItems| slice: 1: 7; let i = index"
 							(mouseover)="changeColor(item.slug)"
 							
 							(click)="author(item.slug, 'es')"
 							[ngClass]="{'active': item.active || btnColorMobile()}">
 							{{getTranslation(item, 'es')}}
+						</a>
+					</div> -->
+					<div class="section-btn" (click)="onButtonGroupClick($event)">
+						<a class="btn-aMenu" id="btn{{j}}" 
+							*ngFor="let item of menuItems| slice: 1: 7; let j = index"
+							(mouseover)="changeColor(item.slug)"
+							
+							(click)="author(item.slug, langMenu == 'es' ? 'en' : 'es')"
+							[ngClass]="{'active': item.active || btnColorMobile()}">
+							{{getTranslation(item, langMenu)}}
 						</a>
 					</div>
 					<div class="section-about">
@@ -83,8 +93,8 @@
 					</div>
 					<div class="section-social">
 						<a [href]="social.link" target="_blank" *ngFor="let social of rrSS">
-							<img [src]="social.img" title="social.title" alt="social.alt" class="social" *ngIf="socialPurple" />
-							<img [src]="social.imgMobile" title="social.title" alt="social.alt" class="social" *ngIf="socialGold" />
+							<img [src]="social.img" [title]="social.title" [alt]="social.alt" class="social" *ngIf="socialPurple" />
+							<img [src]="social.imgMobile" [title]="social.title" [alt]="social.alt" class="social" *ngIf="socialGold" />
 						</a>
 					</div>
 				</div>
