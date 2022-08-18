@@ -1,7 +1,7 @@
 <app-spinner [text]="'Cargando...'" *ngIf="spinnerActive"></app-spinner>
 <carousel [isAnimated]="true">
 	<slide *ngFor="let items of projectItemSlider; let j = index" [ngClass]="{'active': j == 0}" >
-		<video autoplay [muted]="'muted'" loop>
+		<video [muted]="'muted'" loop>
 			<source [src]="items.gif.data.full_url" type="video/mp4" />
 		</video>
 		<!-- <div class="head-project" (click)="withinProject(items, items?.workers[0].worker_id.slug, items?.services[0].service_id.slug, items?.id, items?.home_slider, items?.home_slider)"> -->
