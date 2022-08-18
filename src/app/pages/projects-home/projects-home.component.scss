@@ -95,6 +95,7 @@
             -moz-transform:translateY(100px);
             -ms-transform:translateY(100px);
             -o-transform:translateY(100px);
+            z-index: 3;
         }
         .blur{
             background-color: rgba(0,0,0,0.7);
