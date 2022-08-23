@@ -1,7 +1,25 @@
 <section class="projects-home" >
     <div class="box-video" *ngFor="let projects of dataVideo; let i = index" [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'wid-100' : 'wid-50' ">
-        <video [muted]="'muted'" loop [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'object-fit' : ''">
+        <!-- <video [muted]="'muted'" loop [ngClass]="i == 2 || i == 5 || i == 8 || i == 11 || i == 14 || i == 17 || i == 20 || i == 23 || i == 26 ? 'object-fit' : ''">
             <source [src]="projects.gif.data.full_url" type="video/mp4" />
+        </video> -->
+        <video 
+            [src]="projects.gif.data.full_url" 
+            playsinline="true" 
+            [muted]="'muted'" 
+            loop="loop" 
+            autoplay="autoplay" 
+            video 
+            [ngClass]="
+                i == 2 || 
+                i == 5 || 
+                i == 8 || 
+                i == 11 || 
+                i == 14 || 
+                i == 17 || 
+                i == 20 || 
+                i == 23 || 
+                i == 26 ? 'object-fit' : ''">
         </video>
         <h4>{{projects.titulo}}</h4>
         <!-- <div class="caption" (click)="withinProjectHome(projects, projects?.workers[0].worker_id.slug, projects?.services[0].service_id.slug, projects?.id, projects?.home, projects?.home_slider)"> -->
