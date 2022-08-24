@@ -1,24 +1,4 @@
 <app-spinner [text]="'Cargando...'" *ngIf="spinnerActive"></app-spinner>
-<carousel [isAnimated]="true">
-	<slide *ngFor="let items of projectItemSlider; let j = index" [ngClass]="{'active': j == 0}" >
-		<!-- <video [muted]="'muted'" loop>
-			<source [src]="items.gif.data.full_url" type="video/mp4" />
-		</video> -->
-		<video [src]="items.gif.data.full_url" playsinline="true" [muted]="'muted'" loop="loop" autoplay="autoplay" video></video>
-		<!-- <div class="head-project" (click)="withinProject(items, items?.workers[0].worker_id.slug, items?.services[0].service_id.slug, items?.id, items?.home_slider, items?.home_slider)"> -->
-		<div class="head-project" >
-			<i class="fa fa-play" aria-hidden="true" (click)="openModal(template, items)"></i>
-			<h2>{{items?.titulo}}</h2>
-			<h3>{{items?.subtitle}}</h3>
-			<p>{{items?.credits}}</p>
-		</div>		
-	</slide>
-	<div class="btn-scroll" (click)="scroll()" >
-		<span>Scroll</span>
-		<img src="assets/images/carousel/arrow-down.svg" alt="Arrow down" title="Arrow down" />
-		<div class="vertical-line"></div>
-	</div>
-</carousel>
 <app-projects-home [dataVideo]="itemVideoNull" #testPortfolio id="projectsScroll"></app-projects-home>
 
 <ng-template #template>
