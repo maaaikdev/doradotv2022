@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
 	projectVideoItem = [];
 	spinnerActive = true;
 	nextProjectUp: any;
+	falseMobile: boolean = false
 
 	//NEW MODAL
 	projectAuthor: any;
@@ -37,8 +38,13 @@ export class HomeComponent implements OnInit {
 
 	ngOnInit() {
 		window.scrollTo(0, 0);
-		this.getProjectsHome();
-		this.getProjectsHomeSlider();		
+		this.getProjectsHome();		
+		if ($(window).width() >= 768) {
+			this.falseMobile = true;
+			this.getProjectsHomeSlider();
+		} else {
+			this.falseMobile = false;
+		}
 	}
 
 	getProjectsHome(){
