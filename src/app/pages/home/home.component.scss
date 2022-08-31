@@ -45,6 +45,7 @@ body {
                     height: 100vh;
                 }
                 video {
+                    object-fit: fill;
                     width: 100% !important;
                     height: 100% !important;
                     @media(max-width:768px) {
